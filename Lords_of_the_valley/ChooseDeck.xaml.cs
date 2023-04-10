@@ -26,6 +26,7 @@ namespace Lords_of_the_valley
         public int titleScale = 90;
         public int textScale = 60;
         public double buttonMargin = 40;
+        public double imgMargin = 20;
         private double startWidth = 1920;
         private double startHeight = 1080;
         public const int maxDecks = 6;
@@ -43,9 +44,15 @@ namespace Lords_of_the_valley
 
             title_.FontSize = titleScale * scale;
             double margin = buttonMargin * scale;
+            double imgMargin_ = imgMargin * scale;
             foreach (Button b in Buttons)
             {
                 b.Margin = new Thickness(margin);
+            }
+
+            foreach (Image i in Images)
+            {
+                i.Margin = new Thickness(imgMargin_);
             }
 
             foreach (TextBlock t in Texts)
@@ -106,6 +113,14 @@ namespace Lords_of_the_valley
                 Image img = Images.ElementAt<Image>(i);
 
                 t.Text = d.name;
+                if(d.imgSource == "Assets\\DecksImg\\plus.png")
+                {
+                    img.Stretch = Stretch.Uniform;
+                }
+                else
+                {
+                    img.Stretch = Stretch.Fill;
+                }
                 string s = System.IO.Directory.GetCurrentDirectory() + "\\" + d.imgSource;
                 img.Source = new Windows.UI.Xaml.Media.Imaging.BitmapImage(new Uri(s));
                 ++i;

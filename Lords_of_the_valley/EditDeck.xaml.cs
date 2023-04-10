@@ -22,9 +22,15 @@ namespace Lords_of_the_valley
     /// </summary>
     public sealed partial class EditDeck : Page
     {
+        public List<DeckModel> Decks { get; set; } = new List<DeckModel>();
         public EditDeck()
         {
             this.InitializeComponent();
+
+            for(int i = 0; i < 30; ++i)
+            {
+                Decks.Add(new DeckModel("a", "Card Name " + i, i));
+            }
         }
     }
 }

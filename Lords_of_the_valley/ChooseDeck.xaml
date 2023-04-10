@@ -10,5 +10,12 @@
 
     <Grid>
         <Image Source="Assets/Backgrounds/Fondo_mazos.jpg" Stretch="Fill"></Image>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+        </Grid>
     </Grid>
 </Page>

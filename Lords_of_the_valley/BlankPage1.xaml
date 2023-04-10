@@ -26,16 +26,16 @@
             <StackPanel Grid.Row="0" Orientation="Horizontal">
 
                 <Button Content="Sobres" Background="White" Foreground="Black" 
-                        Opacity="0.9" Width="100" Height="40" Margin="70,20,1,0"
+                        Opacity="0.9" Width="100" Height="40" Margin="70,30,1,0"
                         BorderBrush="Black"/>
                 <Button Content="Tropas" Background="Violet" Foreground="Black" 
-                        Opacity="0.9" Width="100" Height="40" Margin="0,20,1,0"
+                        Opacity="0.9" Width="100" Height="40" Margin="0,30,1,0"
                         BorderBrush="Black"/>
                 <Button Content="Personajes" Background="White" Foreground="Black" 
-                        Opacity="0.9" Width="100" Height="40" Margin="0,20,1,0"
+                        Opacity="0.9" Width="100" Height="40" Margin="0,30,1,0"
                         BorderBrush="Black"/>
                 <Button Content="Hechizos" Background="White" Foreground="Black" 
-                        Opacity="0.9" Width="100" Height="40" Margin="0,20,10,0"
+                        Opacity="0.9" Width="100" Height="40" Margin="0,30,10,0"
                         BorderBrush="Black"/>
 
                 <TextBox Text="Ordenar por:" Width="200" Height="33" Margin="10,15,0,0" HorizontalAlignment="Stretch" BorderBrush="Black"  />
@@ -207,6 +207,8 @@
                     </Grid>
                 </Grid>
                 <Button Content="COMPRAR" FontSize="20" Width="200" HorizontalAlignment="Center" Background="DarkOrange" Foreground="Yellow" FontStretch="Normal" Margin="20"/>
+                <Button Content="MENU" FontSize="30" Width="150" Height="150" HorizontalAlignment="Center" Background="Gray"
+                        Foreground="Black" FontWeight="Bold" FontStretch="Normal" Margin="40"/>
             </StackPanel>
 
 

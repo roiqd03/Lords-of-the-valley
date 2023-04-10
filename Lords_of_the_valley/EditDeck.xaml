@@ -22,6 +22,61 @@
                                VerticalAlignment="Center"></TextBlock>
             </Border>
         </DataTemplate>
+
+        <Style TargetType="Button">
+            <Setter Property="Margin" Value="0,0,3,0"></Setter>
+            <Setter Property="BorderThickness" Value="2"></Setter>
+            <Setter Property="BorderBrush" Value="Black"></Setter>
+            <Setter Property="Background" Value="White"></Setter>
+            <Setter Property="Foreground" Value="Black"></Setter>
+            <Setter Property="Opacity" Value="0.8"></Setter>
+        </Style>
+
+        <DataTemplate x:Key="GridViewItemTemplate" x:DataType="local:CardModel">
+            <!--<Rectangle Fill="DeepPink"
+                           HorizontalAlignment="Stretch"
+                           VerticalAlignment="Stretch"
+                           Margin="0,3,0,3">
+                </Rectangle>-->
+            <Border Background="Orange" Width="200" Height="266" Margin="30">
+                <Grid>
+                    <Grid HorizontalAlignment="Stretch"
+                                VerticalAlignment="Stretch">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="2*"></RowDefinition>
+                            <RowDefinition Height="1*"></RowDefinition>
+                            <RowDefinition Height="1*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Image Source="{x:Bind imgSource}" Grid.Row="0" Margin="20"
+                               Stretch="Fill"></Image>
+                        <TextBlock Text="{x:Bind description}" Grid.Row="1" Margin="20"/>
+                    </Grid>
+                    <Border Background="LightYellow" HorizontalAlignment="Left"
+                            VerticalAlignment="Bottom" Opacity="0.7"
+                            Margin="20"
+                            Width="30" Height="30">
+                        <TextBlock Text="{x:Bind attack}" HorizontalAlignment="Center"
+                                VerticalAlignment="Center" FontSize="20">
+                        </TextBlock>
+                    </Border>
+                    <Border Background="Red" HorizontalAlignment="Right"
+                            VerticalAlignment="Bottom" Opacity="0.7"
+                            Margin="20" Width="30" Height="30">
+                        <TextBlock Text="{x:Bind armor}" HorizontalAlignment="Center"
+                                VerticalAlignment="Center" FontSize="20">
+                        </TextBlock>
+                    </Border>
+                    <Border Background="Blue" HorizontalAlignment="Left"
+                            VerticalAlignment="Top"
+                            Margin="20" Width="30" Height="30">
+                        <TextBlock Text="{x:Bind mana}" HorizontalAlignment="Center"
+                                VerticalAlignment="Center" FontSize="20">
+                        </TextBlock>
+                    </Border>
+                </Grid>
+               
+            </Border>
+        </DataTemplate>
     </Page.Resources>
     
     
@@ -65,7 +120,7 @@
                            Margin="20"
                            Stretch="Fill"/>
                     <ListView Grid.Row="1"
-                              ItemsSource="{x:Bind Decks}"
+                              ItemsSource="{x:Bind CardPlace}"
                               ItemTemplate="{StaticResource ListItemTemplate}"
                               HorizontalAlignment="Stretch"
                               >
@@ -79,20 +134,7 @@
                     </ListView>
 
                 </Grid>
-
-                <Grid Grid.Column="2" HorizontalAlignment="Stretch"
-                            VerticalAlignment="Stretch">
-                    <Rectangle Grid.Column="2"
-                               Fill="Purple" Opacity="0.7"
-                               HorizontalAlignment="Stretch"
-                               VerticalAlignment="Stretch"
-                               Margin="25, 50, 0, 50">
-                    </Rectangle>
-                    <GridView Grid.Row="1"
-                              ItemsSource="111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111"
-                              Margin="25, 50, 0, 50">
-                    </GridView>
-                </Grid>
+                
                 <Grid Grid.Column="1"
                             HorizontalAlignment="Stretch"
                             VerticalAlignment="Stretch"
@@ -106,7 +148,7 @@
                            Margin="20"
                            Stretch="Fill"/>
                     <ListView Grid.Row="1"
-                              ItemsSource="{x:Bind Decks}"
+                              ItemsSource="{x:Bind CardPlace}"
                               ItemTemplate="{StaticResource ListItemTemplate}"
                               HorizontalAlignment="Stretch"
                               >
@@ -119,6 +161,29 @@
                         </ListView.ItemContainerStyle>
                     </ListView>
 
+                </Grid>
+
+
+
+                <Grid Grid.Column="2" HorizontalAlignment="Stretch"
+                            VerticalAlignment="Stretch">
+                    <Rectangle Grid.Column="2"
+                               Fill="Purple" Opacity="0.7"
+                               HorizontalAlignment="Stretch"
+                               VerticalAlignment="Stretch"
+                               Margin="25, 50, 0, 50">
+                    </Rectangle>
+                    <StackPanel Margin="25, 10, 0, 0" Orientation="Horizontal"
+                                VerticalAlignment="Top">
+                        <Button>Personajes</Button>
+                        <Button>Tropas</Button>
+                        <Button>Hechizos</Button>
+                    </StackPanel>
+                    <GridView Grid.Row="1"
+                              Margin="25, 50, 0, 50"
+                              ItemsSource="{x:Bind Cards}"
+                              ItemTemplate="{StaticResource GridViewItemTemplate}">
+                    </GridView>
                 </Grid>
 
             </Grid>

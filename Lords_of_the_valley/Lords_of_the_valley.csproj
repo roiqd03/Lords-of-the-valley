@@ -150,6 +150,8 @@
     <Content Include="Assets\DecksImg\deck2.jpg" />
     <Content Include="Assets\DecksImg\deck1.jpg" />
     <Content Include="Assets\DecksImg\plus.png" />
+    <Content Include="Assets\Icons\arrow.png" />
+    <Content Include="Assets\Icons\house.png" />
     <Content Include="Assets\Images\Coin.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />

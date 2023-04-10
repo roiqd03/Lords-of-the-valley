@@ -126,6 +126,12 @@
                     </Grid>
                 </Button>
             </Grid>
+
+
+            <Button Grid.Row="3" HorizontalAlignment="Right"
+                    Width="100" Opacity="1" Background="Transparent">
+                <Image Source="Assets/Icons/house.png"></Image>
+            </Button>
         </Grid>
     </Grid>
 </Page>

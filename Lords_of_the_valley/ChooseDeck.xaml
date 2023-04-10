@@ -14,8 +14,15 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="1*"/>
                 <RowDefinition Height="2*"/>
-                <RowDefinition Height="1*"/>
+                <RowDefinition Height="12*"/>
             </Grid.RowDefinitions>
+            <TextBlock Grid.Row="1" Text="MIS MAZOS" 
+                       HorizontalAlignment="Center" VerticalAlignment="Center"
+                       FontWeight="Bold" FontSize="{x:Bind textScale}" FontStretch="Condensed"
+                       Foreground="Black"
+                       TextAlignment="Center" IsTextScaleFactorEnabled="True"
+                       x:Name="title_"></TextBlock>
+            <GridView Grid.Row="2" ItemsSource=""></GridView>
         </Grid>
     </Grid>
 </Page>

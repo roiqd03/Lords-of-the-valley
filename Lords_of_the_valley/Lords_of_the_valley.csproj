@@ -133,7 +133,12 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\Backgrounds\Fondo_ajustes.jpg" />
+    <Content Include="Assets\Backgrounds\Fondo_batalla.jpg" />
+    <Content Include="Assets\Backgrounds\Fondo_inicio.jpg" />
     <Content Include="Assets\Backgrounds\Fondo_mazos.jpg" />
+    <Content Include="Assets\Backgrounds\Fondo_tienda.jpg" />
+    <Content Include="Assets\Images\Coin.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />

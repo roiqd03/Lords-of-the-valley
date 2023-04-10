@@ -122,6 +122,9 @@
     <Compile Include="ChooseDeck.xaml.cs">
       <DependentUpon>ChooseDeck.xaml</DependentUpon>
     </Compile>
+    <Compile Include="EditDeck.xaml.cs">
+      <DependentUpon>EditDeck.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -138,6 +141,9 @@
     <Content Include="Assets\Backgrounds\Fondo_inicio.jpg" />
     <Content Include="Assets\Backgrounds\Fondo_mazos.jpg" />
     <Content Include="Assets\Backgrounds\Fondo_tienda.jpg" />
+    <Content Include="Assets\DecksImg\deck2.jpg" />
+    <Content Include="Assets\DecksImg\deck1.jpg" />
+    <Content Include="Assets\DecksImg\plus.png" />
     <Content Include="Assets\Images\Coin.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
@@ -154,6 +160,10 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Page Include="ChooseDeck.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EditDeck.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

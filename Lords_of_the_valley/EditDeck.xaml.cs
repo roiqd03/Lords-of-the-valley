@@ -28,7 +28,7 @@ namespace Lords_of_the_valley
         private double startHeight = 1080;
         public List<DeckModel> CardPlace { get; set; } = new List<DeckModel>();
         public List<CardModel> Cards { get; set; } = new List<CardModel>();
-        public EditDeck()
+    public EditDeck()
         {
             this.InitializeComponent();
 
@@ -62,7 +62,7 @@ namespace Lords_of_the_valley
 
     public class CardModel
     {
-        public string imgSource;
+        public ImageSource imgSource;
         public string description;
         public int attack;
         public int armor;
@@ -70,7 +70,8 @@ namespace Lords_of_the_valley
         public int id;
         public CardModel(string img, string desc, int attack_, int armor_, int mana_, int id_)
         {
-            this.imgSource = img;
+            string s = System.IO.Directory.GetCurrentDirectory() + "\\" + img;
+            this.imgSource = new Windows.UI.Xaml.Media.Imaging.BitmapImage(new Uri(s));
             this.description = desc;
             this.attack = attack_;
             this.armor = armor_;

@@ -119,7 +119,7 @@
                         <RowDefinition Height="2*"></RowDefinition>
                     </Grid.RowDefinitions>
                     <Border Margin="20" CornerRadius="20">
-                        <Image Source="Assets/DecksImg/deck1.jpg"
+                        <Image Source="Assets/DecksImg/deck2.jpg"
                                Stretch="Fill"/>
                     </Border>
                     <ListView Grid.Row="1"

@@ -35,7 +35,6 @@
                     </Grid>
                 </Border>
 
-
                 <Border VerticalAlignment="Top"
                     HorizontalAlignment="Left"
                     Width="20"
@@ -57,11 +56,6 @@
             </Grid>
         </DataTemplate>
         <DataTemplate x:Key="Table" x:DataType="local:CardModel">
-            <!--<Rectangle Fill="DeepPink"
-                           HorizontalAlignment="Stretch"
-                           VerticalAlignment="Stretch"
-                           Margin="0,3,0,3">
-                </Rectangle>-->
             <Border Background="Orange" Width="100" Height="133" Margin="30" CornerRadius="15">
                 <Grid>
                     <Grid HorizontalAlignment="Stretch"
@@ -126,7 +120,7 @@
 
                 <Border Background="Orange" BorderThickness="2"  Opacity="0.4" Margin="10, 10, 10, 0"></Border>
                 <GridView HorizontalAlignment="Center" VerticalAlignment="Bottom"
-                              Margin="5,15,5,5" ItemsSource="{x:Bind RivalCards}"
+                              Margin="5,15,5,5" ItemsSource="{x:Bind Logic.RivalCards}"
                               ItemTemplate="{StaticResource RivalHand}"
                               HorizontalContentAlignment="Stretch"
                               VerticalContentAlignment="Stretch"
@@ -137,38 +131,41 @@
 
                 <Border Background="Orange" BorderThickness="2" Grid.Row="6" Opacity="0.4" Margin="10, 0, 10, 10"></Border>
                 <GridView HorizontalAlignment="Center" VerticalAlignment="Stretch"
-                              Margin="5,5,5,15" ItemsSource="{x:Bind Cards}"
+                              Margin="5,5,5,15" ItemsSource="{x:Bind Logic.Cards}"
                               ItemTemplate="{StaticResource Hand}"
                               HorizontalContentAlignment="Stretch"
                               ScrollViewer.VerticalScrollMode="Disabled"
                               VerticalContentAlignment="Stretch"
                               Grid.Row="6"
                               ScrollViewer.VerticalScrollBarVisibility="Disabled"
-                              SelectionChanged="GridView_SelectionChanged">
+                              SelectionChanged="Logic.GridView_SelectionChanged"
+                              SelectedIndex="{x:Bind Logic.selectedIndexHand, Mode=TwoWay}">
                 </GridView>
 
                 <Border Background="LightBlue" BorderThickness="2" Grid.Row ="1" Opacity="0.4" Margin="10,0,10,0" Grid.RowSpan="2"></Border>
                 <GridView HorizontalAlignment="Center" VerticalAlignment="Top"
-                          Margin="0,10,0,0" ItemsSource="{x:Bind TableRivalCards}"
+                          Margin="0,10,0,0" ItemsSource="{x:Bind Logic.TableRivalCards}"
                           ItemTemplate="{StaticResource Table}"
                           HorizontalContentAlignment="Stretch"
                           VerticalContentAlignment="Top"
                           ScrollViewer.VerticalScrollMode="Disabled"
                           Grid.Row="2"
                           ScrollViewer.VerticalScrollBarVisibility="Disabled"
-                          SelectionChanged="GridView_SelectionChanged">
+                          SelectionChanged="Logic.GridView_SelectionChanged"
+                          SelectedIndex="{x:Bind Logic.selectedIndexTable, Mode=TwoWay}">
                 </GridView>
 
                 <Border Background="LightBlue" BorderThickness="2" Grid.Row ="4" Opacity="0.4" Margin="10,0,10,0" Grid.RowSpan="2"></Border>
                 <GridView HorizontalAlignment="Center" VerticalAlignment="Top"
-                          Margin="0,0,0,10" ItemsSource="{x:Bind TableCards}"
+                          Margin="0,0,0,10" ItemsSource="{x:Bind Logic.TableCards}"
                           ItemTemplate="{StaticResource Table}"
                           HorizontalContentAlignment="Stretch"
                           VerticalContentAlignment="Top"
                           ScrollViewer.VerticalScrollMode="Disabled"
                           Grid.Row="4"
                           ScrollViewer.VerticalScrollBarVisibility="Disabled"
-                          SelectionChanged="GridView_SelectionChanged">
+                          SelectionChanged="Logic.GridView_SelectionChanged"
+                          SelectedIndex="{x:Bind Logic.selectedIndexRivalTable, Mode=TwoWay}">
                 </GridView>
 
                 <Border Background="Brown" BorderThickness="2"  Grid.Row="3" Margin="10, 0, 10, 0"></Border>
@@ -228,10 +225,10 @@
                     </StackPanel>
                 </Border>
 
-                <TextBlock Text="{x:Bind rivalManaText, Mode=OneWay}" Margin="20" Foreground="LightBlue"
+                <TextBlock Text="{x:Bind Logic.rivalManaText, Mode=OneWay}" Margin="20" Foreground="LightBlue"
                            VerticalAlignment="Top" HorizontalAlignment="Right">
                 </TextBlock>
-                <TextBlock Grid.Row="2" Text="{x:Bind manaText, Mode=OneWay}" Margin="20" Foreground="LightBlue"
+                <TextBlock Grid.Row="2" Text="{x:Bind Logic.manaText, Mode=OneWay}" Margin="20" Foreground="LightBlue"
                            VerticalAlignment="Bottom" HorizontalAlignment="Right">
                 </TextBlock>
             </Grid>
@@ -241,54 +238,65 @@
                 <Image Source="/Assets/Icons/opciones2.png" Stretch="UniformToFill"></Image>
             </Button>
 
-            <Border HorizontalAlignment="Center" VerticalAlignment="Center"
-                    Width="350" Height="520"
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="2*"></RowDefinition>
+                    <RowDefinition Height="4*"></RowDefinition>
+                    <RowDefinition Height="2*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"></ColumnDefinition>
+                    <ColumnDefinition Width="4*"></ColumnDefinition>
+                    <ColumnDefinition Width="1*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Border Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
                     BorderBrush="Orange" BorderThickness="3" CornerRadius="5">
-                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-                    <Border Background="Orange" Width="300" Height="450" CornerRadius="15">
-                        <Grid>
-                            <Grid HorizontalAlignment="Stretch"
+                    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                        <Border Background="Orange" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10,10,10,60"
+                                CornerRadius="15">
+                            <Grid>
+                                <Grid HorizontalAlignment="Stretch"
                                 VerticalAlignment="Stretch">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="2*"></RowDefinition>
-                                    <RowDefinition Height="1*"></RowDefinition>
-                                    <RowDefinition Height="1*"></RowDefinition>
-                                </Grid.RowDefinitions>
-                                <Image Source="{x:Bind SelectedCardImgSource, Mode=OneWay}" Grid.Row="0" Margin="10"
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="2*"></RowDefinition>
+                                        <RowDefinition Height="1*"></RowDefinition>
+                                        <RowDefinition Height="1*"></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <Image Source="{x:Bind Logic.SelectedCardImgSource, Mode=OneWay}" Grid.Row="0" Margin="10"
                                Stretch="Fill"></Image>
-                                <TextBlock Text="{x:Bind SelectedCardDescription, Mode=OneWay}" Grid.Row="1" Margin="5" FontSize="25"
+                                    <TextBlock Text="{x:Bind Logic.SelectedCardDescription, Mode=OneWay}" Grid.Row="1" Margin="5" FontSize="25"
                                    HorizontalAlignment="Center"/>
-                            </Grid>
-                            <Border Background="LightYellow" HorizontalAlignment="Left"
+                                </Grid>
+                                <Border Background="LightYellow" HorizontalAlignment="Left"
                             VerticalAlignment="Bottom" Opacity="0.7"
                             Margin="20"
                             Width="60" Height="60" CornerRadius="30">
-                                <TextBlock Text="{x:Bind SelectedCardAttack, Mode=OneWay}" HorizontalAlignment="Center"
+                                    <TextBlock Text="{x:Bind Logic.SelectedCardAttack, Mode=OneWay}" HorizontalAlignment="Center"
                                 VerticalAlignment="Center" FontSize="25">
-                                </TextBlock>
-                            </Border>
-                            <Border Background="Red" HorizontalAlignment="Right"
+                                    </TextBlock>
+                                </Border>
+                                <Border Background="Red" HorizontalAlignment="Right"
                             VerticalAlignment="Bottom" Opacity="0.7"
                             Margin="20" Width="60" Height="60" CornerRadius="30">
-                                <TextBlock Text="{x:Bind SelectedCardArmor, Mode=OneWay}" HorizontalAlignment="Center"
+                                    <TextBlock Text="{x:Bind Logic.SelectedCardArmor, Mode=OneWay}" HorizontalAlignment="Center"
                                 VerticalAlignment="Center" FontSize="25">
-                                </TextBlock>
-                            </Border>
-                            <Border Background="Blue" HorizontalAlignment="Left"
+                                    </TextBlock>
+                                </Border>
+                                <Border Background="Blue" HorizontalAlignment="Left"
                             VerticalAlignment="Top"
                             Width="60" Height="60" CornerRadius="30">
-                                <TextBlock Text="{x:Bind SelectedCardMana, Mode=OneWay}" HorizontalAlignment="Center"
+                                    <TextBlock Text="{x:Bind Logic.SelectedCardMana, Mode=OneWay}" HorizontalAlignment="Center"
                                 VerticalAlignment="Center" FontSize="25">
-                                </TextBlock>
-                            </Border>
-                        </Grid>
+                                    </TextBlock>
+                                </Border>
+                            </Grid>
 
-                    </Border>
-                    <TextBlock Text="Carta Seleccionada" HorizontalAlignment="Center"
-                           FontSize="30"></TextBlock>
-                </StackPanel>
-            </Border>
-
+                        </Border>
+                        <TextBlock Text="Carta Seleccionada" HorizontalAlignment="Center"
+                           VerticalAlignment="Bottom"  FontSize="25" Margin="0,10,0,10"></TextBlock>
+                    </Grid>    
+                </Border>
+            </Grid>
         </Grid>
     </Grid>
 </Page>

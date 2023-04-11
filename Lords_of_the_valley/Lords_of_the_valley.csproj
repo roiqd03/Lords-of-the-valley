@@ -122,6 +122,8 @@
     <Compile Include="GamePage.xaml.cs">
       <DependentUpon>GamePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="GamePageLogic.cs" />
+    <Compile Include="ObservableObject.cs" />
     <Compile Include="OptionsMenu.xaml.cs">
       <DependentUpon>OptionsMenu.xaml</DependentUpon>
     </Compile>

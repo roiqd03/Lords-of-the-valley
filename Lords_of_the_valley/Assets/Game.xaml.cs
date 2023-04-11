@@ -39,7 +39,9 @@ namespace Lords_of_the_valley.Assets
 
         private List<Border> manaList = new List<Border>();
         private List<Border> rivalManaList = new List<Border>();
-        public Game()
+        public List<CardModel> Cards { get; set; } = new List<CardModel>();
+       
+    public Game()
         {
             this.InitializeComponent();
 
@@ -66,6 +68,11 @@ namespace Lords_of_the_valley.Assets
             rivalManaList.Add(rivalMana10);
 
             UpdateManaUI();
+
+            for (int i = 0; i < 2; ++i)
+            {
+                Cards.Add(new CardModel("Assets\\DecksImg\\deck1.jpg", "Card Description " + i, 3, 1, 2, i));
+            }
         }
 
         void UpdateManaUI()

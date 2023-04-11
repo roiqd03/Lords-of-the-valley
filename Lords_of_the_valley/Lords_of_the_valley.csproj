@@ -135,6 +135,9 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ShopingMenu.xaml.cs">
+      <DependentUpon>ShopingMenu.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -150,6 +153,7 @@
     <Content Include="Assets\DecksImg\deck2.jpg" />
     <Content Include="Assets\DecksImg\deck1.jpg" />
     <Content Include="Assets\DecksImg\plus.png" />
+    <Content Include="Assets\Icons\options.png" />
     <Content Include="Assets\Icons\arrow.png" />
     <Content Include="Assets\Icons\house.png" />
     <Content Include="Assets\Images\Coin.png" />
@@ -184,6 +188,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MainPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ShopingMenu.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

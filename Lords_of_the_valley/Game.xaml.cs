@@ -44,6 +44,8 @@ namespace Lords_of_the_valley.Assets
         private List<Border> rivalManaList = new List<Border>();
         public List<CardModel> Cards { get; set; } = new List<CardModel>();
         public List<CardModel> RivalCards { get; set; } = new List<CardModel>();
+        public List<CardModel> TableCards { get; set; } = new List<CardModel>();
+        public List<CardModel> TableRivalCards { get; set; } = new List<CardModel>();
        
     public Game()
         {
@@ -81,6 +83,15 @@ namespace Lords_of_the_valley.Assets
             for (int i = 0; i < numRivalCards; ++i)
             {
                 RivalCards.Add(new CardModel("Assets\\DecksImg\\deck1.jpg", "Card Description " + i, 3, 1, 2, i));
+            }
+
+            for(int i = 0; i < 4; ++i)
+            {
+                TableCards.Add(new CardModel("Assets\\DecksImg\\deck1.jpg", "Card Description " + i, 3, 1, 2, i));
+            }
+            for (int i = 0; i < 2; ++i)
+            {
+                TableRivalCards.Add(new CardModel("Assets\\DecksImg\\deck1.jpg", "Card Description " + i, 3, 1, 2, i));
             }
         }
 

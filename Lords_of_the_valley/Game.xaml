@@ -56,6 +56,52 @@
                 </Border>
             </Grid>
         </DataTemplate>
+        <DataTemplate x:Key="Table" x:DataType="local:CardModel">
+            <!--<Rectangle Fill="DeepPink"
+                           HorizontalAlignment="Stretch"
+                           VerticalAlignment="Stretch"
+                           Margin="0,3,0,3">
+                </Rectangle>-->
+            <Border Background="Orange" Width="100" Height="133" Margin="30" CornerRadius="15">
+                <Grid>
+                    <Grid HorizontalAlignment="Stretch"
+                                VerticalAlignment="Stretch">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="2*"></RowDefinition>
+                            <RowDefinition Height="1*"></RowDefinition>
+                            <RowDefinition Height="1*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Image Source="{x:Bind imgSource}" Grid.Row="0" Margin="10"
+                               Stretch="Fill"></Image>
+                        <TextBlock Text="{x:Bind description}" Grid.Row="1" Margin="5" FontSize="10"
+                                   HorizontalAlignment="Center"/>
+                    </Grid>
+                    <Border Background="LightYellow" HorizontalAlignment="Left"
+                            VerticalAlignment="Bottom" Opacity="0.7"
+                            Margin="5"
+                            Width="30" Height="30" CornerRadius="15">
+                        <TextBlock Text="{x:Bind attack}" HorizontalAlignment="Center"
+                                VerticalAlignment="Center" FontSize="20">
+                        </TextBlock>
+                    </Border>
+                    <Border Background="Red" HorizontalAlignment="Right"
+                            VerticalAlignment="Bottom" Opacity="0.7"
+                            Margin="5" Width="30" Height="30" CornerRadius="15">
+                        <TextBlock Text="{x:Bind armor}" HorizontalAlignment="Center"
+                                VerticalAlignment="Center" FontSize="20">
+                        </TextBlock>
+                    </Border>
+                    <Border Background="Blue" HorizontalAlignment="Left"
+                            VerticalAlignment="Top"
+                            Width="30" Height="30" CornerRadius="15">
+                        <TextBlock Text="{x:Bind mana}" HorizontalAlignment="Center"
+                                VerticalAlignment="Center" FontSize="20">
+                        </TextBlock>
+                    </Border>
+                </Grid>
+
+            </Border>
+        </DataTemplate>
     </Page.Resources>
 
     <Grid>
@@ -77,29 +123,53 @@
                     <RowDefinition Height="4*"></RowDefinition>
                     <RowDefinition Height="4*"></RowDefinition>
                 </Grid.RowDefinitions>
-                <Border Background="Orange" BorderThickness="2"  Opacity="0.4" Margin="10, 10, 10, 0">
-                   
-                </Border>
+
+                <Border Background="Orange" BorderThickness="2"  Opacity="0.4" Margin="10, 10, 10, 0"></Border>
                 <GridView HorizontalAlignment="Center" VerticalAlignment="Bottom"
-                              Margin="5,20,5,5" ItemsSource="{x:Bind RivalCards}"
+                              Margin="5,15,5,5" ItemsSource="{x:Bind RivalCards}"
                               ItemTemplate="{StaticResource RivalHand}"
                               HorizontalContentAlignment="Stretch"
-                              VerticalContentAlignment="Bottom"
-                              ScrollViewer.HorizontalScrollMode="Disabled"
-                              SelectionMode="None">
+                              VerticalContentAlignment="Stretch"
+                              ScrollViewer.VerticalScrollMode="Disabled"
+                              SelectionMode="None"
+                              ScrollViewer.VerticalScrollBarVisibility="Disabled">
                 </GridView>
-                <Border Background="Orange" BorderThickness="2" Grid.Row="6" Opacity="0.4" Margin="10, 0, 10, 10">
-                </Border>
+
+                <Border Background="Orange" BorderThickness="2" Grid.Row="6" Opacity="0.4" Margin="10, 0, 10, 10"></Border>
                 <GridView HorizontalAlignment="Center" VerticalAlignment="Stretch"
-                              Margin="5" ItemsSource="{x:Bind Cards}"
+                              Margin="5,5,5,15" ItemsSource="{x:Bind Cards}"
                               ItemTemplate="{StaticResource Hand}"
                               HorizontalContentAlignment="Stretch"
+                              ScrollViewer.VerticalScrollMode="Disabled"
                               VerticalContentAlignment="Stretch"
-                              ScrollViewer.HorizontalScrollMode="Disabled"
-                              Grid.Row="6">
+                              Grid.Row="6"
+                              ScrollViewer.VerticalScrollBarVisibility="Disabled">
                 </GridView>
+                
                 <Border Background="LightBlue" BorderThickness="2" Grid.Row ="1" Opacity="0.4" Margin="10,0,10,0" Grid.RowSpan="2"></Border>
+                <GridView HorizontalAlignment="Center" VerticalAlignment="Top"
+                          Margin="0,10,0,0" ItemsSource="{x:Bind TableRivalCards}"
+                          ItemTemplate="{StaticResource Table}"
+                          HorizontalContentAlignment="Stretch"
+                          VerticalContentAlignment="Top"
+                          ScrollViewer.VerticalScrollMode="Disabled"
+                          Grid.Row="2"
+                          ScrollViewer.VerticalScrollBarVisibility="Disabled">
+                    
+                </GridView>
+                
                 <Border Background="LightBlue" BorderThickness="2" Grid.Row ="4" Opacity="0.4" Margin="10,0,10,0" Grid.RowSpan="2"></Border>
+                <GridView HorizontalAlignment="Center" VerticalAlignment="Top"
+                          Margin="0,0,0,10" ItemsSource="{x:Bind TableCards}"
+                          ItemTemplate="{StaticResource Table}"
+                          HorizontalContentAlignment="Stretch"
+                          VerticalContentAlignment="Top"
+                          ScrollViewer.VerticalScrollMode="Disabled"
+                          Grid.Row="4"
+                          ScrollViewer.VerticalScrollBarVisibility="Disabled">
+
+                </GridView>
+                
                 <Border Background="Brown" BorderThickness="2"  Grid.Row="3" Margin="10, 0, 10, 0"></Border>
 
                 <Border Grid.Row="1" BorderThickness="2" BorderBrush="Black" HorizontalAlignment="Center" VerticalAlignment="Center">
@@ -164,7 +234,11 @@
                            VerticalAlignment="Bottom" HorizontalAlignment="Right">
                 </TextBlock>
             </Grid>
-            
+
+            <Button Width="70" Height="70" VerticalAlignment="Top"
+                    HorizontalAlignment="Left" Background="Transparent" Margin="10">
+                <Image Source="/Assets/Icons/opciones2.png" Stretch="Fill"></Image>
+            </Button>
         </Grid>
     </Grid>
 </Page>

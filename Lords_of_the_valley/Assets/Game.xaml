@@ -48,6 +48,14 @@
                 </Border>
             </Grid>
         </DataTemplate>
+        <DataTemplate x:Key="RivalHand" x:DataType="local:CardModel">
+
+            <Grid Width="100" Height="90">
+                <Border Background="Orange" CornerRadius="5" HorizontalAlignment="Stretch"
+                        VerticalAlignment="Stretch">
+                </Border>
+            </Grid>
+        </DataTemplate>
     </Page.Resources>
 
     <Grid>
@@ -72,6 +80,14 @@
                 <Border Background="Orange" BorderThickness="2"  Opacity="0.4" Margin="10, 10, 10, 0">
                    
                 </Border>
+                <GridView HorizontalAlignment="Center" VerticalAlignment="Bottom"
+                              Margin="5,20,5,5" ItemsSource="{x:Bind RivalCards}"
+                              ItemTemplate="{StaticResource RivalHand}"
+                              HorizontalContentAlignment="Stretch"
+                              VerticalContentAlignment="Bottom"
+                              ScrollViewer.HorizontalScrollMode="Disabled"
+                              SelectionMode="None">
+                </GridView>
                 <Border Background="Orange" BorderThickness="2" Grid.Row="6" Opacity="0.4" Margin="10, 0, 10, 10">
                 </Border>
                 <GridView HorizontalAlignment="Center" VerticalAlignment="Stretch"
@@ -82,7 +98,7 @@
                               ScrollViewer.HorizontalScrollMode="Disabled"
                               Grid.Row="6">
                 </GridView>
-                    <Border Background="LightBlue" BorderThickness="2" Grid.Row ="1" Opacity="0.4" Margin="10,0,10,0" Grid.RowSpan="2"></Border>
+                <Border Background="LightBlue" BorderThickness="2" Grid.Row ="1" Opacity="0.4" Margin="10,0,10,0" Grid.RowSpan="2"></Border>
                 <Border Background="LightBlue" BorderThickness="2" Grid.Row ="4" Opacity="0.4" Margin="10,0,10,0" Grid.RowSpan="2"></Border>
                 <Border Background="Brown" BorderThickness="2"  Grid.Row="3" Margin="10, 0, 10, 0"></Border>
 

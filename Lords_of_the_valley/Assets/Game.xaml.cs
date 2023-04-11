@@ -37,9 +37,13 @@ namespace Lords_of_the_valley.Assets
         private int rivalActualMana = 7;
         private int rivalMaxMana = 7;
 
+        public int numCards = 2;
+        public int numRivalCards = 3;
+
         private List<Border> manaList = new List<Border>();
         private List<Border> rivalManaList = new List<Border>();
         public List<CardModel> Cards { get; set; } = new List<CardModel>();
+        public List<CardModel> RivalCards { get; set; } = new List<CardModel>();
        
     public Game()
         {
@@ -69,9 +73,14 @@ namespace Lords_of_the_valley.Assets
 
             UpdateManaUI();
 
-            for (int i = 0; i < 2; ++i)
+            for (int i = 0; i < numCards; ++i)
             {
                 Cards.Add(new CardModel("Assets\\DecksImg\\deck1.jpg", "Card Description " + i, 3, 1, 2, i));
+            }
+
+            for (int i = 0; i < numRivalCards; ++i)
+            {
+                RivalCards.Add(new CardModel("Assets\\DecksImg\\deck1.jpg", "Card Description " + i, 3, 1, 2, i));
             }
         }
 

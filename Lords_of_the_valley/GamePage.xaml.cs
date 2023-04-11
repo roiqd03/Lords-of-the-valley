@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -14,17 +15,14 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
-
 // La plantilla de elemento Página en blanco está documentada en https://go.microsoft.com/fwlink/?LinkId=234238
 
-namespace Lords_of_the_valley.Assets
+namespace Lords_of_the_valley
 {
     /// <summary>
     /// Una página vacía que se puede usar de forma independiente o a la que se puede navegar dentro de un objeto Frame.
     /// </summary>
-    public sealed partial class Game : Page
+    public sealed partial class GamePage : Page
     {
         public const int maxPosibleMana = 10;
 
@@ -46,8 +44,16 @@ namespace Lords_of_the_valley.Assets
         public List<CardModel> RivalCards { get; set; } = new List<CardModel>();
         public List<CardModel> TableCards { get; set; } = new List<CardModel>();
         public List<CardModel> TableRivalCards { get; set; } = new List<CardModel>();
-       
-    public Game()
+
+        public ImageSource SelectedCardImgSource;
+        public string SelectedCardDescription;
+        public int SelectedCardAttack;
+        public int SelectedCardArmor;
+        public int SelectedCardMana;
+        public int SelectedCardID;
+
+
+        public GamePage()
         {
             this.InitializeComponent();
 
@@ -80,12 +86,14 @@ namespace Lords_of_the_valley.Assets
                 Cards.Add(new CardModel("Assets\\DecksImg\\deck1.jpg", "Card Description " + i, 3, 1, 2, i));
             }
 
+            ChangeSelectedCard(Cards[0]);
+
             for (int i = 0; i < numRivalCards; ++i)
             {
                 RivalCards.Add(new CardModel("Assets\\DecksImg\\deck1.jpg", "Card Description " + i, 3, 1, 2, i));
             }
 
-            for(int i = 0; i < 4; ++i)
+            for (int i = 0; i < 4; ++i)
             {
                 TableCards.Add(new CardModel("Assets\\DecksImg\\deck1.jpg", "Card Description " + i, 3, 1, 2, i));
             }
@@ -148,8 +156,29 @@ namespace Lords_of_the_valley.Assets
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(rivalManaText));
         }
 
+        void ChangeSelectedCard(CardModel card)
+        {
+            SelectedCardImgSource = card.imgSource;
+            SelectedCardDescription = card.description;
+            SelectedCardAttack = card.attack;
+            SelectedCardArmor = card.armor;
+            SelectedCardMana = card.mana;
+            SelectedCardID = card.id;
+
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(SelectedCardImgSource)));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(SelectedCardDescription)));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(SelectedCardAttack)));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(SelectedCardArmor)));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(SelectedCardMana)));
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
 
+        private void GridView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            CardModel card = e.AddedItems[0] as CardModel;
+            ChangeSelectedCard(card);
+        }
     }
 
 }

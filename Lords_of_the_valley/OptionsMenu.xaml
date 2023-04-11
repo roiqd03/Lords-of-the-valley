@@ -22,6 +22,11 @@
                        VerticalAlignment="Top" HorizontalAlignment="Center" 
                        Foreground="Black" FontWeight="Bold"  FontStretch="Normal"/>
 
+            <Button HorizontalAlignment="Left" Width="75" Height="75" Margin="40">
+                <Image Source="/Assets/Icons/house.png" />
+
+            </Button>
+
             <StackPanel Grid.Row="1" Orientation="Vertical" HorizontalAlignment="Center">
                 <TextBlock Text="SONIDO" FontSize="30" Foreground="DarkGray" FontWeight="Bold" Margin="10" HorizontalAlignment="Center" FontStretch="Normal"/>
                 <Slider Value="25" Width="300" Margin="20"

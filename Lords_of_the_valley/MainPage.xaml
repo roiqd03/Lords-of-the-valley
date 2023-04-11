@@ -8,7 +8,7 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
     <Grid>
-        
+
         <Image Source="/Assets/Backgrounds/Fondo_inicio.jpg"
                Stretch="Fill"/>
         <Grid>
@@ -29,20 +29,24 @@
 
                 <TextBlock Text="LORDS OF THE VALLEY" FontSize="60" Grid.Column="1" 
                            HorizontalAlignment="Center" Margin="20"
-                           Foreground="Black"/>
+                           Foreground="Black" FontWeight="Bold"/>
 
                 <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left">
-                    <Button Width="50" Height="50"   Margin="20">
-                        
+                    <Button Width="50" Height="50"   Margin="20" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                        <Image Source="/Assets/Icons/opciones.png" Stretch="Uniform"/>
+
                     </Button>
-                    <Button Width="50" Height="50"   Margin="20">
-                        
+                    <Button Width="50" Height="50"   Margin="20" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                        <Image Source="/Assets/Icons/info.png" Stretch="Uniform"/>
+
                     </Button>
-                    <Button Width="50" Height="50"   Margin="20">
-                        
+                    <Button Width="50" Height="50"   Margin="20" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                        <Image Source="/Assets/Icons/social.png" Stretch="Uniform"/>
+
                     </Button>
-                    <Button Width="50" Height="50"   Margin="20">
-                        
+                    <Button Width="50" Height="50"   Margin="20" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                        <Image Source="/Assets/Icons/buzon.png" Stretch="Uniform"/>
+
                     </Button>
                 </StackPanel>
 
@@ -51,8 +55,8 @@
                     <Image Source="/Assets/Images/Coin.png"  Margin="20"/>
                     <Button Width="50" Height="50"  HorizontalAlignment="Right" Margin="20" Background="Yellow">
                         <TextBlock Text="+"  Foreground="Black" FontSize="30" VerticalAlignment="Center" Margin="5"/>
-                    </Button>  
-                             
+                    </Button>
+
                 </StackPanel>
 
             </Grid>
@@ -67,11 +71,11 @@
                 <Button Content="MAZOS" FontSize="50" Foreground="Black" Grid.Column="0"
                             Width="300" Height="500" FontStretch="Normal"    Margin="100,100,100,50" Background="Orange" Opacity="0.7"
                         HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
-                
+
                 <Button  Content="CAMPAÑA" FontSize="50" Foreground="Black" Grid.Column="1"
                             Width="325" Height="525"  FontStretch="Normal"   Margin="100,100,100,50" Background="DarkRed" Opacity="0.7"
                            HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
-                
+
                 <Button Content="ONLINE" FontSize="50" Foreground="Black" Grid.Column="2"
                             Width="300" Height="500" FontStretch="Normal"    Margin="100,100,100,50" Background="DarkViolet" Opacity="0.7"
                           HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
@@ -81,34 +85,50 @@
             <Grid Grid.Row="2">
 
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition />
                     <ColumnDefinition />
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-
-               
-                    
-                <Button Width="300" Height="175" Margin="10" Background="Gray" HorizontalAlignment="Stretch" Grid.Column="0" VerticalAlignment="Stretch">
-
-                 <Image Source="/Assets/Square150x150Logo.scale-200.png" Width="75" Height="75"  Margin="0,0,200,75" Stretch="Uniform"/>
-                </Button>
                 
-                <TextBlock Text="NOMBRE DE USUARIO" Grid.Column="0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="50"/>
-              
-                <ProgressBar Value="25" Grid.Column="0" Width="175" Height="30" VerticalAlignment="Bottom" 
-                             Margin="30" HorizontalAlignment="Right" Foreground="Violet" Background="White"/>
+                <Button Width="300" Height="175" Margin="10" Background="Gray" HorizontalAlignment="Left" 
+                        Grid.Column="0" VerticalAlignment="Center"/>
 
-                <TextBlock Text="NIVEL XX:" Grid.Column="0" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="40"
-                           Foreground="DarkViolet"/>
+                <Grid Grid.Column="0">
 
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    
+                    
 
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" Grid.Row="0" Margin="10">
+                        <Image Source="/Assets/Square150x150Logo.scale-200.png" Width="100" Height="100"  Margin="0" Stretch="Uniform"/>
+                        <TextBlock Text="NOMBRE DE USUARIO" Grid.Column="0" Foreground="White" VerticalAlignment="Stretch" Margin="30" FontStretch="Normal" Height="22"/>
+                    </StackPanel>
 
+                    <StackPanel Orientation="Horizontal" Grid.Row="1" VerticalAlignment="Center">
+                        <TextBlock Text="NIVEL XX:" Grid.Column="0" VerticalAlignment="Bottom" HorizontalAlignment="Left" 
+                            Foreground="DarkViolet" Margin="20"/>
+                        <ProgressBar Value="25" Grid.Column="0" Width="175" Height="30" VerticalAlignment="Center" 
+                                HorizontalAlignment="Right" Foreground="Violet" Background="White"/>
+                    </StackPanel>
 
+                    
+                </Grid>
+
+                <Button Width="400" Height="100"  Background="Cyan" HorizontalAlignment="Center" 
+                        Grid.Column="1" VerticalAlignment="Bottom" Opacity="0.8" Content="MISIONES DIARIAS"
+                        FontSize="30" FontStretch="Normal" Foreground="Black"/>
+
+                <Button Width="300" Height="100" Margin="30" Background="GreenYellow" HorizontalAlignment="Right" 
+                        Grid.Column="2" VerticalAlignment="Bottom" Opacity="0.8" Content="TIENDA"
+                        FontSize="30" FontStretch="Normal" Foreground="Black"/>
 
             </Grid>
 
         </Grid>
     </Grid>
-    
-    
+
+
 </Page>

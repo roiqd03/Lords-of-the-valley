@@ -9,6 +9,7 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Page.Resources>
+        <!--MANA-->
         <Style TargetType="Border" x:Key="Mana">
             <Setter Property="BorderThickness" Value="5"></Setter>
             <Setter Property="BorderBrush" Value="Blue"></Setter>
@@ -19,6 +20,7 @@
             <Setter Property="CornerRadius" Value="13.5"></Setter>
         </Style>
 
+        <!--MANO-->
         <DataTemplate x:Key="Hand" x:DataType="local:CardModel">
 
             <Grid Width="100" Height="90">
@@ -47,6 +49,8 @@
                 </Border>
             </Grid>
         </DataTemplate>
+
+        <!--MANO RIVAL-->
         <DataTemplate x:Key="RivalHand" x:DataType="local:CardModel">
 
             <Grid Width="100" Height="90">
@@ -55,6 +59,8 @@
                 </Border>
             </Grid>
         </DataTemplate>
+
+        <!--MESA-->
         <DataTemplate x:Key="Table" x:DataType="local:CardModel">
             <Border Background="Orange" Width="100" Height="133" Margin="30" CornerRadius="15">
                 <Grid>
@@ -99,6 +105,7 @@
     </Page.Resources>
 
     <Grid>
+        <!--FONDO-->
         <Image Source="/Assets/Backgrounds/Fondo_batalla.jpg" Stretch="Fill"/>
         <Grid>
             <Grid.ColumnDefinitions>
@@ -118,6 +125,7 @@
                     <RowDefinition Height="4*"></RowDefinition>
                 </Grid.RowDefinitions>
 
+                <!--CARTAS RIVALES EN LA MANO-->
                 <Border Background="Orange" BorderThickness="2"  Opacity="0.4" Margin="10, 10, 10, 0"></Border>
                 <GridView HorizontalAlignment="Center" VerticalAlignment="Bottom"
                               Margin="5,15,5,5" ItemsSource="{x:Bind Logic.RivalCards}"
@@ -129,6 +137,7 @@
                               ScrollViewer.VerticalScrollBarVisibility="Disabled">
                 </GridView>
 
+                <!--CARTAS EN LA MANO-->
                 <Border Background="Orange" BorderThickness="2" Grid.Row="6" Opacity="0.4" Margin="10, 0, 10, 10"></Border>
                 <GridView HorizontalAlignment="Center" VerticalAlignment="Stretch"
                               Margin="5,5,5,15" ItemsSource="{x:Bind Logic.Cards}"
@@ -142,6 +151,7 @@
                               SelectedIndex="{x:Bind Logic.selectedIndexHand, Mode=TwoWay}">
                 </GridView>
 
+                <!--MESA RIVAL-->
                 <Border Background="LightBlue" BorderThickness="2" Grid.Row ="1" Opacity="0.4" Margin="10,0,10,0" Grid.RowSpan="2"></Border>
                 <GridView HorizontalAlignment="Center" VerticalAlignment="Top"
                           Margin="0,10,0,0" ItemsSource="{x:Bind Logic.TableRivalCards}"
@@ -155,6 +165,7 @@
                           SelectedIndex="{x:Bind Logic.selectedIndexTable, Mode=TwoWay}">
                 </GridView>
 
+                <!--MESA ALIADA-->
                 <Border Background="LightBlue" BorderThickness="2" Grid.Row ="4" Opacity="0.4" Margin="10,0,10,0" Grid.RowSpan="2"></Border>
                 <GridView HorizontalAlignment="Center" VerticalAlignment="Top"
                           Margin="0,0,0,10" ItemsSource="{x:Bind Logic.TableCards}"
@@ -169,15 +180,51 @@
                 </GridView>
 
                 <Border Background="Brown" BorderThickness="2"  Grid.Row="3" Margin="10, 0, 10, 0"></Border>
-
-                <Border Grid.Row="1" BorderThickness="2" BorderBrush="Black" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <!--PERSONAJE ENEMIGO-->
+                <Grid Grid.Row="1" HorizontalAlignment="Center"
+                       VerticalAlignment="Center">
                     <Image Source="/Assets/DecksImg/deck1.jpg"></Image>
-                </Border>
-                <Border Grid.Row="5" BorderThickness="2" BorderBrush="Black" HorizontalAlignment="Center" VerticalAlignment="Center">
-                    <Image Source="/Assets/DecksImg/deck2.jpg"></Image>
-                </Border>
+                    <Border Background="Red" Width="25" Height="25"
+                                    CornerRadius="12.5" HorizontalAlignment="Right"
+                                    VerticalAlignment="Bottom"
+                                    BorderBrush="Black" BorderThickness="1">
+                        <TextBlock Text="20" FontSize="15" HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"/>
+                    </Border>
+                </Grid>
+
+                <Grid Grid.Row="5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="5*"></ColumnDefinition>
+                        <ColumnDefinition Width="0.5*"></ColumnDefinition>
+                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                        <ColumnDefinition Width="1.5*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <!--PERSONAJE ALIADO-->
+                    <Border BorderThickness="2" BorderBrush="Black" HorizontalAlignment="Center" VerticalAlignment="Center"
+                            Grid.ColumnSpan="4">
+                        <Grid>
+                            <Image Source="/Assets/DecksImg/deck2.jpg"></Image>
+                            <Border Background="Red" Width="25" Height="25"
+                                    CornerRadius="12.5" HorizontalAlignment="Right"
+                                    VerticalAlignment="Bottom"
+                                    BorderBrush="Black" BorderThickness="1">
+                                <TextBlock Text="20" FontSize="15" HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"/>
+                            </Border>
+                        </Grid>
+                    </Border>
+                    <!--PODER-->
+                    <Button Grid.Column="2"
+                            Background="Orange" CornerRadius="67.5" Grid.Row="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                            BorderBrush="Black" BorderThickness="2">
+                        <TextBlock Text="Poder" FontSize="30" Foreground="Black">
+                        </TextBlock>
+                    </Button>
+                </Grid>
             </Grid>
 
+            <!--DERECHA-->
             <Grid Grid.Column="2">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="4*"></RowDefinition>
@@ -185,12 +232,15 @@
                     <RowDefinition Height="4*"></RowDefinition>
                 </Grid.RowDefinitions>
 
-                <Border Grid.Row="1" CornerRadius="50" Margin="5,40,5,40" Background="Orange"
-                        BorderThickness="5" BorderBrush="Black">
+                <!--BOTON LISTO-->
+                <Button Grid.Row="1" CornerRadius="50" Margin="5,40,5,40" Background="Orange"
+                        BorderThickness="5" BorderBrush="Black" HorizontalAlignment="Stretch"
+                        VerticalAlignment="Stretch">
                     <TextBlock Text="Listo" HorizontalAlignment="Center" VerticalAlignment="Center"
                                FontSize="30"></TextBlock>
-                </Border>
+                </Button>
 
+                <!--MANA ENEMIGO-->
                 <Border Margin="0,10,50,0" Background="Orange"
                         BorderThickness="2" BorderBrush="Black"
                         Opacity="0.6">
@@ -207,6 +257,8 @@
                         <Border x:Name="rivalMana10" Style="{StaticResource Mana}" />
                     </StackPanel>
                 </Border>
+                
+                <!--MANA ALIADO-->
                 <Border Grid.Row="2"
                         Margin="0,0,50,10" Background="Orange"
                         BorderThickness="2" BorderBrush="Black"
@@ -233,11 +285,9 @@
                 </TextBlock>
             </Grid>
 
-            <Button Width="80" Height="73" VerticalAlignment="Top"
-                    HorizontalAlignment="Left" Background="Transparent" Margin="10">
-                <Image Source="/Assets/Icons/opciones2.png" Stretch="UniformToFill"></Image>
-            </Button>
-
+            
+            
+            <!--IZQUIERDA-->
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="2*"></RowDefinition>
@@ -249,6 +299,7 @@
                     <ColumnDefinition Width="4*"></ColumnDefinition>
                     <ColumnDefinition Width="1*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
+                <!--CARTA SELECCIONADA-->
                 <Border Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
                     BorderBrush="Orange" BorderThickness="3" CornerRadius="5">
                     <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
@@ -263,30 +314,30 @@
                                         <RowDefinition Height="1*"></RowDefinition>
                                     </Grid.RowDefinitions>
                                     <Image Source="{x:Bind Logic.SelectedCardImgSource, Mode=OneWay}" Grid.Row="0" Margin="10"
-                               Stretch="Fill"></Image>
+                                           Stretch="Fill"></Image>
                                     <TextBlock Text="{x:Bind Logic.SelectedCardDescription, Mode=OneWay}" Grid.Row="1" Margin="5" FontSize="25"
                                    HorizontalAlignment="Center"/>
                                 </Grid>
                                 <Border Background="LightYellow" HorizontalAlignment="Left"
-                            VerticalAlignment="Bottom" Opacity="0.7"
-                            Margin="20"
-                            Width="60" Height="60" CornerRadius="30">
+                                        VerticalAlignment="Bottom" Opacity="0.7"
+                                        Margin="20"
+                                        Width="60" Height="60" CornerRadius="30">
                                     <TextBlock Text="{x:Bind Logic.SelectedCardAttack, Mode=OneWay}" HorizontalAlignment="Center"
-                                VerticalAlignment="Center" FontSize="25">
+                                               VerticalAlignment="Center" FontSize="25">
                                     </TextBlock>
                                 </Border>
                                 <Border Background="Red" HorizontalAlignment="Right"
-                            VerticalAlignment="Bottom" Opacity="0.7"
-                            Margin="20" Width="60" Height="60" CornerRadius="30">
+                                        VerticalAlignment="Bottom" Opacity="0.7"
+                                        Margin="20" Width="60" Height="60" CornerRadius="30">
                                     <TextBlock Text="{x:Bind Logic.SelectedCardArmor, Mode=OneWay}" HorizontalAlignment="Center"
-                                VerticalAlignment="Center" FontSize="25">
+                                               VerticalAlignment="Center" FontSize="25">
                                     </TextBlock>
                                 </Border>
                                 <Border Background="Blue" HorizontalAlignment="Left"
-                            VerticalAlignment="Top"
-                            Width="60" Height="60" CornerRadius="30">
+                                        VerticalAlignment="Top"
+                                        Width="60" Height="60" CornerRadius="30">
                                     <TextBlock Text="{x:Bind Logic.SelectedCardMana, Mode=OneWay}" HorizontalAlignment="Center"
-                                VerticalAlignment="Center" FontSize="25">
+                                        VerticalAlignment="Center" FontSize="25">
                                     </TextBlock>
                                 </Border>
                             </Grid>
@@ -297,6 +348,11 @@
                     </Grid>    
                 </Border>
             </Grid>
+            <!--CONFIGURACION-->
+            <Button Width="80" Height="73" VerticalAlignment="Top"
+                    HorizontalAlignment="Left" Background="Transparent" Margin="10">
+                <Image Source="/Assets/Icons/opciones2.png" Stretch="UniformToFill"></Image>
+            </Button>
         </Grid>
     </Grid>
 </Page>

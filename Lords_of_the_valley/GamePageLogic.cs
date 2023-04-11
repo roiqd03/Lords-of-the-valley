@@ -34,17 +34,60 @@ namespace Lords_of_the_valley
         public List<CardModel> TableCards { get; set; } = new List<CardModel>();
         public List<CardModel> TableRivalCards { get; set; } = new List<CardModel>();
 
-        public ImageSource SelectedCardImgSource;
-        public string SelectedCardDescription;
-        public int SelectedCardAttack;
-        public int SelectedCardArmor;
-        public int SelectedCardMana;
-        public int SelectedCardID;
+        private ImageSource _SelectedCardImgSource;
+        private string _SelectedCardDescription;
+        private int _SelectedCardAttack;
+        private int _SelectedCardArmor;
+        private int _SelectedCardMana;
+
+
+
+
+        public ImageSource SelectedCardImgSource
+        {
+            get { return _SelectedCardImgSource; }
+            set { Set(ref _SelectedCardImgSource, value, nameof(_SelectedCardImgSource)); }
+        }
+        public string SelectedCardDescription
+        {
+            get { return _SelectedCardDescription; }
+            set { Set(ref _SelectedCardDescription, value, nameof(_SelectedCardDescription)); }
+        }
+        public int SelectedCardAttack
+        {
+            get { return _SelectedCardAttack; }
+            set { Set(ref _SelectedCardAttack, value, nameof(_SelectedCardAttack)); }
+        }
+        public int SelectedCardArmor
+        {
+            get { return _SelectedCardArmor; }
+            set { Set(ref _SelectedCardArmor, value, nameof(_SelectedCardArmor)); }
+        }
+        public int SelectedCardMana
+        {
+            get { return _SelectedCardMana; }
+            set { Set(ref _SelectedCardMana, value, nameof(_SelectedCardMana)); }
+        }
 
         enum CardPlace { Hand, Table, RivalTable };
-        public int selectedIndexHand = -1;
-        public int selectedIndexTable = -1;
-        public int selectedIndexRivalTable = -1;
+        private int _selectedIndexHand;
+        private int _selectedIndexTable;
+        private int _selectedIndexRivalTable;
+        public int selectedIndexHand
+        {
+            get { return _selectedIndexHand; }
+            set { Set(ref _selectedIndexHand, value, nameof(_selectedIndexHand)); }
+        }
+        public int selectedIndexTable
+        {
+            get { return _selectedIndexTable; }
+            set { Set(ref _selectedIndexTable, value, nameof(_selectedIndexTable)); }
+        }
+        public int selectedIndexRivalTable
+        {
+            get { return _selectedIndexRivalTable; }
+            set { Set(ref _selectedIndexRivalTable, value, nameof(_selectedIndexRivalTable)); }
+        }
 
         public GamePageLogic()
         {
@@ -127,36 +170,34 @@ namespace Lords_of_the_valley
 
         void ChangeSelectedCard(CardModel card)
         {
-            Set<ImageSource>(ref SelectedCardImgSource, card.imgSource);
-            Set<string>(ref SelectedCardDescription, card.description);
-            Set<int>(ref SelectedCardAttack, card.attack);
-            Set<int>(ref SelectedCardArmor, card.armor);
-            Set<int>(ref SelectedCardMana, card.mana);
-            Set<int>(ref SelectedCardID, card.id);
+            SelectedCardImgSource = card.imgSource;
+            SelectedCardDescription = card.description;
+            SelectedCardAttack = card.attack;
+            SelectedCardArmor = card.armor;
+            SelectedCardMana = card.mana;
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
 
         public void GridView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             CardModel card = e.AddedItems[0] as CardModel;
             if (card.place == (int)CardPlace.Hand)
             {
-                Set<int>(ref selectedIndexTable, -1);
-                Set<int>(ref selectedIndexRivalTable, -1);
-                Set<int>(ref selectedIndexHand, card.id);
+                selectedIndexTable = -1;
+                selectedIndexRivalTable = -1;
+                selectedIndexHand = card.id;
             }
             else if (card.place == (int)CardPlace.Table)
             {
-                Set<int>(ref selectedIndexHand, -1);
-                Set<int>(ref selectedIndexRivalTable, -1);
-                Set<int>(ref selectedIndexTable, card.id);
+                selectedIndexHand = -1;
+                selectedIndexRivalTable = -1;
+                selectedIndexTable = card.id;
             }
             else if (card.place == (int)CardPlace.RivalTable)
             {
-                Set<int>(ref selectedIndexTable, -1);
-                Set<int>(ref selectedIndexHand, -1);
-                Set<int>(ref selectedIndexRivalTable, card.id);
+                selectedIndexTable = -1;
+                selectedIndexHand = -1;
+                selectedIndexRivalTable = card.id;
             }
 
             ChangeSelectedCard(card);

@@ -14,20 +14,27 @@
         <Grid>
             
             <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="6*"/>
             </Grid.RowDefinitions>
 
-            <TextBlock Text="AJUSTES" FontSize="100" Margin="10" Grid.Row="0" 
+            <Viewbox Grid.Row="0">
+                
+            <TextBlock Text="AJUSTES" FontSize="50" Margin="10"  
                        VerticalAlignment="Top" HorizontalAlignment="Center" 
                        Foreground="Black" FontWeight="Bold"  FontStretch="Normal"/>
+            </Viewbox>
 
-            <Button HorizontalAlignment="Left" Width="100" Height="100" Margin="40" Background="Transparent">
-                <Image Source="/Assets/Icons/house.png" Stretch="Fill"/>
+            <Viewbox Grid.Row="0" HorizontalAlignment="Left">
+                <Button  Width="100" Height="100" Margin="40" Background="Transparent">
+                    <Image Source="/Assets/Icons/house.png" Stretch="Fill"/>
 
-            </Button>
+                </Button>
+            </Viewbox>
 
-            <StackPanel Grid.Row="1" Orientation="Vertical" HorizontalAlignment="Center">
+            <Viewbox Grid.Row="1">
+                
+             <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
                 <TextBlock Text="SONIDO" FontSize="30" Foreground="DarkGray" FontWeight="Bold" Margin="10" HorizontalAlignment="Center" FontStretch="Normal"/>
                 <Slider Value="25" Width="300" Margin="20"
                         HorizontalAlignment="Center" />
@@ -44,7 +51,8 @@
 
                 <Button Content="SALIR DEL JUEGO" FontSize="30" Foreground="Black" Width="600" Height="75" Background="Pink" Margin="50"  HorizontalAlignment="Center" VerticalAlignment="Stretch"/>
                 
-            </StackPanel>
+             </StackPanel>
+            </Viewbox>
         </Grid>
 
         

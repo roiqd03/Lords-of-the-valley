@@ -22,37 +22,35 @@
 
         <!--MANO-->
         <DataTemplate x:Key="Hand" x:DataType="local:CardModel">
-
-            <Grid Width="100" Height="90">
+            <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="100" Height="90">
                 <Border Background="Orange" CornerRadius="5" HorizontalAlignment="Stretch"
-                        VerticalAlignment="Stretch">
+                    VerticalAlignment="Stretch">
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="4*"></RowDefinition>
                             <RowDefinition Height="1*"></RowDefinition>
                         </Grid.RowDefinitions>
                         <Image Source="{x:Bind imgSource}"
-                               Stretch="Fill"
-                               Margin="5"></Image>
+                            Stretch="Fill"
+                            Margin="5"></Image>
                     </Grid>
                 </Border>
 
                 <Border VerticalAlignment="Top"
-                    HorizontalAlignment="Left"
-                    Width="20"
-                    Height="20"
-                    CornerRadius="10"
-                    Background="Blue">
+                HorizontalAlignment="Left"
+                Width="20"
+                Height="20"
+                CornerRadius="10"
+                Background="Blue">
                     <TextBlock Text="{x:Bind mana}"
-                           FontSize="15" HorizontalAlignment="Center"
-                           VerticalAlignment="Center"></TextBlock>
+                        FontSize="15" HorizontalAlignment="Center"
+                        VerticalAlignment="Center"></TextBlock>
                 </Border>
             </Grid>
         </DataTemplate>
 
         <!--MANO RIVAL-->
         <DataTemplate x:Key="RivalHand" x:DataType="local:CardModel">
-
             <Grid Width="100" Height="90">
                 <Border Background="Orange" CornerRadius="5" HorizontalAlignment="Stretch"
                         VerticalAlignment="Stretch">
@@ -127,62 +125,69 @@
 
                 <!--CARTAS RIVALES EN LA MANO-->
                 <Border Background="Orange" BorderThickness="2"  Opacity="0.4" Margin="10, 10, 10, 0"></Border>
-                <GridView HorizontalAlignment="Center" VerticalAlignment="Bottom"
-                              Margin="5,15,5,5" ItemsSource="{x:Bind Logic.RivalCards}"
+                <Viewbox>
+                    <GridView HorizontalAlignment="Center" VerticalAlignment="Stretch"
+                              Margin="5,40,5,5" ItemsSource="{x:Bind Logic.RivalCards}"
                               ItemTemplate="{StaticResource RivalHand}"
                               HorizontalContentAlignment="Stretch"
                               VerticalContentAlignment="Stretch"
                               ScrollViewer.VerticalScrollMode="Disabled"
                               SelectionMode="None"
                               ScrollViewer.VerticalScrollBarVisibility="Disabled">
-                </GridView>
+                    </GridView>
+                </Viewbox>
 
                 <!--CARTAS EN LA MANO-->
                 <Border Background="Orange" BorderThickness="2" Grid.Row="6" Opacity="0.4" Margin="10, 0, 10, 10"></Border>
-                <GridView HorizontalAlignment="Center" VerticalAlignment="Stretch"
-                              Margin="5,5,5,15" ItemsSource="{x:Bind Logic.Cards}"
-                              ItemTemplate="{StaticResource Hand}"
-                              HorizontalContentAlignment="Stretch"
-                              ScrollViewer.VerticalScrollMode="Disabled"
-                              VerticalContentAlignment="Stretch"
-                              Grid.Row="6"
-                              ScrollViewer.VerticalScrollBarVisibility="Disabled"
-                              SelectionChanged="Logic.GridView_SelectionChanged"
-                              SelectedIndex="{x:Bind Logic.selectedIndexHand, Mode=TwoWay}">
-                </GridView>
+                <Viewbox Grid.Row="6">
+                    <GridView HorizontalAlignment="Center" VerticalAlignment="Stretch"
+                                  Margin="5,5,5,15" ItemsSource="{x:Bind Logic.Cards}"
+                                  ItemTemplate="{StaticResource Hand}"
+                                  HorizontalContentAlignment="Stretch"
+                                  ScrollViewer.VerticalScrollMode="Disabled"
+                                  VerticalContentAlignment="Stretch"
+                                  ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                                  SelectionChanged="Logic.GridView_SelectionChanged"
+                                  SelectedIndex="{x:Bind Logic.selectedIndexHand, Mode=TwoWay}">
+                    </GridView>
+                </Viewbox>
 
                 <!--MESA RIVAL-->
                 <Border Background="LightBlue" BorderThickness="2" Grid.Row ="1" Opacity="0.4" Margin="10,0,10,0" Grid.RowSpan="2"></Border>
-                <GridView HorizontalAlignment="Center" VerticalAlignment="Top"
+                <Viewbox Grid.Row="2">
+                    <GridView HorizontalAlignment="Center" VerticalAlignment="Top"
                           Margin="0,10,0,0" ItemsSource="{x:Bind Logic.TableRivalCards}"
                           ItemTemplate="{StaticResource Table}"
                           HorizontalContentAlignment="Stretch"
                           VerticalContentAlignment="Top"
                           ScrollViewer.VerticalScrollMode="Disabled"
-                          Grid.Row="2"
                           ScrollViewer.VerticalScrollBarVisibility="Disabled"
                           SelectionChanged="Logic.GridView_SelectionChanged"
                           SelectedIndex="{x:Bind Logic.selectedIndexTable, Mode=TwoWay}">
-                </GridView>
+                    </GridView>
+                </Viewbox>
+                
 
                 <!--MESA ALIADA-->
                 <Border Background="LightBlue" BorderThickness="2" Grid.Row ="4" Opacity="0.4" Margin="10,0,10,0" Grid.RowSpan="2"></Border>
-                <GridView HorizontalAlignment="Center" VerticalAlignment="Top"
+                <Viewbox Grid.Row="4">
+                    <GridView HorizontalAlignment="Center" VerticalAlignment="Top"
                           Margin="0,0,0,10" ItemsSource="{x:Bind Logic.TableCards}"
                           ItemTemplate="{StaticResource Table}"
                           HorizontalContentAlignment="Stretch"
                           VerticalContentAlignment="Top"
                           ScrollViewer.VerticalScrollMode="Disabled"
-                          Grid.Row="4"
                           ScrollViewer.VerticalScrollBarVisibility="Disabled"
                           SelectionChanged="Logic.GridView_SelectionChanged"
                           SelectedIndex="{x:Bind Logic.selectedIndexRivalTable, Mode=TwoWay}">
-                </GridView>
+                    </GridView>
+                </Viewbox>
 
                 <Border Background="Brown" BorderThickness="2"  Grid.Row="3" Margin="10, 0, 10, 0"></Border>
                 <!--PERSONAJE ENEMIGO-->
                 <Grid Grid.Row="1" HorizontalAlignment="Center"
-                       VerticalAlignment="Center">
+                       VerticalAlignment="Center" BorderThickness="2"
+                       BorderBrush="Black">
                     <Image Source="/Assets/DecksImg/deck1.jpg"></Image>
                     <Border Background="Red" Width="25" Height="25"
                                     CornerRadius="12.5" HorizontalAlignment="Right"
@@ -215,12 +220,14 @@
                         </Grid>
                     </Border>
                     <!--PODER-->
-                    <Button Grid.Column="2"
-                            Background="Orange" CornerRadius="67.5" Grid.Row="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
-                            BorderBrush="Black" BorderThickness="2">
-                        <TextBlock Text="Poder" FontSize="30" Foreground="Black">
-                        </TextBlock>
-                    </Button>
+                    <Viewbox Grid.Column="2" Grid.Row="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                        <Button 
+                            Background="Orange" CornerRadius="67.5"  
+                            BorderBrush="Black" BorderThickness="2" Width="125" Height="125">
+                            <TextBlock Text="Poder" FontSize="30" Foreground="Black">
+                            </TextBlock>
+                        </Button>
+                    </Viewbox>
                 </Grid>
             </Grid>
 
@@ -233,49 +240,55 @@
                 </Grid.RowDefinitions>
 
                 <!--BOTON LISTO-->
-                <Button Grid.Row="1" CornerRadius="50" Margin="5,40,5,40" Background="Orange"
-                        BorderThickness="5" BorderBrush="Black" HorizontalAlignment="Stretch"
-                        VerticalAlignment="Stretch">
-                    <TextBlock Text="Listo" HorizontalAlignment="Center" VerticalAlignment="Center"
+                <Viewbox Grid.Row="1" Margin="5,0,5,0">
+                    <Button  CornerRadius="50"  Background="Orange"
+                        BorderThickness="5" BorderBrush="Black" Width="100" Height="100">
+                        <TextBlock Text="Listo" HorizontalAlignment="Center" VerticalAlignment="Center"
                                FontSize="30"></TextBlock>
-                </Button>
+                    </Button>
+                </Viewbox>
+               
 
                 <!--MANA ENEMIGO-->
-                <Border Margin="0,10,50,0" Background="Orange"
+                <Viewbox Margin="0,10,50,0" VerticalAlignment="Top">
+                    <Border  Background="Orange"
                         BorderThickness="2" BorderBrush="Black"
                         Opacity="0.6">
-                    <StackPanel VerticalAlignment="Top">
-                        <Border x:Name="rivalMana1" Style="{StaticResource Mana}" />
-                        <Border x:Name="rivalMana2" Style="{StaticResource Mana}" />
-                        <Border x:Name="rivalMana3" Style="{StaticResource Mana}" />
-                        <Border x:Name="rivalMana4" Style="{StaticResource Mana}" />
-                        <Border x:Name="rivalMana5" Style="{StaticResource Mana}" />
-                        <Border x:Name="rivalMana6" Style="{StaticResource Mana}" />
-                        <Border x:Name="rivalMana7" Style="{StaticResource Mana}" />
-                        <Border x:Name="rivalMana8" Style="{StaticResource Mana}" />
-                        <Border x:Name="rivalMana9" Style="{StaticResource Mana}" />
-                        <Border x:Name="rivalMana10" Style="{StaticResource Mana}" />
-                    </StackPanel>
-                </Border>
+                        <StackPanel VerticalAlignment="Top">
+                            <Border x:Name="rivalMana1" Style="{StaticResource Mana}" />
+                            <Border x:Name="rivalMana2" Style="{StaticResource Mana}" />
+                            <Border x:Name="rivalMana3" Style="{StaticResource Mana}" />
+                            <Border x:Name="rivalMana4" Style="{StaticResource Mana}" />
+                            <Border x:Name="rivalMana5" Style="{StaticResource Mana}" />
+                            <Border x:Name="rivalMana6" Style="{StaticResource Mana}" />
+                            <Border x:Name="rivalMana7" Style="{StaticResource Mana}" />
+                            <Border x:Name="rivalMana8" Style="{StaticResource Mana}" />
+                            <Border x:Name="rivalMana9" Style="{StaticResource Mana}" />
+                            <Border x:Name="rivalMana10" Style="{StaticResource Mana}" />
+                        </StackPanel>
+                    </Border>
+                </Viewbox>
                 
                 <!--MANA ALIADO-->
-                <Border Grid.Row="2"
-                        Margin="0,0,50,10" Background="Orange"
+                <Viewbox Grid.Row="2"
+                        Margin="0,0,50,10"  VerticalAlignment="Bottom">
+                    <Border  Background="Orange"
                         BorderThickness="2" BorderBrush="Black"
                         Opacity="0.6">
-                    <StackPanel VerticalAlignment="Bottom">
-                        <Border x:Name="mana10" Style="{StaticResource Mana}" />
-                        <Border x:Name="mana9" Style="{StaticResource Mana}" />
-                        <Border x:Name="mana8" Style="{StaticResource Mana}" />
-                        <Border x:Name="mana7" Style="{StaticResource Mana}" />
-                        <Border x:Name="mana6" Style="{StaticResource Mana}" />
-                        <Border x:Name="mana5" Style="{StaticResource Mana}" />
-                        <Border x:Name="mana4" Style="{StaticResource Mana}" />
-                        <Border x:Name="mana3" Style="{StaticResource Mana}" />
-                        <Border x:Name="mana2" Style="{StaticResource Mana}" />
-                        <Border x:Name="mana1" Style="{StaticResource Mana}" />
-                    </StackPanel>
-                </Border>
+                        <StackPanel VerticalAlignment="Bottom">
+                            <Border x:Name="mana10" Style="{StaticResource Mana}" />
+                            <Border x:Name="mana9" Style="{StaticResource Mana}" />
+                            <Border x:Name="mana8" Style="{StaticResource Mana}" />
+                            <Border x:Name="mana7" Style="{StaticResource Mana}" />
+                            <Border x:Name="mana6" Style="{StaticResource Mana}" />
+                            <Border x:Name="mana5" Style="{StaticResource Mana}" />
+                            <Border x:Name="mana4" Style="{StaticResource Mana}" />
+                            <Border x:Name="mana3" Style="{StaticResource Mana}" />
+                            <Border x:Name="mana2" Style="{StaticResource Mana}" />
+                            <Border x:Name="mana1" Style="{StaticResource Mana}" />
+                        </StackPanel>
+                    </Border>
+                </Viewbox>
 
                 <TextBlock Text="{x:Bind Logic.rivalManaText, Mode=OneWay}" Margin="20" Foreground="LightBlue"
                            VerticalAlignment="Top" HorizontalAlignment="Right">
@@ -303,54 +316,59 @@
                 <Border Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
                     BorderBrush="Orange" BorderThickness="3" CornerRadius="5">
                     <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                        <Border Background="Orange" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10,10,10,60"
-                                CornerRadius="15">
-                            <Grid>
-                                <Grid HorizontalAlignment="Stretch"
-                                VerticalAlignment="Stretch">
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="2*"></RowDefinition>
-                                        <RowDefinition Height="1*"></RowDefinition>
-                                        <RowDefinition Height="1*"></RowDefinition>
-                                    </Grid.RowDefinitions>
-                                    <Image Source="{x:Bind Logic.SelectedCardImgSource, Mode=OneWay}" Grid.Row="0" Margin="10"
-                                           Stretch="Fill"></Image>
-                                    <TextBlock Text="{x:Bind Logic.SelectedCardDescription, Mode=OneWay}" Grid.Row="1" Margin="5" FontSize="25"
-                                   HorizontalAlignment="Center"/>
-                                </Grid>
-                                <Border Background="LightYellow" HorizontalAlignment="Left"
-                                        VerticalAlignment="Bottom" Opacity="0.7"
-                                        Margin="20"
-                                        Width="60" Height="60" CornerRadius="30">
-                                    <TextBlock Text="{x:Bind Logic.SelectedCardAttack, Mode=OneWay}" HorizontalAlignment="Center"
-                                               VerticalAlignment="Center" FontSize="25">
-                                    </TextBlock>
-                                </Border>
-                                <Border Background="Red" HorizontalAlignment="Right"
-                                        VerticalAlignment="Bottom" Opacity="0.7"
-                                        Margin="20" Width="60" Height="60" CornerRadius="30">
-                                    <TextBlock Text="{x:Bind Logic.SelectedCardArmor, Mode=OneWay}" HorizontalAlignment="Center"
-                                               VerticalAlignment="Center" FontSize="25">
-                                    </TextBlock>
-                                </Border>
-                                <Border Background="Blue" HorizontalAlignment="Left"
-                                        VerticalAlignment="Top"
-                                        Width="60" Height="60" CornerRadius="30">
-                                    <TextBlock Text="{x:Bind Logic.SelectedCardMana, Mode=OneWay}" HorizontalAlignment="Center"
-                                        VerticalAlignment="Center" FontSize="25">
-                                    </TextBlock>
-                                </Border>
-                            </Grid>
+                        <Viewbox HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10,10,10,10">
+                            <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                <Border Background="Orange" Width="200" Height="330" >
+                                    <Grid>
+                                        <Grid HorizontalAlignment="Stretch"
+                                              VerticalAlignment="Stretch">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="2*"></RowDefinition>
+                                                <RowDefinition Height="1*"></RowDefinition>
+                                                <RowDefinition Height="1*"></RowDefinition>
+                                            </Grid.RowDefinitions>
+                                            <Image Source="{x:Bind Logic.SelectedCardImgSource, Mode=OneWay}" Grid.Row="0" Margin="10"
+                                               Stretch="Fill"></Image>
+                                            <Viewbox Grid.Row="1" Margin="5" HorizontalAlignment="Center">
+                                                <TextBlock Text="{x:Bind Logic.SelectedCardDescription, Mode=OneWay}"  FontSize="25"/>
+                                            </Viewbox>
 
-                        </Border>
-                        <TextBlock Text="Carta Seleccionada" HorizontalAlignment="Center"
-                           VerticalAlignment="Bottom"  FontSize="25" Margin="0,10,0,10"></TextBlock>
+                                        </Grid>
+                                        <Border Background="LightYellow" HorizontalAlignment="Left"
+                                            VerticalAlignment="Bottom" Opacity="0.7"
+                                            Margin="20"
+                                            Width="40" Height="40" CornerRadius="20">
+                                            <TextBlock Text="{x:Bind Logic.SelectedCardAttack, Mode=OneWay}" HorizontalAlignment="Center"
+                                                   VerticalAlignment="Center" FontSize="25">
+                                            </TextBlock>
+                                        </Border>
+                                        <Border Background="Red" HorizontalAlignment="Right"
+                                            VerticalAlignment="Bottom" Opacity="0.7"
+                                            Margin="15" Width="40" Height="40" CornerRadius="20">
+                                            <TextBlock Text="{x:Bind Logic.SelectedCardArmor, Mode=OneWay}" HorizontalAlignment="Center"
+                                                   VerticalAlignment="Center" FontSize="25">
+                                            </TextBlock>
+                                        </Border>
+                                        <Border Background="Blue" HorizontalAlignment="Left"
+                                            VerticalAlignment="Top"
+                                            Width="40" Height="40" CornerRadius="20">
+                                            <TextBlock Text="{x:Bind Logic.SelectedCardMana, Mode=OneWay}" HorizontalAlignment="Center"
+                                            VerticalAlignment="Center" FontSize="25">
+                                            </TextBlock>
+                                        </Border>
+                                    </Grid>
+
+                                </Border>
+                                <TextBlock Text="Carta Seleccionada" HorizontalAlignment="Center"
+                               VerticalAlignment="Bottom"  FontSize="25" Margin="0,10,0,0"></TextBlock>
+                            </StackPanel>
+                        </Viewbox>
                     </Grid>    
                 </Border>
             </Grid>
             <!--CONFIGURACION-->
-            <Button Width="80" Height="73" VerticalAlignment="Top"
-                    HorizontalAlignment="Left" Background="Transparent" Margin="10">
+            <Button VerticalAlignment="Top"
+                HorizontalAlignment="Left" Width="80" Height="73" Margin="10" Background="Transparent" >
                 <Image Source="/Assets/Icons/opciones2.png" Stretch="UniformToFill"></Image>
             </Button>
         </Grid>

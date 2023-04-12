@@ -48,11 +48,11 @@
 
                     <StackPanel Orientation="Vertical">
 
-                        <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="75,0,0,0">
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="90,0,0,0">
 
                             <Grid>
 
-                                <Rectangle Width="275" Height="400" Fill="DarkCyan" Opacity="0.9" HorizontalAlignment="Center" Margin="10"/>
+                                <Rectangle Width="275" Height="400" Fill="DarkCyan" Opacity="0.9" HorizontalAlignment="Center" Margin="30"/>
                                 <Border Width="60" Height="30" Background="Gray" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="15">
                                     <StackPanel Orientation="Horizontal">
                                         
@@ -177,10 +177,10 @@
                                 </Grid>
                             </Grid>
                         </StackPanel>
-                        <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="75,0,0,0">
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="90,0,0,0">
                             <Grid>
 
-                                <Rectangle Width="275" Height="400" Fill="DarkCyan" Opacity="0.9" HorizontalAlignment="Center" Margin="10"/>
+                                <Rectangle Width="275" Height="400" Fill="DarkCyan" Opacity="0.9" HorizontalAlignment="Center" Margin="30"/>
                                 <Border Width="60" Height="30" Background="Orange" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="15">
                                     <StackPanel Orientation="Horizontal">
 
@@ -369,7 +369,7 @@
                     </Grid>
                 </Grid>
                 <Button Content="COMPRAR" FontSize="20" Width="200" HorizontalAlignment="Center" Background="DarkOrange" Foreground="Yellow" FontStretch="Normal" Margin="20"/>
-                <Button  Width="150" Height="150" HorizontalAlignment="Center" 
+                <Button  Width="150" Height="150" HorizontalAlignment="Center" Background="Transparent" 
                         Margin="40">
                     <Image Source="/Assets/Icons/house.png" Stretch="Fill"/>
 

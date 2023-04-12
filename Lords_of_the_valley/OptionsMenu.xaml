@@ -22,8 +22,8 @@
                        VerticalAlignment="Top" HorizontalAlignment="Center" 
                        Foreground="Black" FontWeight="Bold"  FontStretch="Normal"/>
 
-            <Button HorizontalAlignment="Left" Width="75" Height="75" Margin="40">
-                <Image Source="/Assets/Icons/house.png" />
+            <Button HorizontalAlignment="Left" Width="100" Height="100" Margin="40" Background="Transparent">
+                <Image Source="/Assets/Icons/house.png" Stretch="Fill"/>
 
             </Button>
 

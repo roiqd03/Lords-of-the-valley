@@ -31,20 +31,20 @@
                            HorizontalAlignment="Center" Margin="20"
                            Foreground="Black" FontWeight="Bold"/>
 
-                <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left">
-                    <Button Width="50" Height="50"   Margin="20" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left" Margin="20">
+                    <Button Width="75" Height="75"   Margin="10" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="Transparent">
                         <Image Source="/Assets/Icons/opciones.png" Stretch="Uniform"/>
 
                     </Button>
-                    <Button Width="50" Height="50"   Margin="20" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                    <Button Width="75" Height="75"   Margin="10" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="Transparent">
                         <Image Source="/Assets/Icons/info.png" Stretch="Uniform"/>
 
                     </Button>
-                    <Button Width="50" Height="50"   Margin="20" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                    <Button Width="75" Height="75"   Margin="10" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="Transparent">
                         <Image Source="/Assets/Icons/social.png" Stretch="Uniform"/>
 
                     </Button>
-                    <Button Width="50" Height="50"   Margin="20" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                    <Button Width="75" Height="75"   Margin="10" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="Transparent">
                         <Image Source="/Assets/Icons/buzon.png" Stretch="Uniform"/>
 
                     </Button>

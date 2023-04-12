@@ -154,7 +154,7 @@
     <Content Include="Assets\Backgrounds\Fondo_tienda.jpg" />
     <Content Include="Assets\DecksImg\deck2.jpg" />
     <Content Include="Assets\DecksImg\deck1.jpg" />
-    <Content Include="Assets\DecksImg\plus.png" />
+    <Content Include="Assets\DecksImg\empty.png" />
     <Content Include="Assets\Icons\arrow.png" />
     <Content Include="Assets\Icons\buzon.png" />
     <Content Include="Assets\Icons\house.png" />

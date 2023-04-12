@@ -23,55 +23,13 @@ namespace Lords_of_the_valley
     /// </summary>
     public sealed partial class ChooseDeck : Page
     {
-        public int titleScale = 90;
-        public int textScale = 60;
-        public double buttonMargin = 40;
-        public double imgMargin = 20;
-        private double startWidth = 1920;
-        private double startHeight = 1080;
-        public const int maxDecks = 6;
-
         public ObservableCollection<DeckModel> Decks { get; } = new ObservableCollection<DeckModel>();
-
-        public List<Button> Buttons { get; } = new List<Button>();
         public List<TextBlock> Texts { get; } = new List<TextBlock>();
         public List<Image> Images { get; } = new List<Image>();
-
-        private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
-        {
-            // calculates incorrect when window is maximized
-            double scale = (this.ActualWidth * this.ActualHeight / startWidth / startHeight);
-
-            title_.FontSize = titleScale * scale;
-            double margin = buttonMargin * scale;
-            double imgMargin_ = imgMargin * scale;
-            foreach (Button b in Buttons)
-            {
-                b.Margin = new Thickness(margin);
-            }
-
-            foreach (Image i in Images)
-            {
-                i.Margin = new Thickness(imgMargin_);
-            }
-
-            foreach (TextBlock t in Texts)
-            {
-                t.FontSize = textScale * scale;
-            }
-        }
 
         public ChooseDeck()
         {
             this.InitializeComponent();
-            this.SizeChanged += Window_SizeChanged;
-
-            Buttons.Add(Deck1);
-            Buttons.Add(Deck2);
-            Buttons.Add(Deck3);
-            Buttons.Add(Deck4);
-            Buttons.Add(Deck5);
-            Buttons.Add(Deck6);
 
             Texts.Add(text1);
             Texts.Add(text2);
@@ -94,16 +52,16 @@ namespace Lords_of_the_valley
             DeckModel deck2 = new DeckModel("Assets\\DecksImg\\deck2.jpg", "Deck 2", 2);
             Decks.Add(deck2);
             //TEMPORAL
-            DeckModel deck3 = new DeckModel("Assets\\DecksImg\\plus.png", "No Deck", 3);
+            DeckModel deck3 = new DeckModel("Assets\\DecksImg\\empty.png", "No Deck", 3);
             Decks.Add(deck3);
             //TEMPORAL
-            DeckModel deck4 = new DeckModel("Assets\\DecksImg\\plus.png", "No Deck", 4);
+            DeckModel deck4 = new DeckModel("Assets\\DecksImg\\empty.png", "No Deck", 4);
             Decks.Add(deck4);
             //TEMPORAL
-            DeckModel deck5 = new DeckModel("Assets\\DecksImg\\plus.png", "No Deck", 5);
+            DeckModel deck5 = new DeckModel("Assets\\DecksImg\\empty.png", "No Deck", 5);
             Decks.Add(deck5);
             //TEMPORAL
-            DeckModel deck6 = new DeckModel("Assets\\DecksImg\\plus.png", "No Deck", 6);
+            DeckModel deck6 = new DeckModel("Assets\\DecksImg\\empty.png", "No Deck", 6);
             Decks.Add(deck6);
 
             int i = 0;
@@ -113,14 +71,6 @@ namespace Lords_of_the_valley
                 Image img = Images.ElementAt<Image>(i);
 
                 t.Text = d.name;
-                if(d.imgSource == "Assets\\DecksImg\\plus.png")
-                {
-                    img.Stretch = Stretch.Uniform;
-                }
-                else
-                {
-                    img.Stretch = Stretch.Fill;
-                }
                 string s = System.IO.Directory.GetCurrentDirectory() + "\\" + d.imgSource;
                 img.Source = new Windows.UI.Xaml.Media.Imaging.BitmapImage(new Uri(s));
                 ++i;

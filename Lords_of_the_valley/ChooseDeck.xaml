@@ -25,15 +25,18 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="1*"/>
                 <RowDefinition Height="2*"/>
-                <RowDefinition Height="11*"/>
-                <RowDefinition Height="1*"/>
+                <RowDefinition Height="13*"/>
+                <RowDefinition Height="2*"/>
             </Grid.RowDefinitions>
-            <TextBlock Grid.Row="1" Text="MIS MAZOS" 
+            <Viewbox Grid.Row="1">
+                <TextBlock Text="MIS MAZOS" 
                        HorizontalAlignment="Center" VerticalAlignment="Center"
-                       FontWeight="Bold" FontSize="{x:Bind textScale}"
+                       FontWeight="Bold" FontSize="14"
                        Foreground="Black"
                        TextAlignment="Center"
                        x:Name="title_"></TextBlock>
+            </Viewbox>
+            
             <Grid Grid.Row="2">
                 <Grid.RowDefinitions>
                     <RowDefinition></RowDefinition>
@@ -44,94 +47,111 @@
                     <ColumnDefinition></ColumnDefinition>
                     <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                <ListView>
-                    
-                </ListView>
-                <Button x:Name="Deck1" CornerRadius="30">
-                    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="3*"></RowDefinition>
-                            <RowDefinition Height="1*"></RowDefinition>
-                        </Grid.RowDefinitions>
-                        <Image x:Name="image1"></Image>
-                        <TextBlock Grid.Row="1" Text="No Deck"
+
+                <Viewbox Margin="10">
+                    <Button x:Name="Deck1" CornerRadius="30">
+                        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="3*"></RowDefinition>
+                                <RowDefinition Height="1*"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Image x:Name="image1" Margin="30" Stretch="Fill"></Image>
+                            <TextBlock Grid.Row="1" Text="No Deck"
                                    HorizontalAlignment="Center" 
                                    FontSize="35"
                                    x:Name="text1"></TextBlock>
-                    </Grid>
-                </Button>
-                <Button x:Name="Deck2" Grid.Column="1" CornerRadius="30">
-                    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="3*"></RowDefinition>
-                            <RowDefinition Height="1*"></RowDefinition>
-                        </Grid.RowDefinitions>
-                        <Image x:Name="image2"></Image>
-                        <TextBlock Grid.Row="1" Text="No Deck"
-                                   HorizontalAlignment="Center" 
-                                   FontSize="35"
-                                   x:Name="text2"></TextBlock>
-                    </Grid>
-                </Button>
-                <Button x:Name="Deck3" Grid.Column="2" CornerRadius="30">
-                    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="3*"></RowDefinition>
-                            <RowDefinition Height="1*"></RowDefinition>
-                        </Grid.RowDefinitions>
-                        <Image x:Name="image3"></Image>
-                        <TextBlock Grid.Row="1" Text="No Deck"
-                                   HorizontalAlignment="Center" 
-                                   FontSize="35"
-                                   x:Name="text3"></TextBlock>
-                    </Grid>
-                </Button>
-                <Button x:Name="Deck4" Grid.Row="1" CornerRadius="30">
-                    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="3*"></RowDefinition>
-                            <RowDefinition Height="1*"></RowDefinition>
-                        </Grid.RowDefinitions>
-                        <Image x:Name="image4"></Image>
-                        <TextBlock Grid.Row="1" Text="No Deck"
-                                   HorizontalAlignment="Center" 
-                                   FontSize="35"
-                                   x:Name="text4"></TextBlock>
-                    </Grid>
-                </Button>
-                <Button x:Name="Deck5" Grid.Row="1" Grid.Column="1" CornerRadius="30">
-                    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="3*"></RowDefinition>
-                            <RowDefinition Height="1*"></RowDefinition>
-                        </Grid.RowDefinitions>
-                        <Image x:Name="image5"></Image>
-                        <TextBlock Grid.Row="1" Text="No Deck"
-                                   HorizontalAlignment="Center" 
-                                   FontSize="35"
-                                   x:Name="text5"></TextBlock>
-                    </Grid>
-                </Button>
-                <Button x:Name="Deck6" Grid.Row="1" Grid.Column="2" CornerRadius="30">
-                    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="3*"></RowDefinition>
-                            <RowDefinition Height="1*"></RowDefinition>
-                        </Grid.RowDefinitions>
-                        <Image x:Name="image6"></Image>
-                        <TextBlock Grid.Row="1" Text="No Deck"
-                                   HorizontalAlignment="Center" 
-                                   FontSize="35"
-                                   x:Name="text6"></TextBlock>
-                    </Grid>
-                </Button>
+                        </Grid>
+                    </Button>
+                </Viewbox>
+
+                <Viewbox Grid.Column="1" Margin="10">
+                    <Button x:Name="Deck2" CornerRadius="30">
+                        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="3*"></RowDefinition>
+                                <RowDefinition Height="1*"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Image x:Name="image2" Margin="30" Stretch="Fill"></Image>
+                            <TextBlock Grid.Row="1" Text="No Deck"
+                                       HorizontalAlignment="Center" 
+                                       FontSize="35"
+                                       x:Name="text2"></TextBlock>
+                        </Grid>
+                    </Button>
+                </Viewbox>
+
+                <Viewbox Grid.Column="2" Margin="10">
+                    <Button x:Name="Deck3" Grid.Column="2" CornerRadius="30">
+                        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="3*"></RowDefinition>
+                                <RowDefinition Height="1*"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Image x:Name="image3" Margin="30" Stretch="Fill"></Image>
+                            <TextBlock Grid.Row="1" Text="No Deck"
+                                       HorizontalAlignment="Center" 
+                                       FontSize="35"
+                                       x:Name="text3"></TextBlock>
+                        </Grid>
+                    </Button>
+                </Viewbox>
+
+                <Viewbox Grid.Row="1" Margin="10">
+                    <Button x:Name="Deck4" CornerRadius="30">
+                        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="3*"></RowDefinition>
+                                <RowDefinition Height="1*"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Image x:Name="image4" Margin="30" Stretch="Fill"></Image>
+                            <TextBlock Grid.Row="1" Text="No Deck"
+                                       HorizontalAlignment="Center" 
+                                       FontSize="35"
+                                       x:Name="text4"></TextBlock>
+                        </Grid>
+                    </Button>
+                </Viewbox>
+
+                <Viewbox Grid.Row="1" Grid.Column="1" Margin="10">
+                    <Button x:Name="Deck5" CornerRadius="30">
+                        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="3*"></RowDefinition>
+                                <RowDefinition Height="1*"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Image x:Name="image5" Margin="30" Stretch="Fill"></Image>
+                            <TextBlock Grid.Row="1" Text="No Deck"
+                                       HorizontalAlignment="Center" 
+                                       FontSize="35"
+                                       x:Name="text5"></TextBlock>
+                        </Grid>
+                    </Button>
+                </Viewbox>
+
+                <Viewbox Grid.Row="1" Grid.Column="2" Margin="10">
+                    <Button x:Name="Deck6" CornerRadius="30">
+                        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="3*"></RowDefinition>
+                                <RowDefinition Height="1*"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Image x:Name="image6" Margin="30" Stretch="Fill"></Image>
+                            <TextBlock Grid.Row="1" Text="No Deck"
+                                       HorizontalAlignment="Center" 
+                                       FontSize="35"
+                                       x:Name="text6"></TextBlock>
+                        </Grid>
+                    </Button>
+                </Viewbox>
             </Grid>
 
-
-            <Button Grid.Row="3" HorizontalAlignment="Right"
-                    Width="100" Opacity="1" Background="Transparent" CornerRadius="30">
-                <Image Source="Assets/Icons/house.png"></Image>
-            </Button>
+            <Viewbox Grid.Row="3" HorizontalAlignment="Right">
+                <Button  
+                    Width="200" Opacity="1" Background="Transparent" CornerRadius="30">
+                    <Image Source="Assets/Icons/house.png"></Image>
+                </Button>
+            </Viewbox>
+            
         </Grid>
     </Grid>
 </Page>

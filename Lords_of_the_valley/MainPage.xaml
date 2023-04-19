@@ -19,7 +19,7 @@
                 <RowDefinition Height="1.5*"/>
             </Grid.RowDefinitions>
 
-            <Grid Grid.Row="0">
+            <Grid Grid.Row="0" TabFocusNavigation="Once" XYFocusKeyboardNavigation="Enabled">
 
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="1*"/>
@@ -36,7 +36,7 @@
 
                 <Viewbox Grid.Column="0">
                     
-                <StackPanel  Orientation="Horizontal" HorizontalAlignment="Left" Margin="20">
+                <StackPanel  Orientation="Horizontal" HorizontalAlignment="Left" Margin="20" >
                     <Button Width="75" Height="75"   Margin="10" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="Transparent"
                             Click="Options_OnClick">
                         <Image Source="/Assets/Icons/opciones.png" Stretch="Uniform"/>
@@ -70,7 +70,7 @@
                 </Viewbox>
 
             </Grid>
-                <Grid Grid.Row="1">
+            <Grid Grid.Row="1" TabFocusNavigation="Once" XYFocusKeyboardNavigation="Enabled">
 
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition />
@@ -106,7 +106,7 @@
                 </Grid>
 
 
-                <Grid Grid.Row="2" >
+            <Grid Grid.Row="2" TabFocusNavigation="Once" XYFocusKeyboardNavigation="Enabled">
 
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition />

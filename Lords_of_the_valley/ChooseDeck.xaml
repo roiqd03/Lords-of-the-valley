@@ -37,7 +37,7 @@
                        x:Name="title_"></TextBlock>
             </Viewbox>
             
-            <Grid Grid.Row="2">
+            <Grid Grid.Row="2" TabFocusNavigation="Once" XYFocusKeyboardNavigation="Enabled">
                 <Grid.RowDefinitions>
                     <RowDefinition></RowDefinition>
                     <RowDefinition></RowDefinition>

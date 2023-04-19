@@ -26,7 +26,8 @@
             </Viewbox>
 
             <Viewbox Grid.Row="0" HorizontalAlignment="Left">
-                <Button  Width="100" Height="100" Margin="40" Background="Transparent">
+                <Button  Width="100" Height="100" Margin="40" Background="Transparent"
+                         Click="MainMenu_OnClick">
                     <Image Source="/Assets/Icons/house.png" Stretch="Fill"/>
 
                 </Button>

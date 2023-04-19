@@ -23,6 +23,12 @@ namespace Lords_of_the_valley
     /// </summary>
     public sealed partial class ChooseDeck : Page
     {
+        private void MainMenu_OnClick(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(MainPage));
+        }
+
+
         public ObservableCollection<DeckModel> Decks { get; } = new ObservableCollection<DeckModel>();
         public List<TextBlock> Texts { get; } = new List<TextBlock>();
         public List<Image> Images { get; } = new List<Image>();

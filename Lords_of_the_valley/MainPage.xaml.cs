@@ -26,5 +26,25 @@ namespace Lords_of_the_valley
         {
             this.InitializeComponent();
         }
+
+        private void ChooseDeck_OnClick(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(ChooseDeck));
+        }
+
+        private void GamePage_OnClick(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(GamePage));
+        }
+
+        private void ShopingMenu_OnClick(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(ShopingMenu));
+        }
+
+        private void Options_OnClick(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(OptionsMenu));
+        }
     }
 }

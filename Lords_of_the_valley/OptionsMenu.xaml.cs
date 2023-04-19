@@ -26,5 +26,10 @@ namespace Lords_of_the_valley
         {
             this.InitializeComponent();
         }
+
+        private void MainMenu_OnClick(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(MainPage));
+        }
     }
 }

@@ -390,7 +390,7 @@
                     </Grid>
                     <Button Content="COMPRAR" FontSize="20" Width="200" HorizontalAlignment="Center" Background="DarkOrange" Foreground="Yellow" FontStretch="Normal" Margin="20"/>
                     <Button  Width="150" Height="150" HorizontalAlignment="Center" Background="Transparent" 
-                        Margin="40">
+                        Margin="40" Click="MainMenu_OnClick">
                         <Image Source="/Assets/Icons/house.png" Stretch="Fill"/>
 
                     </Button>

@@ -37,7 +37,8 @@
                 <Viewbox Grid.Column="0">
                     
                 <StackPanel  Orientation="Horizontal" HorizontalAlignment="Left" Margin="20">
-                    <Button Width="75" Height="75"   Margin="10" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="Transparent">
+                    <Button Width="75" Height="75"   Margin="10" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="Transparent"
+                            Click="Options_OnClick">
                         <Image Source="/Assets/Icons/opciones.png" Stretch="Uniform"/>
 
                     </Button>
@@ -81,21 +82,24 @@
                 <Viewbox Grid.Column="0">
                     <Button Content="MAZOS" FontSize="50" Foreground="Black" 
                                 Width="300" Height="500" FontStretch="Normal"    Margin="100,100,100,50" Background="Orange" Opacity="0.7"
-                            HorizontalAlignment="Stretch" VerticalAlignment="Stretch" CornerRadius="100"/>
+                            HorizontalAlignment="Stretch" VerticalAlignment="Stretch" CornerRadius="100"
+                            Click="ChooseDeck_OnClick"/>
                  </Viewbox>
 
                 <Viewbox Grid.Column="1">
                     
                     <Button  Content="CAMPAÑA" FontSize="50" Foreground="Black" 
                                 Width="350" Height="600"  FontStretch="Normal"   Margin="50,50,50,25" Background="DarkRed" Opacity="0.7"
-                               HorizontalAlignment="Stretch" VerticalAlignment="Stretch" CornerRadius="100"/>
+                               HorizontalAlignment="Stretch" VerticalAlignment="Stretch" CornerRadius="100"
+                               Click="GamePage_OnClick"/>
                 </Viewbox>
                     
                 <Viewbox Grid.Column="2">
                     
                     <Button Content="ONLINE" FontSize="50" Foreground="Black" 
                                 Width="300" Height="500" FontStretch="Normal"    Margin="100,100,100,50" Background="DarkViolet" Opacity="0.7"
-                              HorizontalAlignment="Stretch" VerticalAlignment="Stretch" CornerRadius="100"/>
+                              HorizontalAlignment="Stretch" VerticalAlignment="Stretch" CornerRadius="100"
+                               Click="GamePage_OnClick"/>
                     
                 </Viewbox>
 
@@ -151,7 +155,8 @@
                     
                     <Button Width="300" Height="100" Margin="30" Background="GreenYellow" HorizontalAlignment="Right" 
                             VerticalAlignment="Bottom" Opacity="0.8" Content="TIENDA"
-                            FontSize="30" FontStretch="Normal" Foreground="Black"/>
+                            FontSize="30" FontStretch="Normal" Foreground="Black"
+                            Click="ShopingMenu_OnClick"/>
                 </Viewbox>
 
                 </Grid>

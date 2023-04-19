@@ -12,6 +12,8 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Windows.ApplicationModel;
+using Windows.ApplicationModel.Activation;
 
 // La plantilla de elemento Página en blanco está documentada en https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -30,6 +32,12 @@ namespace Lords_of_the_valley
         private void MainMenu_OnClick(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(MainPage));
+        }
+
+        private void Exit_OnClick(object sender, RoutedEventArgs e)
+        {
+            Application application = Lords_of_the_valley.App.Current;
+            application.Exit();
         }
     }
 }

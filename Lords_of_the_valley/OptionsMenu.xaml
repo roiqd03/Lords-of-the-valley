@@ -50,7 +50,7 @@
 
                 <Button Content="GRÁFICOS" FontSize="30" Foreground="Black" Width="500" Background="DarkGray" Margin="30"  HorizontalAlignment="Center" VerticalAlignment="Stretch"/>
 
-                <Button Content="SALIR DEL JUEGO" FontSize="30" Foreground="Black" Width="600" Height="75" Background="Pink" Margin="50"  HorizontalAlignment="Center" VerticalAlignment="Stretch"/>
+                <Button Content="SALIR DEL JUEGO" FontSize="30" Foreground="Black" Width="600" Height="75" Background="Pink" Margin="50"  HorizontalAlignment="Center" VerticalAlignment="Stretch" Click="Exit_OnClick"/>
                 
              </StackPanel>
             </Viewbox>

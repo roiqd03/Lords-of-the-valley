@@ -40,16 +40,15 @@ namespace Lords_of_the_valley
 
             for (int i = 0; i < 30; ++i)
             {
-                CardPlace.Add(new DeckModel("a", "Card Name " + i, i));
+                CardPlace.Add(new DeckModel("a", "Card Place " + i, i));
             }
 
             for (int i = 0; i < 30; ++i)
             {
-                Cards.Add(new CardModel("Assets\\DecksImg\\deck1.jpg", "Card Description " + i, 3, 1, 2, 0, i));
+                Cards.Add(new CardModel("NAME " + i, "Assets\\DecksImg\\deck1.jpg", "Card Description " + i, 3, 1, 2, 0, i));
             }
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -215,7 +214,8 @@ namespace Lords_of_the_valley
         public int mana;
         public int place;
         public int id;
-        public CardModel(string img, string desc, int attack_, int armor_, int mana_, int place_, int id_)
+        public string name;
+        public CardModel(string name_, string img, string desc, int attack_, int armor_, int mana_, int place_, int id_)
         {
             string s = System.IO.Directory.GetCurrentDirectory() + "\\" + img;
             this.imgSource = new Windows.UI.Xaml.Media.Imaging.BitmapImage(new Uri(s));
@@ -225,6 +225,7 @@ namespace Lords_of_the_valley
             this.mana = mana_;
             this.place = place_;
             this.id = id_;
+            this.name = name_;
         }
     }
 }

@@ -46,22 +46,22 @@ namespace Lords_of_the_valley
 
             for (int i = 0; i < numCards; ++i)
             {
-                Cards.Add(new CardModel("Assets\\DecksImg\\deck1.jpg", "Card Description " + i, 3, 1, 2, id1, i));
+                Cards.Add(new CardModel("NAME " + i,"Assets\\DecksImg\\deck1.jpg", "Card Description " + i, 3, 1, 2, id1, i));
             }
 
             for (int i = 0; i < numRivalCards; ++i)
             {
-                RivalCards.Add(new CardModel("Assets\\DecksImg\\deck1.jpg", "Card Description " + i, 3, 1, 2, i, i));
+                RivalCards.Add(new CardModel("NAME " + i, "Assets\\DecksImg\\deck1.jpg", "Card Description " + i, 3, 1, 2, i, i));
             }
 
             for (int i = 0; i < 4; ++i)
             {
-                TableCards.Add(new CardModel("Assets\\DecksImg\\deck1.jpg", "Card Description " + i, 3, 1, 2, id2, i));
+                TableCards.Add(new CardModel("NAME " + i,"Assets\\DecksImg\\deck1.jpg", "Card Description " + i, 3, 1, 2, id2, i));
             }
 
             for (int i = 0; i < 2; ++i)
             {
-                TableRivalCards.Add(new CardModel("Assets\\DecksImg\\deck1.jpg", "Card Description " + i, 3, 1, 2, id3, i));
+                TableRivalCards.Add(new CardModel("NAME " + i,"Assets\\DecksImg\\deck1.jpg", "Card Description " + i, 3, 1, 2, id3, i));
             }
         }
 

@@ -26,7 +26,8 @@
             </Viewbox>
 
             <Viewbox Grid.Row="0" HorizontalAlignment="Left">
-                <Button Click="Back_OnClick" Background="Transparent" Margin="02">
+                <Button Click="Back_OnClick" Background="Transparent" Margin="02" IsTabStop="True"
+                        XYFocusKeyboardNavigation="Enabled">
                     <SymbolIcon Symbol="Back" Foreground="Gray" />
 
                 </Button>
@@ -35,33 +36,42 @@
 
             <Viewbox Grid.Row="0" HorizontalAlignment="Right">
                 <Button  Width="100" Height="100" Margin="40" Background="Transparent"
-                         Click="MainMenu_OnClick">
+                         Click="MainMenu_OnClick" IsTabStop="True" XYFocusKeyboardNavigation="Enabled">
                     <Image Source="/Assets/Icons/house.png" Stretch="Fill"/>
 
                 </Button>
 
             </Viewbox>
 
-            <Viewbox Grid.Row="1">
-                
-             <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
-                <TextBlock Text="SONIDO" FontSize="30" Foreground="DarkGray" FontWeight="Bold" Margin="10" HorizontalAlignment="Center" FontStretch="Normal"/>
-                <Slider Value="25" Width="300" Margin="20"
-                        HorizontalAlignment="Center" />
+            <Viewbox Grid.Row="1" >
 
-                <TextBlock Text="MÜSICA" FontSize="30" Foreground="DarkGray" FontWeight="Bold" Margin="10" HorizontalAlignment="Center" FontStretch="Normal"/>
-                <Slider Value="50" Width="300" Margin="20"
-                        HorizontalAlignment="Center" />
+                <Grid TabFocusNavigation="Once" XYFocusKeyboardNavigation="Enabled">
 
-                <Button Content="IDIOMA" FontSize="30" Foreground="Black" Width="500" Background="DarkGray" Margin="30"  HorizontalAlignment="Center" VerticalAlignment="Stretch"/>
+                    <StackPanel Orientation="Vertical" HorizontalAlignment="Center" >
+                        <TextBlock Text="SONIDO" FontSize="30" Foreground="DarkGray" FontWeight="Bold" Margin="10" HorizontalAlignment="Center" FontStretch="Normal"/>
 
-                <Button Content="CONTROLES" FontSize="30" Foreground="Black" Width="500" Background="DarkGray" Margin="30"  HorizontalAlignment="Center" VerticalAlignment="Stretch"/>
+                        <Button HorizontalAlignment="Center" Background="Transparent" Click="Button_Click" >
 
-                <Button Content="GRÁFICOS" FontSize="30" Foreground="Black" Width="500" Background="DarkGray" Margin="30"  HorizontalAlignment="Center" VerticalAlignment="Stretch"/>
+                            <Slider Value="{x:Bind sound}" Width="300" Margin="20"
+                            HorizontalAlignment="Center" KeyDown="Slider_KeyDown" IsTabStop="False"/>
+                        </Button>
 
-                <Button Content="SALIR DEL JUEGO" FontSize="30" Foreground="Black" Width="600" Height="75" Background="Pink" Margin="50"  HorizontalAlignment="Center" VerticalAlignment="Stretch" Click="Exit_OnClick"/>
-                
-             </StackPanel>
+                        <TextBlock Text="MÜSICA" FontSize="30" Foreground="DarkGray" FontWeight="Bold" Margin="10" HorizontalAlignment="Center" FontStretch="Normal"/>
+                        <Button HorizontalAlignment="Center" Background="Transparent" Click="Button_Click">
+
+                            <Slider Value="{x:Bind music}" Width="300" Margin="20"
+                            HorizontalAlignment="Center" KeyDown="Slider_KeyDown" IsTabStop="False"/>
+                        </Button>
+                        <Button Content="IDIOMA" FontSize="30" Foreground="Black" Width="500" Background="DarkGray" Margin="30"  HorizontalAlignment="Center" VerticalAlignment="Stretch"/>
+
+                        <Button Content="CONTROLES" FontSize="30" Foreground="Black" Width="500" Background="DarkGray" Margin="30"  HorizontalAlignment="Center" VerticalAlignment="Stretch"/>
+
+                        <Button Content="GRÁFICOS" FontSize="30" Foreground="Black" Width="500" Background="DarkGray" Margin="30"  HorizontalAlignment="Center" VerticalAlignment="Stretch"/>
+
+                        <Button Content="SALIR DEL JUEGO" FontSize="30" Foreground="Black" Width="600" Height="75" Background="Pink" Margin="50"  HorizontalAlignment="Center" VerticalAlignment="Stretch" Click="Exit_OnClick"/>
+
+                    </StackPanel>
+                </Grid>
             </Viewbox>
         </Grid>
 

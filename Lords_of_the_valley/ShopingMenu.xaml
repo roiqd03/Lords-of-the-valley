@@ -8,6 +8,67 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
+    <Page.Resources>
+
+        <DataTemplate x:Key="GridViewItemTemplate" x:DataType="local:ShopCardModel">
+            <Grid>
+
+                <Border Background="DarkCyan"  Width="200" Height="266" Margin="30" CornerRadius="15">
+                <Grid>
+                    <Grid HorizontalAlignment="Stretch"
+                        VerticalAlignment="Stretch">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="2*"></RowDefinition>
+                            <RowDefinition Height="1*"></RowDefinition>
+                            <RowDefinition Height="1*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Image Source="{x:Bind imgSource}" Grid.Row="0" Margin="20"
+                        Stretch="Fill"></Image>
+                        <TextBlock Text="{x:Bind name}" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+                        <TextBlock Text="{x:Bind description}" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,10,0,0"/>
+                    </Grid>
+                    <Border Background="LightYellow" HorizontalAlignment="Left"
+                    VerticalAlignment="Bottom" Opacity="0.7"
+                    Margin="20"
+                    Width="30" Height="30" CornerRadius="15">
+                        <TextBlock Text="{x:Bind attack}" HorizontalAlignment="Center"
+                        VerticalAlignment="Center" FontSize="20">
+                        </TextBlock>
+                    </Border>
+                    <Border Background="Red" HorizontalAlignment="Right"
+                    VerticalAlignment="Bottom" Opacity="0.7"
+                    Margin="20" Width="30" Height="30" CornerRadius="15">
+                        <TextBlock Text="{x:Bind armor}" HorizontalAlignment="Center"
+                        VerticalAlignment="Center" FontSize="20">
+                        </TextBlock>
+                    </Border>
+                    <Border Background="Blue" HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    Margin="5" Width="30" Height="30" CornerRadius="15">
+                        <TextBlock Text="{x:Bind mana}" HorizontalAlignment="Center"
+                        VerticalAlignment="Center" FontSize="20">
+                        </TextBlock>
+                    </Border>
+                </Grid>
+
+            </Border>
+
+                <Border x:Name="PriceColor" Width="60" Height="30" Background="Orange" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="15" CornerRadius="10">
+                    <StackPanel Orientation="Horizontal">
+
+                        <TextBlock Text="{x:Bind price}" Margin="5"/>
+                        <Image Source="/Assets/Images/Coin.png" Width="20"/>
+                    </StackPanel>
+
+                </Border>
+            </Grid>
+        </DataTemplate>
+
+        <Style TargetType="GridViewItem">
+            <Setter Property="IsTabStop" Value="False"></Setter>
+        </Style>
+    </Page.Resources>
+    
     <Grid>
         <Image Source="/Assets/Backgrounds/Fondo_tienda.jpg"  Stretch="Fill"/>
 
@@ -23,306 +84,55 @@
                 <ColumnDefinition Width="2*"/>
             </Grid.ColumnDefinitions>
 
-            <Viewbox Grid.Row="0" HorizontalAlignment="Left" Grid.RowSpan="2">
+            <Grid Grid.Row="1" Grid.Column="0" HorizontalAlignment="Stretch"
+                            VerticalAlignment="Stretch">
+                <Border Grid.Column="2"
+                               Background="Purple" Opacity="0.7"
+                               HorizontalAlignment="Stretch"
+                               VerticalAlignment="Stretch"
+                               Margin="25, 50, 0, 50"
+                               CornerRadius="20">
+                </Border>
+                <StackPanel x:Name="ChooseType" Margin="25, 10, 0, 0" Orientation="Horizontal"
+                                VerticalAlignment="Top" TabFocusNavigation="Once" XYFocusKeyboardNavigation="Enabled">
+                    <Button Click="Button_Click">Personajes</Button>
+                    <Button Click="Button_Click">Tropas</Button>
+                    <Button Click="Button_Click">Hechizos</Button>
+                    <ComboBox PlaceholderText="Ordenar por:" Width="200" Foreground="White">
 
-                <StackPanel Orientation="Vertical">
+                        <ComboBoxItem>
+                            Precio de mayor a menor
+                        </ComboBoxItem>
+                        
+                        <ComboBoxItem>
+                            Precio de menor a mayor
+                        </ComboBoxItem>
+                        
+                        <ComboBoxItem>
+                            Vida de mayor a menor
+                        </ComboBoxItem>
 
-                    <StackPanel  Orientation="Horizontal" >
-
-                        <Button Content="Sobres" Background="White" Foreground="Black" 
-                            Opacity="0.9" Width="100" Height="40" Margin="70,30,1,0"
-                            BorderBrush="Black"/>
-                        <Button Content="Tropas" Background="Violet" Foreground="Black" 
-                            Opacity="0.9" Width="100" Height="40" Margin="0,30,1,0"
-                            BorderBrush="Black"/>
-                        <Button Content="Personajes" Background="White" Foreground="Black" 
-                            Opacity="0.9" Width="100" Height="40" Margin="0,30,1,0"
-                            BorderBrush="Black"/>
-                        <Button Content="Hechizos" Background="White" Foreground="Black" 
-                            Opacity="0.9" Width="100" Height="40" Margin="0,30,10,0"
-                            BorderBrush="Black"/>
-
-                        <TextBox Text="Ordenar por:" Width="200" Height="33" Margin="10,15,0,0" HorizontalAlignment="Stretch" BorderBrush="Black"  />
-
-                    </StackPanel>
-
-                    <StackPanel >
-                        <Grid>
-
-
-
-                            <Rectangle Width="1050" Height="900" HorizontalAlignment="Left" Fill="Pink" 
-                           Opacity="0.8" Margin="70,0,20,20"/>
-
-                            <StackPanel Orientation="Vertical">
-
-                                <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="90,0,0,0">
-
-                                    <Grid>
-
-                                        <Border Width="275" Height="400" Background="DarkCyan" Opacity="0.9" HorizontalAlignment="Center" Margin="30" CornerRadius="30"/>
-                                        <Border Width="60" Height="30" Background="Gray" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="15" CornerRadius="10">
-                                            <StackPanel Orientation="Horizontal">
-
-                                                <TextBlock Text="450" Margin="5" Foreground="Black"/>
-                                                <Image Source="/Assets/Images/Coin.png" Width="20"/>
-                                            </StackPanel>
-
-                                        </Border>
-                                        <Grid>
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition Height="Auto"/>
-                                                <RowDefinition Height="Auto"/>
-                                                <RowDefinition/>
-                                            </Grid.RowDefinitions>
-
-                                            <Image Source="/Assets/DecksImg/deck1.jpg" Width="250" Height="200" VerticalAlignment="Top" Margin="0,60,0,0" Grid.Row="0"/>
-                                            <TextBlock Text="Descripción"  HorizontalAlignment="Center" Grid.Row="1" Margin="30"/>
-                                            <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-
-                                                <Border Background="LightYellow" HorizontalAlignment="Left"
-                                            VerticalAlignment="Bottom" Opacity="0.7"
-                                            Margin="0,0,70,50"
-                                            Width="50" Height="50" CornerRadius="30">
-                                                    <TextBlock Text="3" HorizontalAlignment="Center"
-                                                VerticalAlignment="Center" FontSize="20">
-                                                    </TextBlock>
-                                                </Border>
-
-                                                <Border Background="Red" HorizontalAlignment="Right"
-                                            VerticalAlignment="Bottom" Opacity="0.7"
-                                            Margin="50,0,0,50"
-                                            Width="50" Height="50" CornerRadius="30">
-                                                    <TextBlock Text="3" HorizontalAlignment="Center"
-                                                VerticalAlignment="Center" FontSize="20">
-                                                    </TextBlock>
-                                                </Border>
-
-                                            </StackPanel>
-                                        </Grid>
-                                    </Grid>
-                                    <Grid>
-
-                                        <Border Width="275" Height="400" Background="DarkCyan" Opacity="0.9" HorizontalAlignment="Center" Margin="30" CornerRadius="30"/>
-                                        <Border Width="60" Height="30" Background="Orange" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="15" CornerRadius="10">
-                                            <StackPanel Orientation="Horizontal">
-
-                                                <TextBlock Text="200" Margin="5"/>
-                                                <Image Source="/Assets/Images/Coin.png" Width="20"/>
-                                            </StackPanel>
-
-                                        </Border>
-                                        <Grid>
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition Height="Auto"/>
-                                                <RowDefinition Height="Auto"/>
-                                                <RowDefinition/>
-                                            </Grid.RowDefinitions>
-
-                                            <Image Source="/Assets/DecksImg/deck1.jpg" Width="250" Height="200" VerticalAlignment="Top" Margin="0,60,0,0" Grid.Row="0"/>
-                                            <TextBlock Text="Descripción"  HorizontalAlignment="Center" Grid.Row="1" Margin="30"/>
-                                            <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
-                                                <Border Background="LightYellow" HorizontalAlignment="Left"
-                                            VerticalAlignment="Bottom" Opacity="0.7"
-                                            Margin="0,0,70,50"
-                                            Width="50" Height="50" CornerRadius="30">
-                                                    <TextBlock Text="3" HorizontalAlignment="Center"
-                                                VerticalAlignment="Center" FontSize="20">
-                                                    </TextBlock>
-                                                </Border>
-
-                                                <Border Background="Red" HorizontalAlignment="Right"
-                                            VerticalAlignment="Bottom" Opacity="0.7"
-                                            Margin="50,0,0,50"
-                                            Width="50" Height="50" CornerRadius="30">
-                                                    <TextBlock Text="3" HorizontalAlignment="Center"
-                                                VerticalAlignment="Center" FontSize="20">
-                                                    </TextBlock>
-                                                </Border>
-
-                                            </StackPanel>
-                                        </Grid>
-                                    </Grid>
-                                    <Grid>
-
-                                        <Border Width="275" Height="400" Background="DarkCyan" Opacity="0.9" HorizontalAlignment="Center" Margin="30" CornerRadius="30"/>
-                                        <Border Width="60" Height="30" Background="Orange" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="15" CornerRadius="10">
-                                            <StackPanel Orientation="Horizontal">
-
-                                                <TextBlock Text="200" Margin="5"/>
-                                                <Image Source="/Assets/Images/Coin.png" Width="20"/>
-                                            </StackPanel>
-
-                                        </Border>
-                                        <Grid>
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition Height="Auto"/>
-                                                <RowDefinition Height="Auto"/>
-                                                <RowDefinition/>
-                                            </Grid.RowDefinitions>
-
-                                            <Image Source="/Assets/DecksImg/deck1.jpg" Width="250" Height="200" VerticalAlignment="Top" Margin="0,60,0,0" Grid.Row="0"/>
-                                            <TextBlock Text="Descripción"  HorizontalAlignment="Center" Grid.Row="1" Margin="30"/>
-                                            <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
-                                                <Border Background="LightYellow" HorizontalAlignment="Left"
-                                            VerticalAlignment="Bottom" Opacity="0.7"
-                                            Margin="0,0,70,50"
-                                            Width="50" Height="50" CornerRadius="30">
-                                                    <TextBlock Text="3" HorizontalAlignment="Center"
-                                                VerticalAlignment="Center" FontSize="20">
-                                                    </TextBlock>
-                                                </Border>
-
-                                                <Border Background="Red" HorizontalAlignment="Right"
-                                            VerticalAlignment="Bottom" Opacity="0.7"
-                                            Margin="50,0,0,50"
-                                            Width="50" Height="50" CornerRadius="30">
-                                                    <TextBlock Text="3" HorizontalAlignment="Center"
-                                                VerticalAlignment="Center" FontSize="20">
-                                                    </TextBlock>
-                                                </Border>
-                                            </StackPanel>
-                                        </Grid>
-                                    </Grid>
-                                </StackPanel>
-                                <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="90,0,0,0">
-                                    <Grid>
-
-                                        <Border Width="275" Height="400" Background="DarkCyan" Opacity="0.9" HorizontalAlignment="Center" Margin="30" CornerRadius="30"/>
-                                        <Border Width="60" Height="30" Background="Orange" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="15" CornerRadius="10">
-                                            <StackPanel Orientation="Horizontal">
-
-                                                <TextBlock Text="200" Margin="5"/>
-                                                <Image Source="/Assets/Images/Coin.png" Width="20"/>
-                                            </StackPanel>
-
-                                        </Border>
-                                        <Grid>
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition Height="Auto"/>
-                                                <RowDefinition Height="Auto"/>
-                                                <RowDefinition/>
-                                            </Grid.RowDefinitions>
-
-
-                                            <Image   Source="/Assets/DecksImg/deck2.jpg" Width="250" Height="200" VerticalAlignment="Top" Margin="0,60,0,0" Grid.Row="0"/>
-                                            <TextBlock Text="Descripción"  HorizontalAlignment="Center" Grid.Row="1" Margin="30"/>
-                                            <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
-                                                <Border Background="LightYellow" HorizontalAlignment="Left"
-                                            VerticalAlignment="Bottom" Opacity="0.7"
-                                            Margin="0,0,70,50"
-                                            Width="50" Height="50" CornerRadius="30">
-                                                    <TextBlock Text="3" HorizontalAlignment="Center"
-                                                VerticalAlignment="Center" FontSize="20">
-                                                    </TextBlock>
-                                                </Border>
-
-                                                <Border Background="Red" HorizontalAlignment="Right"
-                                            VerticalAlignment="Bottom" Opacity="0.7"
-                                            Margin="50,0,0,50"
-                                            Width="50" Height="50" CornerRadius="30">
-                                                    <TextBlock Text="3" HorizontalAlignment="Center"
-                                                VerticalAlignment="Center" FontSize="20">
-                                                    </TextBlock>
-                                                </Border>
-
-                                            </StackPanel>
-                                        </Grid>
-                                    </Grid>
-                                    <Grid>
-
-                                        <Border Width="275" Height="400" Background="DarkCyan" Opacity="0.9" HorizontalAlignment="Center" Margin="30" CornerRadius="30"/>
-                                        <Border Width="60" Height="30" Background="Gray" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="15" CornerRadius="10">
-                                            <StackPanel Orientation="Horizontal">
-
-                                                <TextBlock Text="325" Margin="5" Foreground="Black"/>
-                                                <Image Source="/Assets/Images/Coin.png" Width="20"/>
-                                            </StackPanel>
-
-                                        </Border>
-                                        <Grid>
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition Height="Auto"/>
-                                                <RowDefinition Height="Auto"/>
-                                                <RowDefinition/>
-                                            </Grid.RowDefinitions>
-
-                                            <Image   Source="/Assets/DecksImg/deck2.jpg" Width="250" Height="200" VerticalAlignment="Top" Margin="0,60,0,0" Grid.Row="0"/>
-                                            <TextBlock Text="Descripción"  HorizontalAlignment="Center" Grid.Row="1" Margin="30"/>
-                                            <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
-                                                <Border Background="LightYellow" HorizontalAlignment="Left"
-                                            VerticalAlignment="Bottom" Opacity="0.7"
-                                            Margin="0,0,70,50"
-                                            Width="50" Height="50" CornerRadius="30">
-                                                    <TextBlock Text="3" HorizontalAlignment="Center"
-                                                VerticalAlignment="Center" FontSize="20">
-                                                    </TextBlock>
-                                                </Border>
-
-                                                <Border Background="Red" HorizontalAlignment="Right"
-                                            VerticalAlignment="Bottom" Opacity="0.7"
-                                            Margin="50,0,0,50"
-                                            Width="50" Height="50" CornerRadius="30">
-                                                    <TextBlock Text="3" HorizontalAlignment="Center"
-                                                VerticalAlignment="Center" FontSize="20">
-                                                    </TextBlock>
-                                                </Border>
-
-                                            </StackPanel>
-                                        </Grid>
-                                    </Grid>
-                                    <Grid>
-
-                                        <Border Width="275" Height="400" Background="DarkCyan" Opacity="0.9" HorizontalAlignment="Center" Margin="30" CornerRadius="30"/>
-                                        <Border Width="60" Height="30" Background="Orange" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="15" CornerRadius="10">
-                                            <StackPanel Orientation="Horizontal">
-
-                                                <TextBlock Text="200" Margin="5"/>
-                                                <Image Source="/Assets/Images/Coin.png" Width="20"/>
-                                            </StackPanel>
-
-                                        </Border>
-                                        <Grid>
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition Height="Auto"/>
-                                                <RowDefinition Height="Auto"/>
-                                                <RowDefinition/>
-                                            </Grid.RowDefinitions>
-
-                                            <Image   Source="/Assets/DecksImg/deck2.jpg" Width="250" Height="200" VerticalAlignment="Top" Margin="0,60,0,0" Grid.Row="0"/>
-                                            <TextBlock Text="Descripción"  HorizontalAlignment="Center" Grid.Row="1" Margin="30"/>
-                                            <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
-                                                <Border Background="LightYellow" HorizontalAlignment="Left"
-                                            VerticalAlignment="Bottom" Opacity="0.7"
-                                            Margin="0,0,70,50"
-                                            Width="50" Height="50" CornerRadius="30">
-                                                    <TextBlock Text="3" HorizontalAlignment="Center"
-                                                VerticalAlignment="Center" FontSize="20">
-                                                    </TextBlock>
-                                                </Border>
-
-                                                <Border Background="Red" HorizontalAlignment="Right"
-                                            VerticalAlignment="Bottom" Opacity="0.7"
-                                            Margin="50,0,0,50"
-                                            Width="50" Height="50" CornerRadius="30">
-                                                    <TextBlock Text="3" HorizontalAlignment="Center"
-                                                VerticalAlignment="Center" FontSize="20">
-                                                    </TextBlock>
-                                                </Border>
-
-                                            </StackPanel>
-                                        </Grid>
-                                    </Grid>
-                                </StackPanel>
-
-
-                            </StackPanel>
-
-                        </Grid>
-
-                    </StackPanel>
+                    </ComboBox>
                 </StackPanel>
-            </Viewbox>
+                <GridView Grid.Row="1"
+                              Margin="25, 50, 0, 50"
+                              ItemsSource="{x:Bind Cards}"
+                              ItemTemplate="{StaticResource GridViewItemTemplate}"
+                              x:Name="CardCollection"
+                              IsItemClickEnabled="False"
+                              ItemClick="CardCollection_ItemClick"
+                              KeyDown="ESC_KeyDown">
+
+                </GridView>
+                <Border x:Name="DarkShop"
+                            Grid.Column="2"
+                            Background="Black" Opacity="0.7"
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Stretch"
+                            Margin="25, 50, 0, 50"
+                            CornerRadius="20">
+                </Border>
+            </Grid>
 
             <Viewbox Grid.Row="1">
 
@@ -333,7 +143,7 @@
 
                 <StackPanel  Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,20,0">
 
-                    <TextBlock Text="200" FontSize="30" HorizontalAlignment="Right" 
+                    <TextBlock Text="{x:Bind currentMoney}" FontSize="30" HorizontalAlignment="Right" 
                                VerticalAlignment="Center" Foreground="Yellow" Margin="10" FontStretch="Normal"/>
                     <Image Source="/Assets/Images/Coin.png" Width="30"/>
                     <Button Content="+" FontSize="30" Foreground="Black" CornerRadius="100" Background="Yellow" Margin="10" Width="50" HorizontalAlignment="Right"/>
@@ -341,7 +151,7 @@
                 </StackPanel>
             </Viewbox>
 
-            <Viewbox Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center">
+            <Viewbox  Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Top">
 
                 <StackPanel  Orientation="Vertical" >
 
@@ -349,10 +159,10 @@
                     <Grid>
 
                         <Border Width="300" Height="450" Background="DarkCyan" Opacity="0.9" HorizontalAlignment="Center" Margin="20" CornerRadius="30"/>
-                        <Border Width="60" Height="30" Background="Orange" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="15" CornerRadius="10">
+                        <Border x:Name="PriceColor" Width="60" Height="30" Background="Orange" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="15" CornerRadius="10">
                             <StackPanel Orientation="Horizontal">
 
-                                <TextBlock Text="200" Margin="5"/>
+                                <TextBlock x:Name="CardPrice" Text="200" Margin="5"/>
                                 <Image Source="/Assets/Images/Coin.png" Width="20"/>
                             </StackPanel>
 
@@ -364,14 +174,18 @@
                                 <RowDefinition/>
                             </Grid.RowDefinitions>
 
-                            <Image   Source="/Assets/DecksImg/deck2.jpg" Width="275" Height="200" VerticalAlignment="Top" Margin="0,60,0,0" Grid.Row="0"/>
-                            <TextBlock Text="Descripción"  HorizontalAlignment="Center" Grid.Row="1" Margin="30"/>
+                            <Image x:Name="CardImage"  Source="/Assets/DecksImg/deck2.jpg" Width="275" Height="200" VerticalAlignment="Top" Margin="0,60,0,0" Grid.Row="0"/>
+                            <StackPanel HorizontalAlignment="Center" Grid.Row="1">
+                                
+                            <TextBlock x:Name="CardName" Text="Name..." FontSize="30" Margin="5" HorizontalAlignment="Center"/>
+                                <TextBlock Text="Descripción" FontSize="25" Margin="5"/>
+                            </StackPanel>
                             <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
                                 <Border Background="LightYellow" HorizontalAlignment="Left"
                                             VerticalAlignment="Bottom" Opacity="0.7"
                                             Margin="0,0,70,50"
                                             Width="50" Height="50" CornerRadius="30">
-                                    <TextBlock Text="3" HorizontalAlignment="Center"
+                                    <TextBlock x:Name="CardDeffense" Text="3" HorizontalAlignment="Center"
                                                 VerticalAlignment="Center" FontSize="20">
                                     </TextBlock>
                                 </Border>
@@ -380,7 +194,7 @@
                                             VerticalAlignment="Bottom" Opacity="0.7"
                                             Margin="50,0,0,50"
                                             Width="50" Height="50" CornerRadius="30">
-                                    <TextBlock Text="3" HorizontalAlignment="Center"
+                                    <TextBlock x:Name="CardAttack" Text="3" HorizontalAlignment="Center"
                                                 VerticalAlignment="Center" FontSize="20">
                                     </TextBlock>
                                 </Border>
@@ -388,15 +202,67 @@
                             </StackPanel>
                         </Grid>
                     </Grid>
-                    <Button Content="COMPRAR" FontSize="20" Width="200" HorizontalAlignment="Center" Background="DarkOrange" Foreground="Yellow" FontStretch="Normal" Margin="20"/>
-                    <Button  Width="150" Height="150" HorizontalAlignment="Center" Background="Transparent" 
-                        Margin="40" Click="MainMenu_OnClick">
+                    <Button  x:Name="BuyButton" Content="COMPRAR" FontSize="20" Width="200" 
+                             HorizontalAlignment="Center" Background="DarkOrange" Foreground="Yellow"
+                             FontStretch="Normal" Margin="20" IsTabStop="False" Click="BuyButton_Click"/>
+                </StackPanel>
+            </Viewbox>
+                    <Button  Grid.Row="1" Grid.Column="1" Width="150" Height="150" HorizontalAlignment="Right" VerticalAlignment="Bottom" Background="Transparent" 
+                        Margin="5" Click="MainMenu_OnClick">
                         <Image Source="/Assets/Icons/house.png" Stretch="Fill"/>
 
                     </Button>
+
+            <Viewbox x:Name="DarKCard" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Top">
+
+                <StackPanel  Orientation="Vertical" >
+
+                    <TextBlock Text="TIENDA" FontSize="50" Margin="0,70,0,0" FontStretch="Normal" Foreground="Black" FontWeight="Bold" HorizontalAlignment="Center"/>
+                    <Grid>
+
+                        <Border Width="300" Height="450" Background="Black" Opacity="0.7" HorizontalAlignment="Center" Margin="20" CornerRadius="30"/>
+                        <Border  Width="60" Height="30" Background="Black" Opacity="1" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="15" CornerRadius="10">
+                            <StackPanel Orientation="Horizontal">
+
+                               
+                            </StackPanel>
+
+                        </Border>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+
+                            
+                            <StackPanel HorizontalAlignment="Center" Grid.Row="1">
+
+                               
+                            </StackPanel>
+                            <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
+                                <Border Background="Black" Opacity="0.5" HorizontalAlignment="Left"
+                                            VerticalAlignment="Bottom" 
+                                            Margin="0,0,70,50"
+                                            Width="50" Height="50" CornerRadius="30">
+                                   
+                                </Border>
+
+                                <Border Background="Black" Opacity="0.5" HorizontalAlignment="Right"
+                                            VerticalAlignment="Bottom" 
+                                            Margin="50,0,0,50"
+                                            Width="50" Height="50" CornerRadius="30">
+                                   
+                                </Border>
+
+                            </StackPanel>
+                        </Grid>
+                    </Grid>
+                    <Button Content="COMPRAR" FontSize="20" Width="200" HorizontalAlignment="Center" 
+                            Background="Black" Opacity="0.7" Foreground="Gray" FontStretch="Normal" Margin="20" IsTabStop="False"/>
+              
                 </StackPanel>
             </Viewbox>
-
 
         </Grid>
     </Grid>

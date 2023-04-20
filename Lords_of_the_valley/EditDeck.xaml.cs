@@ -18,6 +18,8 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using System.Runtime.CompilerServices;
 using static System.Net.Mime.MediaTypeNames;
+using System.Drawing;
+
 
 // La plantilla de elemento Página en blanco está documentada en https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -269,6 +271,66 @@ namespace Lords_of_the_valley
             this.place = c.place;
             this.id = c.id;
             this.name = c.name;
+
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(this.imgSource)));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(this.description)));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(this.attack)));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(this.armor)));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(this.name)));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(this.mana)));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(this.place)));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(this.id)));
+
+        }
+    }
+    public class ShopCardModel : CardModel
+    {
+        public int price;
+        public SolidColorBrush color;
+        public ShopCardModel(string name_, string img, string desc, int attack_, int armor_, int mana_, int place_, int id_,int price_,SolidColorBrush color_):base(name_, img, desc, attack_, armor_, mana_, place_, id_)
+        {
+            SetCard(name_, img, desc, attack_, armor_, mana_, place_, id_,price_,color_);
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+
+        public void SetCard(string name_, string img, string desc, int attack_, int armor_, int mana_, int place_, int id_, int price_, SolidColorBrush color_)
+        {
+            string s = System.IO.Directory.GetCurrentDirectory() + "\\" + img;
+            this.imgSource = new Windows.UI.Xaml.Media.Imaging.BitmapImage(new Uri(s));
+            this.description = desc;
+            this.attack = attack_;
+            this.armor = armor_;
+            this.mana = mana_;
+            this.place = place_;
+            this.id = id_;
+            this.name = name_;
+            this.price = price_;
+            this.color = color_;
+
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(this.imgSource)));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(this.description)));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(this.attack)));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(this.armor)));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(this.name)));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(this.mana)));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(this.place)));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(this.id)));
+        }
+
+        public void SetCard(ShopCardModel c)
+        {
+            this.imgSource = c.imgSource;
+            this.description = c.description;
+            this.attack = c.attack;
+            this.armor = c.armor;
+            this.mana = c.mana;
+            this.place = c.place;
+            this.id = c.id;
+            this.name = c.name;
+            this.price = c.price;
+            this.color = c.color;
 
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(this.imgSource)));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(this.description)));

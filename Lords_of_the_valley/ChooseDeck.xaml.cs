@@ -82,6 +82,11 @@ namespace Lords_of_the_valley
                 ++i;
             }
         }
+
+        private void Deck_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(EditDeck));
+        }
     }
 
     public class DeckModel

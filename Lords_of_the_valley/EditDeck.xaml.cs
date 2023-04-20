@@ -70,6 +70,9 @@ namespace Lords_of_the_valley
             GridViewItem it = CardCollection.ContainerFromIndex(0) as GridViewItem;
             it.Focus(FocusState.Keyboard);
             CardCollection.IsItemClickEnabled = true;
+            DarkCollection.Visibility = Visibility.Collapsed;
+            CardPlaceList.IsItemClickEnabled = false;
+            DarkList.Visibility = Visibility.Visible;
         }
 
         private void CardCollection_ItemClick(object sender, ItemClickEventArgs e)
@@ -97,7 +100,10 @@ namespace Lords_of_the_valley
             ListViewItem it = CardPlaceList.ContainerFromIndex(0) as ListViewItem;
             it.Focus(FocusState.Keyboard);
             CardCollection.IsItemClickEnabled = false;
+            DarkCollection.Visibility = Visibility.Visible;
             CardPlaceList.IsItemClickEnabled = true;
+            DarkList.Visibility = Visibility.Collapsed;
+
         }
 
         private void CardPlaceList_ItemClick(object sender, ItemClickEventArgs e)
@@ -129,7 +135,9 @@ namespace Lords_of_the_valley
             GridViewItem it = CardCollection.ContainerFromIndex(0) as GridViewItem;
             it.Focus(FocusState.Keyboard);
             CardCollection.IsItemClickEnabled = true;
+            DarkCollection.Visibility = Visibility.Collapsed;
             CardPlaceList.IsItemClickEnabled = false;
+            DarkList.Visibility = Visibility.Visible;
         }
 
 
@@ -163,6 +171,7 @@ namespace Lords_of_the_valley
                         }
                     }
                     CardCollection.IsItemClickEnabled = false;
+                    DarkCollection.Visibility = Visibility.Visible;
                 }
                 else if(listElem != null)
                 {
@@ -189,7 +198,9 @@ namespace Lords_of_the_valley
                     GridViewItem it = CardCollection.ContainerFromIndex(0) as GridViewItem;
                     it.Focus(FocusState.Keyboard);
                     CardCollection.IsItemClickEnabled = true;
+                    DarkCollection.Visibility = Visibility.Collapsed;
                     CardPlaceList.IsItemClickEnabled = false;
+                    DarkList.Visibility = Visibility.Visible;
                 }
             }
         }

@@ -82,11 +82,6 @@ namespace Lords_of_the_valley
                 ++i;
             }
         }
-
-        private void Deck1_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
     }
 
     public class DeckModel

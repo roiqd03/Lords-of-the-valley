@@ -13,6 +13,9 @@ namespace Lords_of_the_valley
 {
     public class GamePageLogic : ObservableObject
     {
+        enum CardPlace { Hand, Table, RivalTable };
+        private GamePage page;
+
         public List<Border> manaList = new List<Border>();
         public List<Border> rivalManaList = new List<Border>();
         public const int maxPosibleMana = 10;
@@ -34,86 +37,37 @@ namespace Lords_of_the_valley
         public List<CardModel> TableCards { get; set; } = new List<CardModel>();
         public List<CardModel> TableRivalCards { get; set; } = new List<CardModel>();
 
-        private ImageSource _SelectedCardImgSource;
-        private string _SelectedCardDescription;
-        private int _SelectedCardAttack;
-        private int _SelectedCardArmor;
-        private int _SelectedCardMana;
-
-
-
-
-        public ImageSource SelectedCardImgSource
-        {
-            get { return _SelectedCardImgSource; }
-            set { Set(ref _SelectedCardImgSource, value, nameof(_SelectedCardImgSource)); }
-        }
-        public string SelectedCardDescription
-        {
-            get { return _SelectedCardDescription; }
-            set { Set(ref _SelectedCardDescription, value, nameof(_SelectedCardDescription)); }
-        }
-        public int SelectedCardAttack
-        {
-            get { return _SelectedCardAttack; }
-            set { Set(ref _SelectedCardAttack, value, nameof(_SelectedCardAttack)); }
-        }
-        public int SelectedCardArmor
-        {
-            get { return _SelectedCardArmor; }
-            set { Set(ref _SelectedCardArmor, value, nameof(_SelectedCardArmor)); }
-        }
-        public int SelectedCardMana
-        {
-            get { return _SelectedCardMana; }
-            set { Set(ref _SelectedCardMana, value, nameof(_SelectedCardMana)); }
-        }
-
-        enum CardPlace { Hand, Table, RivalTable };
-        private int _selectedIndexHand;
-        private int _selectedIndexTable;
-        private int _selectedIndexRivalTable;
-        public int selectedIndexHand
-        {
-            get { return _selectedIndexHand; }
-            set { Set(ref _selectedIndexHand, value, nameof(_selectedIndexHand)); }
-        }
-        public int selectedIndexTable
-        {
-            get { return _selectedIndexTable; }
-            set { Set(ref _selectedIndexTable, value, nameof(_selectedIndexTable)); }
-        }
-        public int selectedIndexRivalTable
-        {
-            get { return _selectedIndexRivalTable; }
-            set { Set(ref _selectedIndexRivalTable, value, nameof(_selectedIndexRivalTable)); }
-        }
 
         public GamePageLogic()
         {
             int id1 = (int)CardPlace.Hand;
+            int id2 = (int)CardPlace.Table;
+            int id3 = (int)CardPlace.RivalTable;
+
             for (int i = 0; i < numCards; ++i)
             {
                 Cards.Add(new CardModel("Assets\\DecksImg\\deck1.jpg", "Card Description " + i, 3, 1, 2, id1, i));
             }
-
-            ChangeSelectedCard(Cards[0]);
 
             for (int i = 0; i < numRivalCards; ++i)
             {
                 RivalCards.Add(new CardModel("Assets\\DecksImg\\deck1.jpg", "Card Description " + i, 3, 1, 2, i, i));
             }
 
-            int id2 = (int)CardPlace.Table;
             for (int i = 0; i < 4; ++i)
             {
                 TableCards.Add(new CardModel("Assets\\DecksImg\\deck1.jpg", "Card Description " + i, 3, 1, 2, id2, i));
             }
-            int id3 = (int)CardPlace.RivalTable;
+
             for (int i = 0; i < 2; ++i)
             {
                 TableRivalCards.Add(new CardModel("Assets\\DecksImg\\deck1.jpg", "Card Description " + i, 3, 1, 2, id3, i));
             }
+        }
+
+        public void setPage(GamePage pg)
+        {
+            page = pg;
         }
 
         public void UpdateManaUI()
@@ -168,39 +122,10 @@ namespace Lords_of_the_valley
             RaisePropertyChanged(rivalManaText);
         }
 
-        void ChangeSelectedCard(CardModel card)
+        public void GridView_ItemClick (object sender, ItemClickEventArgs e)
         {
-            SelectedCardImgSource = card.imgSource;
-            SelectedCardDescription = card.description;
-            SelectedCardAttack = card.attack;
-            SelectedCardArmor = card.armor;
-            SelectedCardMana = card.mana;
-        }
-
-
-        public void GridView_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            CardModel card = e.AddedItems[0] as CardModel;
-            if (card.place == (int)CardPlace.Hand)
-            {
-                selectedIndexTable = -1;
-                selectedIndexRivalTable = -1;
-                selectedIndexHand = card.id;
-            }
-            else if (card.place == (int)CardPlace.Table)
-            {
-                selectedIndexHand = -1;
-                selectedIndexRivalTable = -1;
-                selectedIndexTable = card.id;
-            }
-            else if (card.place == (int)CardPlace.RivalTable)
-            {
-                selectedIndexTable = -1;
-                selectedIndexHand = -1;
-                selectedIndexRivalTable = card.id;
-            }
-
-            ChangeSelectedCard(card);
+            CardModel card = e.ClickedItem as CardModel;
+            page.ChangeSelectedCard(card);
         }
     }
 }

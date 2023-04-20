@@ -28,7 +28,6 @@ namespace Lords_of_the_valley
         {
             this.InitializeComponent();
 
-
             Logic.manaList.Add(mana1);
             Logic.manaList.Add(mana2);
             Logic.manaList.Add(mana3);
@@ -52,7 +51,19 @@ namespace Lords_of_the_valley
             Logic.rivalManaList.Add(rivalMana10);
 
             Logic.UpdateManaUI();
+
+            Logic.setPage(this);
         }
+
+        public void ChangeSelectedCard(CardModel card)
+        {
+            SelectedImage.Source = card.imgSource;
+            SelectedDesc.Text = card.description;
+            SelectedAttack.Text = card.attack.ToString();
+            SelectedArmor.Text = card.armor.ToString();
+            SelectedMana.Text = card.mana.ToString();
+        }
+
         public GamePageLogic Logic { get; } = new GamePageLogic();
     }
 

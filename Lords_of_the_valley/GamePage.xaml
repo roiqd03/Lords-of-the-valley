@@ -147,8 +147,9 @@
                                   ScrollViewer.VerticalScrollMode="Disabled"
                                   VerticalContentAlignment="Stretch"
                                   ScrollViewer.VerticalScrollBarVisibility="Disabled"
-                                  SelectionChanged="Logic.GridView_SelectionChanged"
-                                  SelectedIndex="{x:Bind Logic.selectedIndexHand, Mode=TwoWay}">
+                                  x:Name="myHand"
+                                  ItemClick="Logic.GridView_ItemClick"
+                                  IsItemClickEnabled="True">
                     </GridView>
                 </Viewbox>
 
@@ -162,8 +163,9 @@
                           VerticalContentAlignment="Top"
                           ScrollViewer.VerticalScrollMode="Disabled"
                           ScrollViewer.VerticalScrollBarVisibility="Disabled"
-                          SelectionChanged="Logic.GridView_SelectionChanged"
-                          SelectedIndex="{x:Bind Logic.selectedIndexTable, Mode=TwoWay}">
+                          ItemClick="Logic.GridView_ItemClick"
+                          x:Name="EnemyTable"
+                          IsItemClickEnabled="True">
                     </GridView>
                 </Viewbox>
                 
@@ -178,8 +180,9 @@
                           VerticalContentAlignment="Top"
                           ScrollViewer.VerticalScrollMode="Disabled"
                           ScrollViewer.VerticalScrollBarVisibility="Disabled"
-                          SelectionChanged="Logic.GridView_SelectionChanged"
-                          SelectedIndex="{x:Bind Logic.selectedIndexRivalTable, Mode=TwoWay}">
+                          ItemClick="Logic.GridView_ItemClick"
+                          x:Name="AllyTable"
+                          IsItemClickEnabled="True">
                     </GridView>
                 </Viewbox>
 
@@ -327,10 +330,10 @@
                                                 <RowDefinition Height="1*"></RowDefinition>
                                                 <RowDefinition Height="1*"></RowDefinition>
                                             </Grid.RowDefinitions>
-                                            <Image Source="{x:Bind Logic.SelectedCardImgSource, Mode=OneWay}" Grid.Row="0" Margin="10"
+                                            <Image x:Name="SelectedImage" Grid.Row="0" Margin="10"
                                                Stretch="Fill"></Image>
                                             <Viewbox Grid.Row="1" Margin="5" HorizontalAlignment="Center">
-                                                <TextBlock Text="{x:Bind Logic.SelectedCardDescription, Mode=OneWay}"  FontSize="25"/>
+                                                <TextBlock x:Name="SelectedDesc"  Text="No seleccionada"  FontSize="25"/>
                                             </Viewbox>
 
                                         </Grid>
@@ -338,21 +341,21 @@
                                             VerticalAlignment="Bottom" Opacity="0.7"
                                             Margin="20"
                                             Width="40" Height="40" CornerRadius="20">
-                                            <TextBlock Text="{x:Bind Logic.SelectedCardAttack, Mode=OneWay}" HorizontalAlignment="Center"
+                                            <TextBlock x:Name="SelectedAttack" Text="-1" HorizontalAlignment="Center"
                                                    VerticalAlignment="Center" FontSize="25">
                                             </TextBlock>
                                         </Border>
                                         <Border Background="Red" HorizontalAlignment="Right"
                                             VerticalAlignment="Bottom" Opacity="0.7"
                                             Margin="15" Width="40" Height="40" CornerRadius="20">
-                                            <TextBlock Text="{x:Bind Logic.SelectedCardArmor, Mode=OneWay}" HorizontalAlignment="Center"
+                                            <TextBlock x:Name="SelectedArmor" Text="-1" HorizontalAlignment="Center"
                                                    VerticalAlignment="Center" FontSize="25">
                                             </TextBlock>
                                         </Border>
                                         <Border Background="Blue" HorizontalAlignment="Left"
                                             VerticalAlignment="Top"
                                             Width="40" Height="40" CornerRadius="20">
-                                            <TextBlock Text="{x:Bind Logic.SelectedCardMana, Mode=OneWay}" HorizontalAlignment="Center"
+                                            <TextBlock x:Name="SelectedMana" Text="-1" HorizontalAlignment="Center"
                                             VerticalAlignment="Center" FontSize="25">
                                             </TextBlock>
                                         </Border>

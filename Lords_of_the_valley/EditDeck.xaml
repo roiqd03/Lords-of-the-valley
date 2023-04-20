@@ -180,7 +180,8 @@
                         HorizontalAlignment="Right"
                         VerticalAlignment="Bottom"
                         Background="Transparent"
-                        BorderThickness="0">
+                        BorderThickness="0"
+                        Click="ButtonBack_Click">
                     <Image Source="Assets/Icons/arrow.png"></Image>
                 </Button>
             </Grid>

@@ -130,6 +130,11 @@ namespace Lords_of_the_valley
             CardPlaceList.IsItemClickEnabled = false;
         }
 
+        private void ButtonBack_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(ChooseDeck));
+        }
+
         //private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
         //{
         //    // calculates incorrect when window is maximized

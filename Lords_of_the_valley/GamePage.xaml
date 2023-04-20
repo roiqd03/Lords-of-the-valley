@@ -69,8 +69,10 @@
                             <RowDefinition Height="1*"></RowDefinition>
                             <RowDefinition Height="1*"></RowDefinition>
                         </Grid.RowDefinitions>
-                        <Image Source="{x:Bind imgSource}" Grid.Row="0" Margin="20"
-                        Stretch="Fill"></Image>
+                        <Border Grid.Row="0" Margin="5" CornerRadius="10">
+                            <Image Source="{x:Bind imgSource}" 
+                            Stretch="Fill"></Image>
+                        </Border>
                         <TextBlock Text="{x:Bind name}" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Top"/>
                     </Grid>
                     <Border Background="LightYellow" HorizontalAlignment="Left"

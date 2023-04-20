@@ -25,6 +25,10 @@
             
         </DataTemplate>
 
+        <Style TargetType="GridViewItem">
+            <Setter Property="IsTabStop" Value="False"></Setter>
+        </Style>
+
         <Style TargetType="Button">
             <Setter Property="Margin" Value="0,0,3,0"></Setter>
             <Setter Property="BorderThickness" Value="2"></Setter>
@@ -129,10 +133,15 @@
                     ItemTemplate="{StaticResource ListItemTemplate}"
                     HorizontalAlignment="Stretch"
                     Grid.Row="1"
+                    IsTabStop="False"
+                    x:Name="CardPlaceList"
+                    IsItemClickEnabled="False"
+                    ItemClick="CardPlaceList_ItemClick"
                     >
                         <ListView.ItemContainerStyle>
                             <Style TargetType="ListViewItem">
                                 <Setter Property="HorizontalContentAlignment" Value="Stretch"></Setter>
+                                <Setter Property="IsTabStop" Value="False"></Setter>
                                 <Setter Property="VerticalContentAlignment" Value="Stretch"></Setter>
                                 <Setter Property="Margin" Value="5"></Setter>
                             </Style>
@@ -151,15 +160,19 @@
                                CornerRadius="20">
                     </Border>
                     <StackPanel Margin="25, 10, 0, 0" Orientation="Horizontal"
-                                VerticalAlignment="Top">
-                        <Button>Personajes</Button>
-                        <Button>Tropas</Button>
-                        <Button>Hechizos</Button>
+                                VerticalAlignment="Top" TabFocusNavigation="Once" XYFocusKeyboardNavigation="Enabled">
+                        <Button Click="Button_Click">Personajes</Button>
+                        <Button Click="Button_Click">Tropas</Button>
+                        <Button Click="Button_Click">Hechizos</Button>
                     </StackPanel>
                     <GridView Grid.Row="1"
                               Margin="25, 50, 0, 50"
                               ItemsSource="{x:Bind Cards}"
-                              ItemTemplate="{StaticResource GridViewItemTemplate}">
+                              ItemTemplate="{StaticResource GridViewItemTemplate}"
+                              x:Name="CardCollection"
+                              IsItemClickEnabled="False"
+                              ItemClick="CardCollection_ItemClick">
+                        
                     </GridView>
                 </Grid>
 

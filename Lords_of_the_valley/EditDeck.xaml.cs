@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -7,6 +9,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
+using Windows.UI.Xaml.Automation;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Data;
@@ -32,6 +35,7 @@ namespace Lords_of_the_valley
         {
             this.InitializeComponent();
 
+
             //this.SizeChanged += Window_SizeChanged;
 
             for (int i = 0; i < 30; ++i)
@@ -43,6 +47,87 @@ namespace Lords_of_the_valley
             {
                 Cards.Add(new CardModel("Assets\\DecksImg\\deck1.jpg", "Card Description " + i, 3, 1, 2, 0, i));
             }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Button b = sender as Button;
+            StackPanel s = b.Parent as StackPanel;
+            foreach(Button button in s.Children)
+            {
+                button.IsTabStop = false;
+            }
+
+            for(int i = 0; i < Cards.Count; ++i)
+            {
+                var gridViewItem = CardCollection.ContainerFromIndex(i);
+                if(gridViewItem != null)
+                {
+                    GridViewItem g = gridViewItem as GridViewItem;
+                    g.IsTabStop = true;
+                }
+            }
+            GridViewItem it = CardCollection.ContainerFromIndex(0) as GridViewItem;
+            it.Focus(FocusState.Keyboard);
+            CardCollection.IsItemClickEnabled = true;
+        }
+
+        private void CardCollection_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            for (int i = 0; i < Cards.Count; ++i)
+            {
+                var gridViewItem = CardCollection.ContainerFromIndex(i);
+                if (gridViewItem != null)
+                {
+                    GridViewItem g = gridViewItem as GridViewItem;
+                    g.IsTabStop = false;
+                }
+            }
+
+            for (int i = 0; i < CardPlace.Count; ++i)
+            {
+                var listViewItem = CardPlaceList.ContainerFromIndex(i);
+                if (listViewItem != null)
+                {
+                    ListViewItem l = listViewItem as ListViewItem;
+                    l.IsTabStop = true;
+                }
+            }
+
+            ListViewItem it = CardPlaceList.ContainerFromIndex(0) as ListViewItem;
+            it.Focus(FocusState.Keyboard);
+            CardCollection.IsItemClickEnabled = false;
+            CardPlaceList.IsItemClickEnabled = true;
+        }
+
+        private void CardPlaceList_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            for (int i = 0; i < CardPlace.Count; ++i)
+            {
+                var listViewItem = CardPlaceList.ContainerFromIndex(i);
+                if (listViewItem != null)
+                {
+                    ListViewItem l = listViewItem as ListViewItem;
+                    l.IsTabStop = false;
+                }
+            }
+
+            for (int i = 0; i < Cards.Count; ++i)
+            {
+                var gridViewItem = CardCollection.ContainerFromIndex(i);
+                if (gridViewItem != null)
+                {
+                    GridViewItem g = gridViewItem as GridViewItem;
+                    g.IsTabStop = true;
+                }
+            }
+
+            GridViewItem it = CardCollection.ContainerFromIndex(0) as GridViewItem;
+            it.Focus(FocusState.Keyboard);
+            CardCollection.IsItemClickEnabled = true;
+            CardPlaceList.IsItemClickEnabled = false;
         }
 
         //private void Window_SizeChanged(object sender, SizeChangedEventArgs e)

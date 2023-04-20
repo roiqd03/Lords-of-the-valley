@@ -156,8 +156,8 @@ namespace Lords_of_the_valley
             {
                 currentMoney = (myMoney - cardPrice).ToString();
                 Money.Text = currentMoney;
-            }
              GetFocusShopList();
+            }
 
             
         }

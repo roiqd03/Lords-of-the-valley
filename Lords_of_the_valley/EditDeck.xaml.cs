@@ -16,6 +16,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using System.Runtime.CompilerServices;
 using static System.Net.Mime.MediaTypeNames;
 
 // La plantilla de elemento Página en blanco está documentada en https://go.microsoft.com/fwlink/?LinkId=234238
@@ -27,10 +28,8 @@ namespace Lords_of_the_valley
     /// </summary>
     public sealed partial class EditDeck : Page
     {
-        private double startWidth = 1920;
-        private double startHeight = 1080;
-        public List<DeckModel> CardPlace { get; set; } = new List<DeckModel>();
-        public List<CardModel> Cards { get; set; } = new List<CardModel>();
+        public ObservableCollection<CardModel> CardPlace { get; set; } = new ObservableCollection<CardModel>();
+        public ObservableCollection<CardModel> Cards { get; set; } = new ObservableCollection<CardModel>();
     public EditDeck()
         {
             this.InitializeComponent();
@@ -40,7 +39,7 @@ namespace Lords_of_the_valley
 
             for (int i = 0; i < 30; ++i)
             {
-                CardPlace.Add(new DeckModel("a", "Card Place " + i, i));
+                CardPlace.Add(new CardModel("EMPTY", "", "", 0, 0, 0, 0, i));
             }
 
             for (int i = 0; i < 30; ++i)
@@ -123,11 +122,16 @@ namespace Lords_of_the_valley
                 }
             }
 
+            CardModel c1 = CardCollection.SelectedItem as CardModel;
+            CardModel c2 = e.ClickedItem as CardModel;
+            c2.SetCard(c1);
+
             GridViewItem it = CardCollection.ContainerFromIndex(0) as GridViewItem;
             it.Focus(FocusState.Keyboard);
             CardCollection.IsItemClickEnabled = true;
             CardPlaceList.IsItemClickEnabled = false;
         }
+
 
         private void ButtonBack_Click(object sender, RoutedEventArgs e)
         {
@@ -205,7 +209,7 @@ namespace Lords_of_the_valley
         //}
     }
 
-    public class CardModel
+    public class CardModel : INotifyPropertyChanged
     {
         public ImageSource imgSource;
         public string description;
@@ -217,6 +221,13 @@ namespace Lords_of_the_valley
         public string name;
         public CardModel(string name_, string img, string desc, int attack_, int armor_, int mana_, int place_, int id_)
         {
+            SetCard(name_, img, desc, attack_, armor_, mana_, place_, id_);
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        public void SetCard(string name_, string img, string desc, int attack_, int armor_, int mana_, int place_, int id_)
+        {
             string s = System.IO.Directory.GetCurrentDirectory() + "\\" + img;
             this.imgSource = new Windows.UI.Xaml.Media.Imaging.BitmapImage(new Uri(s));
             this.description = desc;
@@ -226,6 +237,37 @@ namespace Lords_of_the_valley
             this.place = place_;
             this.id = id_;
             this.name = name_;
+
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(this.imgSource)));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(this.description)));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(this.attack)));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(this.armor)));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(this.name)));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(this.mana)));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(this.place)));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(this.id)));
+        }
+
+        public void SetCard(CardModel c)
+        {
+            this.imgSource = c.imgSource;
+            this.description = c.description;
+            this.attack = c.attack;
+            this.armor = c.armor;
+            this.mana = c.mana;
+            this.place = c.place;
+            this.id = c.id;
+            this.name = c.name;
+
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(this.imgSource)));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(this.description)));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(this.attack)));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(this.armor)));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(this.name)));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(this.mana)));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(this.place)));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(this.id)));
+
         }
     }
 }

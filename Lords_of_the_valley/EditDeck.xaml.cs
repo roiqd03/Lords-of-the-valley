@@ -135,6 +135,62 @@ namespace Lords_of_the_valley
             Frame.Navigate(typeof(ChooseDeck));
         }
 
+        private void ESC_KeyDown(object sender, KeyRoutedEventArgs e)
+        {
+            if(e.Key == Windows.System.VirtualKey.Escape)
+            {
+                GridViewItem gridElem = FocusManager.GetFocusedElement() as GridViewItem;
+                ListViewItem listElem = FocusManager.GetFocusedElement() as ListViewItem;
+                if (gridElem != null)
+                {
+                    foreach (Button button in ChooseType.Children)
+                    {
+                        button.IsTabStop = true;
+                    }
+                    Button b = ChooseType.Children[0] as Button;
+                    b.Focus(FocusState.Keyboard);
+
+                    for (int i = 0; i < Cards.Count; ++i)
+                    {
+                        var gridViewItem = CardCollection.ContainerFromIndex(i);
+                        if (gridViewItem != null)
+                        {
+                            GridViewItem g = gridViewItem as GridViewItem;
+                            g.IsTabStop = false;
+                        }
+                    }
+                    CardCollection.IsItemClickEnabled = false;
+                }
+                else if(listElem != null)
+                {
+                    for (int i = 0; i < CardPlace.Count; ++i)
+                    {
+                        var listViewItem = CardPlaceList.ContainerFromIndex(i);
+                        if (listViewItem != null)
+                        {
+                            ListViewItem l = listViewItem as ListViewItem;
+                            l.IsTabStop = false;
+                        }
+                    }
+
+                    for (int i = 0; i < Cards.Count; ++i)
+                    {
+                        var gridViewItem = CardCollection.ContainerFromIndex(i);
+                        if (gridViewItem != null)
+                        {
+                            GridViewItem g = gridViewItem as GridViewItem;
+                            g.IsTabStop = true;
+                        }
+                    }
+
+                    GridViewItem it = CardCollection.ContainerFromIndex(0) as GridViewItem;
+                    it.Focus(FocusState.Keyboard);
+                    CardCollection.IsItemClickEnabled = true;
+                    CardPlaceList.IsItemClickEnabled = false;
+                }
+            }
+        }
+
         //private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
         //{
         //    // calculates incorrect when window is maximized

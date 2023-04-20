@@ -137,6 +137,7 @@
                     x:Name="CardPlaceList"
                     IsItemClickEnabled="False"
                     ItemClick="CardPlaceList_ItemClick"
+                    KeyDown="ESC_KeyDown"
                     >
                         <ListView.ItemContainerStyle>
                             <Style TargetType="ListViewItem">
@@ -159,7 +160,7 @@
                                Margin="25, 50, 0, 50"
                                CornerRadius="20">
                     </Border>
-                    <StackPanel Margin="25, 10, 0, 0" Orientation="Horizontal"
+                    <StackPanel x:Name="ChooseType" Margin="25, 10, 0, 0" Orientation="Horizontal"
                                 VerticalAlignment="Top" TabFocusNavigation="Once" XYFocusKeyboardNavigation="Enabled">
                         <Button Click="Button_Click">Personajes</Button>
                         <Button Click="Button_Click">Tropas</Button>
@@ -171,7 +172,8 @@
                               ItemTemplate="{StaticResource GridViewItemTemplate}"
                               x:Name="CardCollection"
                               IsItemClickEnabled="False"
-                              ItemClick="CardCollection_ItemClick">
+                              ItemClick="CardCollection_ItemClick"
+                              KeyDown="ESC_KeyDown">
                         
                     </GridView>
                 </Grid>

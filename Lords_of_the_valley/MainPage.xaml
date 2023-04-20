@@ -6,7 +6,8 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    Loaded="OnPageLoad">
     <Grid>
 
         <Image Source="/Assets/Backgrounds/Fondo_inicio.jpg"
@@ -88,10 +89,11 @@
 
                 <Viewbox Grid.Column="1">
                     
-                    <Button  Content="CAMPAÑA" FontSize="50" Foreground="Black" 
-                                Width="350" Height="600"  FontStretch="Normal"   Margin="50,50,50,25" Background="DarkRed" Opacity="0.7"
-                               HorizontalAlignment="Stretch" VerticalAlignment="Stretch" CornerRadius="100"
-                               Click="GamePage_OnClick"/>
+                    <Button  x:Name="StartButton"
+                             Content="CAMPAÑA" FontSize="50" Foreground="Black" 
+                             Width="350" Height="600"  FontStretch="Normal"   Margin="50,50,50,25" Background="DarkRed" Opacity="0.7"
+                             HorizontalAlignment="Stretch" VerticalAlignment="Stretch" CornerRadius="100"
+                             Click="GamePage_OnClick"/>
                 </Viewbox>
                     
                 <Viewbox Grid.Column="2">

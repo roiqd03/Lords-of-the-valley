@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -26,6 +27,11 @@ namespace Lords_of_the_valley
         {
             this.InitializeComponent();
         }
+
+        protected void OnPageLoad(object sender, RoutedEventArgs e)
+        {
+            StartButton.Focus(FocusState.Keyboard);
+        } 
 
         private void ChooseDeck_OnClick(object sender, RoutedEventArgs e)
         {

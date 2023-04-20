@@ -62,6 +62,7 @@ namespace Lords_of_the_valley
             SelectedAttack.Text = card.attack.ToString();
             SelectedArmor.Text = card.armor.ToString();
             SelectedMana.Text = card.mana.ToString();
+            SelectedName.Text = card.name;
         }
 
         public GamePageLogic Logic { get; } = new GamePageLogic();

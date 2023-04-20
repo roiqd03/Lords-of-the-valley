@@ -63,16 +63,15 @@
             <Border Background="Orange" Width="100" Height="133" Margin="30" CornerRadius="15">
                 <Grid>
                     <Grid HorizontalAlignment="Stretch"
-                                VerticalAlignment="Stretch">
+                        VerticalAlignment="Stretch">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="2*"></RowDefinition>
                             <RowDefinition Height="1*"></RowDefinition>
                             <RowDefinition Height="1*"></RowDefinition>
                         </Grid.RowDefinitions>
-                        <Image Source="{x:Bind imgSource}" Grid.Row="0" Margin="10"
-                               Stretch="Fill"></Image>
-                        <TextBlock Text="{x:Bind description}" Grid.Row="1" Margin="5" FontSize="10"
-                                   HorizontalAlignment="Center"/>
+                        <Image Source="{x:Bind imgSource}" Grid.Row="0" Margin="20"
+                        Stretch="Fill"></Image>
+                        <TextBlock Text="{x:Bind name}" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Top"/>
                     </Grid>
                     <Border Background="LightYellow" HorizontalAlignment="Left"
                             VerticalAlignment="Bottom" Opacity="0.7"
@@ -326,16 +325,22 @@
                                         <Grid HorizontalAlignment="Stretch"
                                               VerticalAlignment="Stretch">
                                             <Grid.RowDefinitions>
-                                                <RowDefinition Height="2*"></RowDefinition>
+                                                <RowDefinition Height="6*"></RowDefinition>
                                                 <RowDefinition Height="1*"></RowDefinition>
-                                                <RowDefinition Height="1*"></RowDefinition>
+                                                <RowDefinition Height="4*"></RowDefinition>
+                                                <RowDefinition Height="3*"></RowDefinition>
                                             </Grid.RowDefinitions>
                                             <Image x:Name="SelectedImage" Grid.Row="0" Margin="10"
                                                Stretch="Fill"></Image>
-                                            <Viewbox Grid.Row="1" Margin="5" HorizontalAlignment="Center">
-                                                <TextBlock x:Name="SelectedDesc"  Text="No seleccionada"  FontSize="25"/>
+
+                                            <Viewbox Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Top">
+                                                <TextBlock x:Name="SelectedName" Text="No seleccionada"  FontSize="18"/>
+                                            </Viewbox>
+                                            <Viewbox Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="5,10,5,0">
+                                                <TextBlock x:Name="SelectedDesc"  Text="No seleccionada"  FontSize="18"/>
                                             </Viewbox>
 
+                                            
                                         </Grid>
                                         <Border Background="LightYellow" HorizontalAlignment="Left"
                                             VerticalAlignment="Bottom" Opacity="0.7"

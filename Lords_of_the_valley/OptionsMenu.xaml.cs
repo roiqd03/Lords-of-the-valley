@@ -24,9 +24,13 @@ namespace Lords_of_the_valley
     /// </summary>
     public sealed partial class OptionsMenu : Page
     {
+        public int music;
+        public int sound;
         public OptionsMenu()
         {
             this.InitializeComponent();
+            music = 100;
+            sound = 100;
         }
 
         private void MainMenu_OnClick(object sender, RoutedEventArgs e)
@@ -46,6 +50,28 @@ namespace Lords_of_the_valley
             {
                 Frame.GoBack();
             }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Button b = sender as Button;
+
+            Slider s = b.Content as Slider;
+            s.IsTabStop = true;
+            s.Focus(FocusState.Keyboard);
+        }
+
+        private void Slider_KeyDown(object sender, KeyRoutedEventArgs e)
+        {
+            if (e.Key == Windows.System.VirtualKey.Escape)
+            {
+                Slider s = sender as Slider;
+                Button b = s.Parent as Button;
+                s.IsTabStop = false;
+                b.Focus(FocusState.Keyboard);
+            }
+
+
         }
     }
 }

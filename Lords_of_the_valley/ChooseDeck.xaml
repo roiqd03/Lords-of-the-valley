@@ -49,7 +49,7 @@
                 </Grid.ColumnDefinitions>
 
                 <Viewbox Margin="10">
-                    <Button x:Name="Deck1" CornerRadius="30">
+                    <Button x:Name="Deck1" CornerRadius="30" Click="Deck_Click">
                         <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="3*"></RowDefinition>
@@ -65,7 +65,7 @@
                 </Viewbox>
 
                 <Viewbox Grid.Column="1" Margin="10">
-                    <Button x:Name="Deck2" CornerRadius="30">
+                    <Button x:Name="Deck2" CornerRadius="30" Click="Deck_Click">
                         <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="3*"></RowDefinition>
@@ -81,7 +81,7 @@
                 </Viewbox>
 
                 <Viewbox Grid.Column="2" Margin="10">
-                    <Button x:Name="Deck3" Grid.Column="2" CornerRadius="30">
+                    <Button x:Name="Deck3" Grid.Column="2" CornerRadius="30" Click="Deck_Click">
                         <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="3*"></RowDefinition>
@@ -97,7 +97,7 @@
                 </Viewbox>
 
                 <Viewbox Grid.Row="1" Margin="10">
-                    <Button x:Name="Deck4" CornerRadius="30">
+                    <Button x:Name="Deck4" CornerRadius="30" Click="Deck_Click">
                         <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="3*"></RowDefinition>
@@ -113,7 +113,7 @@
                 </Viewbox>
 
                 <Viewbox Grid.Row="1" Grid.Column="1" Margin="10">
-                    <Button x:Name="Deck5" CornerRadius="30">
+                    <Button x:Name="Deck5" CornerRadius="30" Click="Deck_Click">
                         <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="3*"></RowDefinition>
@@ -129,7 +129,7 @@
                 </Viewbox>
 
                 <Viewbox Grid.Row="1" Grid.Column="2" Margin="10">
-                    <Button x:Name="Deck6" CornerRadius="30">
+                    <Button x:Name="Deck6" CornerRadius="30" Click="Deck_Click">
                         <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="3*"></RowDefinition>

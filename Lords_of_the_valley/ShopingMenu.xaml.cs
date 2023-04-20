@@ -13,7 +13,8 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using System.Collections.ObjectModel;
-using System.Drawing;
+using Windows.UI;
+
 // La plantilla de elemento Página en blanco está documentada en https://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace Lords_of_the_valley
@@ -31,7 +32,9 @@ namespace Lords_of_the_valley
 
             for (int i = 0; i < 30; ++i)
             {
-                SolidColorBrush color = new SolidColorBrush();
+                SolidColorBrush color = new SolidColorBrush(Color.FromArgb(10,10,10,10));
+
+
                 int price=300;
                 if (i%5==0)
                 {
@@ -103,8 +106,6 @@ namespace Lords_of_the_valley
             CardName.Text = card.name;
             CardPrice.Text = card.price.ToString();
             CardImage.Source = card.imgSource;
-
-
         }
         private void ESC_KeyDown(object sender, KeyRoutedEventArgs e)
         {
@@ -150,11 +151,13 @@ namespace Lords_of_the_valley
         {
             int cardPrice = int.Parse(CardPrice.Text);
             int myMoney = int.Parse(currentMoney);
-            if ( cardPrice<= myMoney)
+
+            if ( cardPrice <= myMoney)
             {
-                GetFocusShopList();
-                currentMoney = (myMoney - myMoney).ToString();
+                currentMoney = (myMoney - cardPrice).ToString();
+                Money.Text = currentMoney;
             }
+             GetFocusShopList();
 
             
         }

@@ -143,7 +143,7 @@
 
                 <StackPanel  Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,20,0">
 
-                    <TextBlock Text="{x:Bind currentMoney}" FontSize="30" HorizontalAlignment="Right" 
+                    <TextBlock x:Name="Money" Text="1000" FontSize="30" HorizontalAlignment="Right" 
                                VerticalAlignment="Center" Foreground="Yellow" Margin="10" FontStretch="Normal"/>
                     <Image Source="/Assets/Images/Coin.png" Width="30"/>
                     <Button Content="+" FontSize="30" Foreground="Black" CornerRadius="100" Background="Yellow" Margin="10" Width="50" HorizontalAlignment="Right"/>
@@ -155,7 +155,7 @@
 
                 <StackPanel  Orientation="Vertical" >
 
-                    <TextBlock Text="TIENDA" FontSize="50" Margin="0,70,0,0" FontStretch="Normal" Foreground="Black" FontWeight="Bold" HorizontalAlignment="Center"/>
+                    <TextBlock Text="TIENDA" FontSize="50" FontStretch="Normal" Foreground="Black" FontWeight="Bold" HorizontalAlignment="Center"/>
                     <Grid>
 
                         <Border Width="300" Height="450" Background="DarkCyan" Opacity="0.9" HorizontalAlignment="Center" Margin="20" CornerRadius="30"/>
@@ -207,7 +207,7 @@
                              FontStretch="Normal" Margin="20" IsTabStop="False" Click="BuyButton_Click"/>
                 </StackPanel>
             </Viewbox>
-                    <Button  Grid.Row="1" Grid.Column="1" Width="150" Height="150" HorizontalAlignment="Right" VerticalAlignment="Bottom" Background="Transparent" 
+                    <Button  Grid.Row="1" Grid.Column="1" Width="100" Height="100" HorizontalAlignment="Right" VerticalAlignment="Bottom" Background="Transparent" 
                         Margin="5" Click="MainMenu_OnClick">
                         <Image Source="/Assets/Icons/house.png" Stretch="Fill"/>
 
@@ -217,7 +217,7 @@
 
                 <StackPanel  Orientation="Vertical" >
 
-                    <TextBlock Text="TIENDA" FontSize="50" Margin="0,70,0,0" FontStretch="Normal" Foreground="Black" FontWeight="Bold" HorizontalAlignment="Center"/>
+                    <TextBlock Text="TIENDA" FontSize="50"  FontStretch="Normal" Foreground="Black" FontWeight="Bold" HorizontalAlignment="Center"/>
                     <Grid>
 
                         <Border Width="300" Height="450" Background="Black" Opacity="0.7" HorizontalAlignment="Center" Margin="20" CornerRadius="30"/>

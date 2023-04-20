@@ -65,6 +65,11 @@ namespace Lords_of_the_valley
         }
 
         public GamePageLogic Logic { get; } = new GamePageLogic();
+
+        private void Options_OnClick(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(OptionsMenu));
+        }
     }
 
 }

@@ -26,11 +26,20 @@
             </Viewbox>
 
             <Viewbox Grid.Row="0" HorizontalAlignment="Left">
+                <Button Click="Back_OnClick" Background="Transparent" Margin="02">
+                    <SymbolIcon Symbol="Back" Foreground="Gray" />
+
+                </Button>
+                
+            </Viewbox>
+
+            <Viewbox Grid.Row="0" HorizontalAlignment="Right">
                 <Button  Width="100" Height="100" Margin="40" Background="Transparent"
                          Click="MainMenu_OnClick">
                     <Image Source="/Assets/Icons/house.png" Stretch="Fill"/>
 
                 </Button>
+
             </Viewbox>
 
             <Viewbox Grid.Row="1">

@@ -39,5 +39,13 @@ namespace Lords_of_the_valley
             Application application = Lords_of_the_valley.App.Current;
             application.Exit();
         }
+
+        private void Back_OnClick(object sender, RoutedEventArgs e)
+        {
+            if (Frame.CanGoBack)
+            {
+                Frame.GoBack();
+            }
+        }
     }
 }

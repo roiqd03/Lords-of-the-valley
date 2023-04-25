@@ -52,5 +52,23 @@ namespace Lords_of_the_valley
         {
             Frame.Navigate(typeof(OptionsMenu));
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {                      
+            if (Info_Button==sender as Button && Info.Visibility == Visibility.Collapsed) Info.Visibility = Visibility.Visible;
+            else Info.Visibility = Visibility.Collapsed;
+
+            if (Social_Button == sender as Button && Social.Visibility == Visibility.Collapsed) Social.Visibility = Visibility.Visible;
+            else Social.Visibility = Visibility.Collapsed;
+
+            if (Buzon_Button == sender as Button && Buzón.Visibility == Visibility.Collapsed) Buzón.Visibility = Visibility.Visible;
+            else Buzón.Visibility = Visibility.Collapsed;
+
+            if (Misiones_Button == sender as Button && Misiones.Visibility == Visibility.Collapsed) Misiones.Visibility = Visibility.Visible;
+            else Misiones.Visibility = Visibility.Collapsed;
+
+            if (Perfíl_Button == sender as Button && Perfil.Visibility == Visibility.Collapsed) Perfil.Visibility = Visibility.Visible;
+            else Perfil.Visibility = Visibility.Collapsed; 
+        }
     }
 }

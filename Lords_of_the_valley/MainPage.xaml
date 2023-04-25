@@ -32,7 +32,8 @@
                     
                 <TextBlock Text="LORDS OF THE VALLEY" FontSize="60"  
                            HorizontalAlignment="Center" Margin="20"
-                           Foreground="Black" FontWeight="Bold" FontStretch="Normal"/>
+                           Foreground="Black" FontWeight="Bold" FontStretch="Normal"
+                           TextDecorations="Underline"/>
                 </Viewbox>
 
                 <Viewbox Grid.Column="0">
@@ -43,15 +44,18 @@
                         <Image Source="/Assets/Icons/opciones.png" Stretch="Uniform"/>
 
                     </Button>
-                    <Button Width="75" Height="75"   Margin="10" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="Transparent">
+                    <Button x:Name="Info_Button" Width="75" Height="75"   Margin="10" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="Transparent"
+                            Click="Button_Click">
                         <Image Source="/Assets/Icons/info.png" Stretch="Uniform"/>
 
                     </Button>
-                    <Button Width="75" Height="75"   Margin="10" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="Transparent">
+                    <Button x:Name="Social_Button" Width="75" Height="75"   Margin="10" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="Transparent"
+                            Click="Button_Click">
                         <Image Source="/Assets/Icons/social.png" Stretch="Uniform"/>
 
                     </Button>
-                    <Button Width="75" Height="75"   Margin="10" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="Transparent">
+                    <Button x:Name="Buzon_Button" Width="75" Height="75"   Margin="10" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="Transparent"
+                            Click="Button_Click">
                         <Image Source="/Assets/Icons/buzon.png" Stretch="Uniform"/>
 
                     </Button>
@@ -63,7 +67,8 @@
                 <StackPanel  Orientation="Horizontal" HorizontalAlignment="Right">
                     <TextBlock Text="XXXXX" FontSize="30" VerticalAlignment="Center" Foreground="Yellow"/>
                     <Image Source="/Assets/Images/Coin.png"  Margin="20"/>
-                        <Button Width="50" Height="50"  HorizontalAlignment="Right" Margin="20" Background="Yellow" CornerRadius="100">
+                        <Button Width="50" Height="50"  HorizontalAlignment="Right" Margin="20" Background="Yellow" CornerRadius="100"
+                                Click="ShopingMenu_OnClick">
                         <TextBlock Text="+"  Foreground="Black" FontSize="30" VerticalAlignment="Center" Margin="5"/>
                     </Button>
 
@@ -78,7 +83,6 @@
                         <ColumnDefinition />
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
-
 
                 <Viewbox Grid.Column="0">
                     <Button Content="MAZOS" FontSize="50" Foreground="Black" 
@@ -104,8 +108,68 @@
                                Click="GamePage_OnClick"/>
                     
                 </Viewbox>
+                <Viewbox x:Name="Info" Visibility="Collapsed" Grid.Column="0" Margin="100,0,100,0" VerticalAlignment="Top">
+                    <Border Background="DarkSlateGray" CornerRadius="20">
+                        <StackPanel>
+                        <TextBlock Text="INFORMACIÓN" TextDecorations="Underline" HorizontalAlignment="Center" Margin="5"/>
+                        <TextBlock Text="Raúl y Roi sacan 10 en DSI" Margin="5"/>
+                        <TextBlock Text="Raúl y Roi sacan 10 en DSI" Margin="5"/>
+                        <TextBlock Text="Raúl y Roi sacan 10 en DSI" Margin="5"/>
+                        <TextBlock Text="..." Margin="5" HorizontalAlignment="Center"/>
 
-                </Grid>
+                        </StackPanel>
+                    </Border>
+                </Viewbox>
+                <Viewbox x:Name="Social" Visibility="Collapsed" Grid.Column="0" Margin="100,0,100,0" VerticalAlignment="Top">
+                    <Border Background="DarkSlateGray" CornerRadius="20">
+                        <StackPanel>
+                            <TextBlock Text="ONLINE" TextDecorations="Underline" HorizontalAlignment="Center" Margin="5"/>
+                            <TextBlock Text="Raul_28_4" Margin="5" HorizontalAlignment="Center"/>
+                            <TextBlock Text="Sacan_10_enAsignatura" Margin="5" HorizontalAlignment="Center"/>
+                            <TextBlock Text="S3gund0_P0n_M4tr1cul4" Margin="5" HorizontalAlignment="Center"/>
+                            <TextBlock Text="..." Margin="5" HorizontalAlignment="Center"/>
+
+                        </StackPanel>
+                    </Border>
+                </Viewbox>
+                <Viewbox x:Name="Buzón" Visibility="Collapsed" Grid.Column="0" Margin="100,0,100,0" VerticalAlignment="Top">
+                    <Border Background="DarkSlateGray" CornerRadius="20">
+                        <StackPanel>
+                            <TextBlock Text="BUZÓN" TextDecorations="Underline" HorizontalAlignment="Center" Margin="5"/>
+                            <TextBlock Text="Roi te ha saludado" Margin="5" HorizontalAlignment="Center"/>
+                            <TextBlock Text="Segundo te ha puesto 10" Margin="5" HorizontalAlignment="Center"/>
+                            <TextBlock Text="Último hito de DSI" Margin="5" HorizontalAlignment="Center"/>
+                            <TextBlock Text="..." Margin="5" HorizontalAlignment="Center"/>
+
+                        </StackPanel>
+                    </Border>
+                </Viewbox>
+                <Viewbox x:Name="Misiones" Visibility="Collapsed" Grid.Column="1" Margin="5" VerticalAlignment="Bottom">
+                    <Border Background="HotPink" CornerRadius="20">
+                        <StackPanel>
+                            <TextBlock Text="MISIONES DIARIAS" TextDecorations="Underline" HorizontalAlignment="Center" Margin="5"/>
+                            <TextBlock Text="Saca 10 en DSI" Margin="5" HorizontalAlignment="Center"/>
+                            <TextBlock Text="Implementa Drag and Drop" Margin="5" HorizontalAlignment="Center"/>
+                            <TextBlock Text="Termina último hito de DSI" Margin="5" HorizontalAlignment="Center"/>
+                            <TextBlock Text="..." Margin="5" HorizontalAlignment="Center"/>
+
+                        </StackPanel>
+                    </Border>
+                </Viewbox>
+                <Viewbox x:Name="Perfil" Visibility="Collapsed" Grid.Column="0" Margin="5" VerticalAlignment="Bottom">
+                    <Border Background="DarkSeaGreen" CornerRadius="20">
+                        <StackPanel>
+                            <TextBlock Text="PERFÍL" TextDecorations="Underline" HorizontalAlignment="Center" Margin="5"/>
+                            <TextBlock Text="NOMBRE: _DSI_10/10_WOW" Margin="5" HorizontalAlignment="Center"/>
+                            <TextBlock Text="CÖDIGO AMIGO: #10.10.10.10" Margin="5" HorizontalAlignment="Center"/>
+                            <TextBlock Text="NIVEL: 10" Margin="5" HorizontalAlignment="Center"/>
+                            <TextBlock Text="..." Margin="5" HorizontalAlignment="Center"/>
+
+                        </StackPanel>
+                    </Border>
+                </Viewbox>
+
+            </Grid>
 
 
             <Grid Grid.Row="2" TabFocusNavigation="Once" XYFocusKeyboardNavigation="Enabled">
@@ -118,8 +182,9 @@
 
                 <Viewbox  Grid.Column="0" >
                     
-                    <Button Width="400" Height="175" Margin="10" Background="Gray"  
-                            VerticalAlignment="Center" CornerRadius="25">                        
+                    <Button x:Name="Perfíl_Button" Width="400" Height="175" Margin="10" Background="Gray"  
+                            VerticalAlignment="Center" CornerRadius="25"
+                            Click="Button_Click">                        
                         
                         <Grid >
 
@@ -149,9 +214,10 @@
 
                 <Viewbox  Grid.Column="1">
                     
-                    <Button Width="400" Height="100"  Background="Cyan" HorizontalAlignment="Center" 
+                    <Button x:Name="Misiones_Button" Width="400" Height="100"  Background="Cyan" HorizontalAlignment="Center" 
                             VerticalAlignment="Bottom" Opacity="0.8" Content="MISIONES DIARIAS"
-                            FontSize="30" FontStretch="Normal" Foreground="Black"/>
+                            FontSize="30" FontStretch="Normal" Foreground="Black"
+                            Click="Button_Click"/>
                 </Viewbox>
                 <Viewbox  Grid.Column="2">
                     

@@ -46,7 +46,7 @@ namespace Lords_of_the_valley
                 {
                     price = 550;
                 }
-                Cards.Add(new ShopCardModel("NAME " + i, "Assets\\DecksImg\\deck1.jpg", "Card Description " + i, 3, 1, 2, 0, i,price,priceColor,backColor));
+                Cards.Add(new ShopCardModel("NAME " + i, "Assets\\DecksImg\\deck1.jpg", "Card Description " + i, 3, 1, 2, 0,price,priceColor,backColor));
             }
         }
 
@@ -187,7 +187,7 @@ namespace Lords_of_the_valley
                 if(c.price> int.Parse(currentMoney))
                 {
                     //(string name_, string img, string desc, int attack_, int armor_, int mana_, int place_, int id_, int price_, Brush priceColor_, Brush backColr_
-                    c.SetCard(c.name, "Assets\\DecksImg\\deck1.jpg", c.description,c.attack,c.armor,c.mana,c.place,c.id,c.price,ColorGris.Background,ColorNegro.Foreground);
+                    c.SetCard(c.name, "Assets\\DecksImg\\deck1.jpg", c.description,c.attack,c.armor,c.mana,c.place,c.price,ColorGris.Background,ColorNegro.Foreground);
                 }
             }
 

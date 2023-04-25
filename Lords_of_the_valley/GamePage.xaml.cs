@@ -53,6 +53,9 @@ namespace Lords_of_the_valley
             Logic.UpdateManaUI();
 
             Logic.setPage(this);
+            Logic.setGridViews(myHand, AllyTable, EnemyTable, rivalHand);
+            Logic.setDarkZones(DarkLeft, DarkCenter, DarkRight);
+            Logic.setButtons(Power, Ready);
         }
 
         public void ChangeSelectedCard(CardModel card)

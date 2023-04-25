@@ -134,6 +134,7 @@
                               VerticalContentAlignment="Stretch"
                               ScrollViewer.VerticalScrollMode="Disabled"
                               SelectionMode="None"
+                              x:Name="rivalHand"
                               ScrollViewer.VerticalScrollBarVisibility="Disabled">
                     </GridView>
                 </Viewbox>
@@ -150,7 +151,9 @@
                                   ScrollViewer.VerticalScrollBarVisibility="Disabled"
                                   x:Name="myHand"
                                   ItemClick="Logic.GridView_ItemClick"
-                                  IsItemClickEnabled="True">
+                                  IsItemClickEnabled="True"
+                                  CanDragItems="True"
+                                  DragItemsStarting="Logic.myHand_DragItemsStarting">
                     </GridView>
                 </Viewbox>
 
@@ -172,19 +175,26 @@
                 
 
                 <!--MESA ALIADA-->
-                <Border Background="LightBlue" BorderThickness="2" Grid.Row ="4" Opacity="0.4" Margin="10,0,10,0" Grid.RowSpan="2"></Border>
-                <Viewbox Grid.Row="4">
-                    <GridView HorizontalAlignment="Center" VerticalAlignment="Top"
-                          Margin="0,0,0,10" ItemsSource="{x:Bind Logic.TableCards}"
-                          ItemTemplate="{StaticResource Table}"
-                          HorizontalContentAlignment="Stretch"
-                          VerticalContentAlignment="Top"
-                          ScrollViewer.VerticalScrollMode="Disabled"
-                          ScrollViewer.VerticalScrollBarVisibility="Disabled"
-                          ItemClick="Logic.GridView_ItemClick"
-                          x:Name="AllyTable"
-                          IsItemClickEnabled="True">
-                    </GridView>
+                <Border DragOver="Logic.AllyTable_DragOver"
+                         AllowDrop="True" Drop="Logic.AllyTable_Drop" Background="LightBlue" BorderThickness="2" Grid.Row ="4" Opacity="0.4" Margin="10,0,10,0" Grid.RowSpan="2"></Border>
+                <Viewbox Grid.Row="4" DragOver="Logic.AllyTable_DragOver"
+                         AllowDrop="True" Drop="Logic.AllyTable_Drop">
+                    <ContentControl IsTabStop="False" UseSystemFocusVisuals="True" KeyDown="Logic.AllyTable_KeyDown">
+
+                        <GridView HorizontalAlignment="Center" VerticalAlignment="Top"
+                        Margin="0,0,0,10" ItemsSource="{x:Bind Logic.TableCards}"
+                        ItemTemplate="{StaticResource Table}"
+                        HorizontalContentAlignment="Stretch"
+                        VerticalContentAlignment="Top"
+                        ScrollViewer.VerticalScrollMode="Disabled"
+                        ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                        ItemClick="Logic.GridView_ItemClick"
+                        x:Name="AllyTable"
+                        IsItemClickEnabled="True"
+                        IsTabStop="False"
+                        UseSystemFocusVisuals="True">
+                        </GridView>
+                    </ContentControl>
                 </Viewbox>
 
                 <Border Background="Brown" BorderThickness="2"  Grid.Row="3" Margin="10, 0, 10, 0"></Border>
@@ -227,12 +237,18 @@
                     <Viewbox Grid.Column="2" Grid.Row="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                         <Button 
                             Background="Orange" CornerRadius="67.5"  
-                            BorderBrush="Black" BorderThickness="2" Width="125" Height="125">
+                            BorderBrush="Black" BorderThickness="2" Width="125" Height="125"
+                            x:Name="Power">
                             <TextBlock Text="Poder" FontSize="30" Foreground="Black">
                             </TextBlock>
                         </Button>
                     </Viewbox>
                 </Grid>
+                <Rectangle x:Name="DarkCenter" 
+                        Fill="Black" Opacity="0.7" Grid.RowSpan="4" 
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Stretch"
+                        Visibility="Collapsed"></Rectangle>
             </Grid>
 
             <!--DERECHA-->
@@ -246,8 +262,9 @@
                 <!--BOTON LISTO-->
                 <Viewbox Grid.Row="1" Margin="5,0,5,0">
                     <Button  CornerRadius="50"  Background="Orange"
-                        BorderThickness="5" BorderBrush="Black" Width="100" Height="100">
-                        <TextBlock Text="Listo" HorizontalAlignment="Center" VerticalAlignment="Center"
+                        BorderThickness="5" BorderBrush="Black" Width="100" Height="100"
+                        x:Name="Ready">
+                        <TextBlock Text="Listo" HorizontalAlignment="Center" VerticalAlignment="Bottom"
                                FontSize="30"></TextBlock>
                     </Button>
                 </Viewbox>
@@ -272,7 +289,18 @@
                         </StackPanel>
                     </Border>
                 </Viewbox>
-                
+
+                <TextBlock Text="{x:Bind Logic.rivalManaText, Mode=OneWay}" Margin="20" Foreground="LightBlue"
+                           VerticalAlignment="Top" HorizontalAlignment="Right">
+                </TextBlock>
+
+                <Rectangle x:Name="DarkRight" 
+                        Fill="Black" Opacity="0.7" Grid.RowSpan="3"
+                        Grid.ColumnSpan="3"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Stretch"
+                        Visibility="Collapsed"></Rectangle>
+
                 <!--MANA ALIADO-->
                 <Viewbox Grid.Row="2"
                         Margin="0,0,50,10"  VerticalAlignment="Bottom">
@@ -294,9 +322,6 @@
                     </Border>
                 </Viewbox>
 
-                <TextBlock Text="{x:Bind Logic.rivalManaText, Mode=OneWay}" Margin="20" Foreground="LightBlue"
-                           VerticalAlignment="Top" HorizontalAlignment="Right">
-                </TextBlock>
                 <TextBlock Grid.Row="2" Text="{x:Bind Logic.manaText, Mode=OneWay}" Margin="20" Foreground="LightBlue"
                            VerticalAlignment="Bottom" HorizontalAlignment="Right">
                 </TextBlock>
@@ -316,6 +341,12 @@
                     <ColumnDefinition Width="4*"></ColumnDefinition>
                     <ColumnDefinition Width="1*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
+                <Rectangle x:Name="DarkLeft" 
+                        Fill="Black" Opacity="0.7" Grid.RowSpan="3"
+                        Grid.ColumnSpan="3"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Stretch"
+                        Visibility="Collapsed"></Rectangle>
                 <!--CARTA SELECCIONADA-->
                 <Border Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
                     BorderBrush="Orange" BorderThickness="3" CornerRadius="5">
@@ -378,7 +409,7 @@
             </Grid>
             <!--CONFIGURACION-->
             <Button VerticalAlignment="Top"
-                HorizontalAlignment="Left" Width="80" Height="73" Margin="10" Background="Transparent" Click="Options_OnClick">
+                HorizontalAlignment="Left" Width="80" Height="73" Margin="10" Background="Transparent" Click="Logic.Options_OnClick">
                 <Image Source="/Assets/Icons/opciones2.png" Stretch="UniformToFill"></Image>
             </Button>
         </Grid>

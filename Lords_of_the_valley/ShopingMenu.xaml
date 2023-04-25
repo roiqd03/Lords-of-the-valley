@@ -13,7 +13,7 @@
         <DataTemplate x:Key="GridViewItemTemplate" x:DataType="local:ShopCardModel">
             <Grid>
 
-                <Border Background="DarkCyan"  Width="200" Height="266" Margin="30" CornerRadius="15">
+                <Border Background="{x:Bind backColor}"  Width="200" Height="266" Margin="30" CornerRadius="15">
                 <Grid>
                     <Grid HorizontalAlignment="Stretch"
                         VerticalAlignment="Stretch">
@@ -53,7 +53,7 @@
 
             </Border>
 
-                <Border x:Name="PriceColor" Width="60" Height="30" Background="Orange" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="15" CornerRadius="10">
+                <Border Width="60" Height="30" Background="{x:Bind colorPrice}" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="15" CornerRadius="10">
                     <StackPanel Orientation="Horizontal">
 
                         <TextBlock Text="{x:Bind price}" Margin="5"/>
@@ -113,6 +113,17 @@
                         </ComboBoxItem>
 
                     </ComboBox>
+                    <Border x:Name="ColorAzul" Background="DarkCyan" Margin="100,0,0,0">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Leyenda de precio:" FontSize="20" Margin="5" VerticalAlignment="Center"  Foreground="Black" FontWeight="Bold"/>
+                            <Border x:Name="ColorNoranja" Background="DarkOrange" Width="100" Margin="5" CornerRadius="20">
+                                <TextBlock Text="Dispoible" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                            <Border x:Name="ColorGris" Background="Gray" Width="100" Margin="5" CornerRadius="20">
+                                <TextBlock Text="No Dispoible" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </StackPanel>
+                    </Border>
                 </StackPanel>
                 <GridView Grid.Row="1"
                               Margin="25, 50, 0, 50"
@@ -164,7 +175,7 @@
                     <TextBlock Text="TIENDA" FontSize="50" FontStretch="Normal" Foreground="Black" FontWeight="Bold" HorizontalAlignment="Center"/>
                     <Grid>
 
-                        <Border Width="300" Height="450" Background="DarkCyan" Opacity="0.9" HorizontalAlignment="Center" Margin="20" CornerRadius="30"/>
+                        <Border x:Name="FondoCard" Width="300" Height="450" Background="DarkCyan" Opacity="0.9" HorizontalAlignment="Center" Margin="20" CornerRadius="30"/>
                         <Border x:Name="PriceColor" Width="60" Height="30" Background="Orange" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="15" CornerRadius="10">
                             <StackPanel Orientation="Horizontal">
 
@@ -227,7 +238,7 @@
 
                 <StackPanel  Orientation="Vertical" >
 
-                    <TextBlock Text="TIENDA" FontSize="50"  FontStretch="Normal" Foreground="Black" FontWeight="Bold" HorizontalAlignment="Center"/>
+                    <TextBlock x:Name="ColorNegro" Text="TIENDA" FontSize="50"  FontStretch="Normal" Foreground="Black" FontWeight="Bold" HorizontalAlignment="Center"/>
                     <Grid>
 
                         <Border Width="300" Height="450" Background="Black" Opacity="0.7" HorizontalAlignment="Center" Margin="20" CornerRadius="30"/>

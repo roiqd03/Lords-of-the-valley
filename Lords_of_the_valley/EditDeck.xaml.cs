@@ -286,16 +286,17 @@ namespace Lords_of_the_valley
     public class ShopCardModel : CardModel
     {
         public int price;
-        public SolidColorBrush color;
-        public ShopCardModel(string name_, string img, string desc, int attack_, int armor_, int mana_, int place_, int id_,int price_,SolidColorBrush color_):base(name_, img, desc, attack_, armor_, mana_, place_, id_)
+        public Brush colorPrice;
+        public Brush backColor;
+        public ShopCardModel(string name_, string img, string desc, int attack_, int armor_, int mana_, int place_, int id_,int price_, Brush priceColor_, Brush backColr_):base(name_, img, desc, attack_, armor_, mana_, place_, id_)
         {
-            SetCard(name_, img, desc, attack_, armor_, mana_, place_, id_,price_,color_);
+            SetCard(name_, img, desc, attack_, armor_, mana_, place_, id_,price_, priceColor_, backColr_);
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
 
-        public void SetCard(string name_, string img, string desc, int attack_, int armor_, int mana_, int place_, int id_, int price_, SolidColorBrush color_)
+        public void SetCard(string name_, string img, string desc, int attack_, int armor_, int mana_, int place_, int id_, int price_, Brush priceColor_, Brush backColr_)
         {
             string s = System.IO.Directory.GetCurrentDirectory() + "\\" + img;
             this.imgSource = new Windows.UI.Xaml.Media.Imaging.BitmapImage(new Uri(s));
@@ -307,7 +308,8 @@ namespace Lords_of_the_valley
             this.id = id_;
             this.name = name_;
             this.price = price_;
-            this.color = color_;
+            this.colorPrice = priceColor_;
+            this.backColor = backColr_;
 
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(this.imgSource)));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(this.description)));
@@ -317,6 +319,9 @@ namespace Lords_of_the_valley
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(this.mana)));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(this.place)));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(this.id)));
+
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(this.colorPrice)));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(this.backColor)));
         }
 
         public void SetCard(ShopCardModel c)
@@ -330,7 +335,8 @@ namespace Lords_of_the_valley
             this.id = c.id;
             this.name = c.name;
             this.price = c.price;
-            this.color = c.color;
+            this.colorPrice = c.colorPrice;
+            this.backColor = c.backColor;
 
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(this.imgSource)));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(this.description)));
@@ -341,6 +347,8 @@ namespace Lords_of_the_valley
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(this.place)));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(this.id)));
 
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(this.colorPrice)));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(this.backColor)));
         }
     }
 }

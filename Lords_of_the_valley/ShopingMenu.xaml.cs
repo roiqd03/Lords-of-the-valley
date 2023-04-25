@@ -32,7 +32,8 @@ namespace Lords_of_the_valley
 
             for (int i = 0; i < 30; ++i)
             {
-                SolidColorBrush color = new SolidColorBrush(Color.FromArgb(10,10,10,10));
+                Brush priceColor=ColorNoranja.Background;
+                Brush backColor = ColorAzul.Background;
 
 
                 int price=300;
@@ -40,7 +41,7 @@ namespace Lords_of_the_valley
                 {
                     price = 550;
                 }
-                Cards.Add(new ShopCardModel("NAME " + i, "Assets\\DecksImg\\deck1.jpg", "Card Description " + i, 3, 1, 2, 0, i,price,color));
+                Cards.Add(new ShopCardModel("NAME " + i, "Assets\\DecksImg\\deck1.jpg", "Card Description " + i, 3, 1, 2, 0, i,price,priceColor,backColor));
             }
         }
 
@@ -106,6 +107,21 @@ namespace Lords_of_the_valley
             CardName.Text = card.name;
             CardPrice.Text = card.price.ToString();
             CardImage.Source = card.imgSource;
+            if (int.Parse(CardPrice.Text) > int.Parse(currentMoney))
+            {
+                PriceColor.Background = ColorGris.Background;
+                FondoCard.Background = ColorNegro.Foreground;
+                BuyButton.Background = ColorGris.Background;
+                
+            }
+            else
+            {
+                PriceColor.Background = ColorNoranja.Background;
+                FondoCard.Background = ColorAzul.Background;
+                BuyButton.Background = ColorNoranja.Background;
+            }
+
+            
         }
         private void ESC_KeyDown(object sender, KeyRoutedEventArgs e)
         {
@@ -156,10 +172,21 @@ namespace Lords_of_the_valley
             {
                 currentMoney = (myMoney - cardPrice).ToString();
                 Money.Text = currentMoney;
-             GetFocusShopList();
+                GetFocusShopList();
             }
 
-            
+            for (int i = 0; i < Cards.Count; ++i)
+            {
+                ShopCardModel c = CardCollection.Items[i] as ShopCardModel;
+
+                if(c.price> int.Parse(currentMoney))
+                {
+                    //(string name_, string img, string desc, int attack_, int armor_, int mana_, int place_, int id_, int price_, Brush priceColor_, Brush backColr_
+                    c.SetCard(c.name, "Assets\\DecksImg\\deck1.jpg", c.description,c.attack,c.armor,c.mana,c.place,c.id,c.price,ColorGris.Background,ColorNegro.Foreground);
+                }
+            }
+
+
         }
 
         private void GetFocusShopList()
@@ -182,4 +209,6 @@ namespace Lords_of_the_valley
             DarKCard.Visibility = Visibility.Visible;
         }
     }
+
+
 }

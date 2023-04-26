@@ -24,6 +24,7 @@ namespace Lords_of_the_valley
     /// </summary>
     public sealed partial class GamePage : Page
     {
+        string money;
         public GamePage()
         {
             this.InitializeComponent();
@@ -72,7 +73,15 @@ namespace Lords_of_the_valley
 
         private void Options_OnClick(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(OptionsMenu));
+            Frame.Navigate(typeof(OptionsMenu),money);
+        }
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            if (e.Parameter is string && !string.IsNullOrWhiteSpace((string)e.Parameter))
+            {
+                money = $"{e.Parameter.ToString()}";
+            }
+            base.OnNavigatedTo(e);
         }
     }
 

@@ -26,6 +26,7 @@ namespace Lords_of_the_valley
     {
         public int music;
         public int sound;
+        string money;
         public OptionsMenu()
         {
             this.InitializeComponent();
@@ -35,7 +36,7 @@ namespace Lords_of_the_valley
 
         private void MainMenu_OnClick(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(MainPage));
+            Frame.Navigate(typeof(MainPage),money);
         }
 
         private void Exit_OnClick(object sender, RoutedEventArgs e)
@@ -72,6 +73,14 @@ namespace Lords_of_the_valley
             }
 
 
+        }
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            if (e.Parameter is string && !string.IsNullOrWhiteSpace((string)e.Parameter))
+            {
+                money = $"{e.Parameter.ToString()}";
+            }
+            base.OnNavigatedTo(e);
         }
     }
 }

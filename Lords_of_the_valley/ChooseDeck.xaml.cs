@@ -23,9 +23,10 @@ namespace Lords_of_the_valley
     /// </summary>
     public sealed partial class ChooseDeck : Page
     {
+        string money;
         private void MainMenu_OnClick(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(MainPage));
+            Frame.Navigate(typeof(MainPage),money);
         }
 
 
@@ -85,7 +86,15 @@ namespace Lords_of_the_valley
 
         private void Deck_Click(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(EditDeck));
+            Frame.Navigate(typeof(EditDeck), money);
+        }
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            if (e.Parameter is string && !string.IsNullOrWhiteSpace((string)e.Parameter))
+            {
+                money = $"{e.Parameter.ToString()}";
+            }
+            base.OnNavigatedTo(e);
         }
     }
 
@@ -102,7 +111,8 @@ namespace Lords_of_the_valley
         }
     }
 
-   
+
+
 }
 
 

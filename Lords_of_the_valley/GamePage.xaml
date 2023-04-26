@@ -410,7 +410,7 @@
             </Grid>
             <!--CONFIGURACION-->
             <Button VerticalAlignment="Top"
-                HorizontalAlignment="Left" Width="80" Height="73" Margin="10" Background="Transparent" Click="Logic.Options_OnClick">
+                HorizontalAlignment="Left" Width="80" Height="73" Margin="10" Background="Transparent" Click="Options_OnClick">
                 <Image Source="/Assets/Icons/opciones2.png" Stretch="UniformToFill"></Image>
             </Button>
         </Grid>

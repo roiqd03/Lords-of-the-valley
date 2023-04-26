@@ -32,6 +32,7 @@ namespace Lords_of_the_valley
     {
         public ObservableCollection<CardModel> CardPlace { get; set; } = new ObservableCollection<CardModel>();
         public ObservableCollection<CardModel> Cards { get; set; } = new ObservableCollection<CardModel>();
+        string money;
     public EditDeck()
         {
             this.InitializeComponent();
@@ -145,7 +146,7 @@ namespace Lords_of_the_valley
 
         private void ButtonBack_Click(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(ChooseDeck));
+            Frame.Navigate(typeof(ChooseDeck),money);
         }
 
         private void ESC_KeyDown(object sender, KeyRoutedEventArgs e)
@@ -205,6 +206,15 @@ namespace Lords_of_the_valley
                     DarkList.Visibility = Visibility.Visible;
                 }
             }
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            if (e.Parameter is string && !string.IsNullOrWhiteSpace((string)e.Parameter))
+            {
+                money = $"{e.Parameter.ToString()}";
+            }
+            base.OnNavigatedTo(e);
         }
 
         //private void Window_SizeChanged(object sender, SizeChangedEventArgs e)

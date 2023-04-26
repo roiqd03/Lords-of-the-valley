@@ -36,12 +36,12 @@ namespace Lords_of_the_valley
 
         private void ChooseDeck_OnClick(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(ChooseDeck));
+            Frame.Navigate(typeof(ChooseDeck), Money);
         }
 
         private void GamePage_OnClick(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(GamePage));
+            Frame.Navigate(typeof(GamePage), Money);
         }
 
         private void ShopingMenu_OnClick(object sender, RoutedEventArgs e)
@@ -51,7 +51,7 @@ namespace Lords_of_the_valley
 
         private void Options_OnClick(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(OptionsMenu));
+            Frame.Navigate(typeof(OptionsMenu), Money);
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

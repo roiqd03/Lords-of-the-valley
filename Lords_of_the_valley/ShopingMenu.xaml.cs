@@ -27,17 +27,22 @@ namespace Lords_of_the_valley
     /// <summary>
     /// Una página vacía que se puede usar de forma independiente o a la que se puede navegar dentro de un objeto Frame.
     /// </summary>
-    public sealed partial class ShopingMenu : Page
+    public sealed partial class ShopingMenu : Page, INotifyPropertyChanged
     {
         public string currentMoney = "1000";
+        public event PropertyChangedEventHandler PropertyChanged;
+
         public ObservableCollection<ShopCardModel> Cards { get; set; } = new ObservableCollection<ShopCardModel>();
         public ShopingMenu()
         {
             this.InitializeComponent();
 
+            Money.Text = currentMoney;
+
             for (int i = 0; i < 30; ++i)
             {
-                Brush priceColor=ColorNoranja.Background;
+                Brush priceColor = ColorNoranja.Background;
+                Brush priceNotEnoughColor = ColorGris.Background;
                 Brush backColor = ColorAzul.Background;
 
 
@@ -46,7 +51,14 @@ namespace Lords_of_the_valley
                 {
                     price = 550;
                 }
-                Cards.Add(new ShopCardModel("NAME " + i, "Assets\\DecksImg\\deck1.jpg", "Card Description " + i, 3, 1, 2, 0,price,priceColor,backColor));
+                if(price <= int.Parse(currentMoney))
+                {
+                    Cards.Add(new ShopCardModel("NAME " + i, "Assets\\DecksImg\\deck1.jpg", "Card Description " + i, 3, 1, 2, 0,price,priceColor,backColor));
+                }
+                else
+                {
+                    Cards.Add(new ShopCardModel("NAME " + i, "Assets\\DecksImg\\deck1.jpg", "Card Description " + i, 3, 1, 2, 0, price, priceNotEnoughColor, backColor));
+                }
             }
         }
 
@@ -190,8 +202,7 @@ namespace Lords_of_the_valley
                     c.SetCard(c.name, "Assets\\DecksImg\\deck1.jpg", c.description,c.attack,c.armor,c.mana,c.place,c.price,ColorGris.Background,ColorNegro.Foreground);
                 }
             }
-
-
+            
         }
 
         private void GetFocusShopList()

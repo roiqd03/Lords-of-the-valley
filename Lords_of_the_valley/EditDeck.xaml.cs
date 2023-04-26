@@ -278,7 +278,7 @@ namespace Lords_of_the_valley
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(this.place)));
         }
     }
-    public class ShopCardModel : CardModel
+    public class ShopCardModel : CardModel, INotifyPropertyChanged
     {
         public int price;
         public Brush colorPrice;

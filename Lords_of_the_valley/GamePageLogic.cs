@@ -224,6 +224,12 @@ namespace Lords_of_the_valley
                     RaisePropertyChanged(nameof(tableCollection));
                     actualMana -= c.mana;
                     UpdateManaUI();
+                    darkZonesActive(false);
+                    if (gridViews[(int)CardPlace.Hand].Items.Count() > 0)
+                    {
+                        GridViewItem g = gridViews[(int)CardPlace.Hand].ContainerFromIndex(0) as GridViewItem;
+                        g.Focus(FocusState.Keyboard);
+                    }
                 }
             }
             else if(e.Key == Windows.System.VirtualKey.Escape || e.OriginalKey == Windows.System.VirtualKey.GamepadB)

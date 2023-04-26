@@ -23,6 +23,7 @@ namespace Lords_of_the_valley
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        string Money = "1000";
         public MainPage()
         {
             this.InitializeComponent();
@@ -45,7 +46,7 @@ namespace Lords_of_the_valley
 
         private void ShopingMenu_OnClick(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(ShopingMenu));
+            Frame.Navigate(typeof(ShopingMenu),Money);
         }
 
         private void Options_OnClick(object sender, RoutedEventArgs e)
@@ -69,6 +70,16 @@ namespace Lords_of_the_valley
 
             if (Perfíl_Button == sender as Button && Perfil.Visibility == Visibility.Collapsed) Perfil.Visibility = Visibility.Visible;
             else Perfil.Visibility = Visibility.Collapsed; 
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            if(e.Parameter is string && !string.IsNullOrWhiteSpace((string)e.Parameter))
+            {
+                Money = $"{e.Parameter.ToString()}";
+                MyMoney.Text = Money;
+            }
+            base.OnNavigatedTo(e);
         }
     }
 }

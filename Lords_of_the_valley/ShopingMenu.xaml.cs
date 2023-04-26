@@ -46,25 +46,33 @@ namespace Lords_of_the_valley
                 Brush backColor = ColorAzul.Background;
 
 
-                int price=300;
-                if (i%5==0)
+                int price=175;
+                if (i%3==0)
                 {
-                    price = 550;
+                    price = 50+i*75;
                 }
-                if(price <= int.Parse(currentMoney))
-                {
                     Cards.Add(new ShopCardModel("NAME " + i, "Assets\\DecksImg\\deck1.jpg", "Card Description " + i, 3, 1, 2, 0,price,priceColor,backColor));
-                }
-                else
+
+            }
+
+        }
+
+        private void Update()
+        {
+            for (int i = 0; i < Cards.Count; ++i)
+            {
+                ShopCardModel c = CardCollection.Items[i] as ShopCardModel;
+
+                if (c!=null && c.price > int.Parse(currentMoney))
                 {
-                    Cards.Add(new ShopCardModel("NAME " + i, "Assets\\DecksImg\\deck1.jpg", "Card Description " + i, 3, 1, 2, 0, price, priceNotEnoughColor, backColor));
+                    //(string name_, string img, string desc, int attack_, int armor_, int mana_, int place_, int id_, int price_, Brush priceColor_, Brush backColr_
+                    c.SetCard(c.name, "Assets\\DecksImg\\deck1.jpg", c.description, c.attack, c.armor, c.mana, c.place, c.price, ColorGris.Background, ColorNegro.Foreground);
                 }
             }
         }
-
         private void MainMenu_OnClick(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(MainPage));
+            Frame.Navigate(typeof(MainPage),currentMoney);
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -94,6 +102,7 @@ namespace Lords_of_the_valley
             DarkShop.Visibility = Visibility.Collapsed;
             BuyButton.IsTabStop = false;
             DarKCard.Visibility = Visibility.Visible;
+            Update();
         }
 
         private void CardCollection_ItemClick(object sender, ItemClickEventArgs e)
@@ -223,6 +232,17 @@ namespace Lords_of_the_valley
             DarkShop.Visibility = Visibility.Collapsed;
             BuyButton.IsTabStop = false;
             DarKCard.Visibility = Visibility.Visible;
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            if(e.Parameter is string && !string.IsNullOrWhiteSpace((string)e.Parameter))
+            {
+                Money.Text = $"{e.Parameter.ToString()}";
+                currentMoney = Money.Text;
+
+            }
+            base.OnNavigatedTo(e);
         }
     }
 

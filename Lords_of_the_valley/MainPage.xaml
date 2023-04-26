@@ -65,7 +65,7 @@
                 <Viewbox Grid.Column="2">
                     
                 <StackPanel  Orientation="Horizontal" HorizontalAlignment="Right">
-                    <TextBlock Text="1000" FontSize="30" VerticalAlignment="Center" Foreground="Yellow"/>
+                    <TextBlock x:Name="MyMoney" Text="{x:Bind Money}" FontSize="30" VerticalAlignment="Center" Foreground="Yellow"/>
                     <Image Source="/Assets/Images/Coin.png"  Margin="10"/>
                         <Button Width="50" Height="50"  HorizontalAlignment="Right" Margin="20" Background="Yellow" CornerRadius="100"
                                 Click="ShopingMenu_OnClick">

@@ -52,14 +52,14 @@
 
                         <Button HorizontalAlignment="Center" Background="Transparent" Click="Button_Click" >
 
-                            <Slider Value="{x:Bind sound}" Width="300" Margin="20"
+                            <Slider x:Name="SONIDO" Value="{x:Bind sound}" Width="300" Margin="20" ValueChanged="Slider_ValueChanged"
                             HorizontalAlignment="Center" KeyDown="Slider_KeyDown" IsTabStop="False"/>
                         </Button>
 
                         <TextBlock Text="MÜSICA" FontSize="30" Foreground="DarkGray" FontWeight="Bold" Margin="10" HorizontalAlignment="Center" FontStretch="Normal"/>
                         <Button HorizontalAlignment="Center" Background="Transparent" Click="Button_Click">
 
-                            <Slider Value="{x:Bind music}" Width="300" Margin="20"
+                            <Slider x:Name="MUSICA" Value="{x:Bind music}" Width="300" Margin="20" ValueChanged="Slider_ValueChanged"
                             HorizontalAlignment="Center" KeyDown="Slider_KeyDown" IsTabStop="False"/>
                         </Button>
                         <Button Content="IDIOMA" FontSize="30" Foreground="Black" Width="500" Background="DarkGray" Margin="30"  HorizontalAlignment="Center" VerticalAlignment="Stretch"/>

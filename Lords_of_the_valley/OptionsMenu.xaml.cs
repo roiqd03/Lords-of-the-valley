@@ -24,19 +24,20 @@ namespace Lords_of_the_valley
     /// </summary>
     public sealed partial class OptionsMenu : Page
     {
-        public int music;
-        public int sound;
-        string money;
+        public double music;
+        public double sound;
         public OptionsMenu()
         {
             this.InitializeComponent();
-            music = 100;
-            sound = 100;
+            App app = (App)Application.Current;
+            music = app.Music;
+            sound = app.Sound;
         }
 
         private void MainMenu_OnClick(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(MainPage),money);
+           
+            Frame.Navigate(typeof(MainPage));
         }
 
         private void Exit_OnClick(object sender, RoutedEventArgs e)
@@ -49,6 +50,7 @@ namespace Lords_of_the_valley
         {
             if (Frame.CanGoBack)
             {
+               
                 Frame.GoBack();
             }
         }
@@ -71,16 +73,17 @@ namespace Lords_of_the_valley
                 s.IsTabStop = false;
                 b.Focus(FocusState.Keyboard);
             }
-
-
         }
-        protected override void OnNavigatedTo(NavigationEventArgs e)
+
+        private void Slider_ValueChanged(object sender, RangeBaseValueChangedEventArgs e)
         {
-            if (e.Parameter is string && !string.IsNullOrWhiteSpace((string)e.Parameter))
+            App app = (App)Application.Current;
+            Slider slider = sender as Slider;
+            if (slider == SONIDO)
             {
-                money = $"{e.Parameter.ToString()}";
+                app.Sound = e.NewValue;
             }
-            base.OnNavigatedTo(e);
+            else app.Music = e.NewValue;
         }
     }
 }

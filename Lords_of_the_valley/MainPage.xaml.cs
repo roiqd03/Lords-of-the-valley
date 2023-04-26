@@ -23,10 +23,12 @@ namespace Lords_of_the_valley
     /// </summary>
     public sealed partial class MainPage : Page
     {
-        string Money = "1000";
+        string Money;
         public MainPage()
         {
             this.InitializeComponent();
+            App app = (App)Application.Current;
+            Money = app.Money;
         }
 
         protected void OnPageLoad(object sender, RoutedEventArgs e)
@@ -36,22 +38,22 @@ namespace Lords_of_the_valley
 
         private void ChooseDeck_OnClick(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(ChooseDeck), Money);
+            Frame.Navigate(typeof(ChooseDeck));
         }
 
         private void GamePage_OnClick(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(GamePage), Money);
+            Frame.Navigate(typeof(GamePage));
         }
 
         private void ShopingMenu_OnClick(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(ShopingMenu),Money);
+            Frame.Navigate(typeof(ShopingMenu));
         }
 
         private void Options_OnClick(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(OptionsMenu), Money);
+            Frame.Navigate(typeof(OptionsMenu));
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -70,16 +72,6 @@ namespace Lords_of_the_valley
 
             if (Perfíl_Button == sender as Button && Perfil.Visibility == Visibility.Collapsed) Perfil.Visibility = Visibility.Visible;
             else Perfil.Visibility = Visibility.Collapsed; 
-        }
-
-        protected override void OnNavigatedTo(NavigationEventArgs e)
-        {
-            if(e.Parameter is string && !string.IsNullOrWhiteSpace((string)e.Parameter))
-            {
-                Money = $"{e.Parameter.ToString()}";
-                MyMoney.Text = Money;
-            }
-            base.OnNavigatedTo(e);
         }
     }
 }

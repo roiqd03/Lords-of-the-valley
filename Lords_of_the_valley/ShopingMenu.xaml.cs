@@ -17,8 +17,9 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using System.Runtime.CompilerServices;
-using static System.Net.Mime.MediaTypeNames;
 using Windows.UI;
+
+
 
 // La plantilla de elemento Página en blanco está documentada en https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -29,7 +30,7 @@ namespace Lords_of_the_valley
     /// </summary>
     public sealed partial class ShopingMenu : Page, INotifyPropertyChanged
     {
-        public string currentMoney = "1000";
+        public string currentMoney;
         public event PropertyChangedEventHandler PropertyChanged;
 
         public ObservableCollection<ShopCardModel> Cards { get; set; } = new ObservableCollection<ShopCardModel>();
@@ -37,7 +38,10 @@ namespace Lords_of_the_valley
         {
             this.InitializeComponent();
 
+            App app = (App)Application.Current;
+            currentMoney = app.Money;
             Money.Text = currentMoney;
+
 
             for (int i = 0; i < 30; ++i)
             {
@@ -211,7 +215,10 @@ namespace Lords_of_the_valley
                     c.SetCard(c.name, "Assets\\DecksImg\\deck1.jpg", c.description,c.attack,c.armor,c.mana,c.place,c.price,ColorGris.Background,ColorNegro.Foreground);
                 }
             }
-            
+
+            App app = (App)Application.Current;
+            app.Money = currentMoney;
+
         }
 
         private void GetFocusShopList()
@@ -234,16 +241,7 @@ namespace Lords_of_the_valley
             DarKCard.Visibility = Visibility.Visible;
         }
 
-        protected override void OnNavigatedTo(NavigationEventArgs e)
-        {
-            if(e.Parameter is string && !string.IsNullOrWhiteSpace((string)e.Parameter))
-            {
-                Money.Text = $"{e.Parameter.ToString()}";
-                currentMoney = Money.Text;
-
-            }
-            base.OnNavigatedTo(e);
-        }
+        
     }
 
 

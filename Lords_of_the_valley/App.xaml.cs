@@ -27,12 +27,17 @@ namespace Lords_of_the_valley
         /// Inicializa el objeto de aplicación Singleton. Esta es la primera línea de código creado
         /// ejecutado y, como tal, es el equivalente lógico de main() o WinMain().
         /// </summary>
+
+        public string Money = "1000";
+        public double Sound = 100;
+        public double Music = 100;
         public App()
         {
             this.InitializeComponent();
             this.Suspending += OnSuspending;
         }
 
+       
         /// <summary>
         /// Se invoca cuando la aplicación la inicia normalmente el usuario final. Se usarán otros puntos
         /// de entrada cuando la aplicación se inicie para abrir un archivo específico, por ejemplo.

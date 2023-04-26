@@ -213,14 +213,23 @@ namespace Lords_of_the_valley
         {
             if(e.Key == Windows.System.VirtualKey.Enter || e.Key == Windows.System.VirtualKey.Space || e.OriginalKey == Windows.System.VirtualKey.GamepadA)
             {
+                // Evitar perder el foco
+                for (int i = 0; i < TableCards.Count(); ++i)
+                {
+                    GridViewItem gridItem = gridViews[(int)CardPlace.Table].ContainerFromIndex(TableCards.Count() -1) as GridViewItem;
+                    gridItem.IsTabStop = true;
+                    gridItem.IsEnabled = true;
+                }
+
                 CardModel c = gridViews[(int)CardPlace.Hand].SelectedItem as CardModel;
                 if (actualMana >= c.mana)
                 {
                     Cards.Remove(c);
                     TableCards.Add(c);
                     ObservableCollection<CardModel> handCollection = (ObservableCollection<CardModel>)gridViews[(int)CardPlace.Hand].ItemsSource;
-                    RaisePropertyChanged(nameof(handCollection));
                     ObservableCollection<CardModel> tableCollection = (ObservableCollection<CardModel>)gridViews[(int)CardPlace.Table].ItemsSource;
+
+                    RaisePropertyChanged(nameof(handCollection));
                     RaisePropertyChanged(nameof(tableCollection));
                     actualMana -= c.mana;
                     UpdateManaUI();
@@ -230,9 +239,11 @@ namespace Lords_of_the_valley
                         GridViewItem g = gridViews[(int)CardPlace.Hand].ContainerFromIndex(0) as GridViewItem;
                         g.Focus(FocusState.Keyboard);
                     }
+
+
                 }
             }
-            else if(e.Key == Windows.System.VirtualKey.Escape || e.OriginalKey == Windows.System.VirtualKey.GamepadB)
+            else if ((darkZones[(int)DarkZones.Left].Visibility == Visibility.Visible) && (e.Key == Windows.System.VirtualKey.Escape || e.OriginalKey == Windows.System.VirtualKey.GamepadB))
             {
                 darkZonesActive(false);
                 GridViewItem g = gridViews[(int)CardPlace.Hand].ContainerFromIndex(gridViews[(int)CardPlace.Hand].SelectedIndex) as GridViewItem;

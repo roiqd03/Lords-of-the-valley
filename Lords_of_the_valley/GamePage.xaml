@@ -106,7 +106,7 @@
     <Grid>
         <!--FONDO-->
         <Image Source="/Assets/Backgrounds/Fondo_batalla.jpg" Stretch="Fill"/>
-        <Grid>
+        <Grid XYFocusKeyboardNavigation="Enabled">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="4*"></ColumnDefinition>
                 <ColumnDefinition Width="9*"></ColumnDefinition>
@@ -157,24 +157,7 @@
                                   KeyDown="Logic.myHand_KeyDown">
                     </GridView>
                 </Viewbox>
-
-                <!--MESA RIVAL-->
-                <Border Background="LightBlue" BorderThickness="2" Grid.Row ="1" Opacity="0.4" Margin="10,0,10,0" Grid.RowSpan="2"></Border>
-                <Viewbox Grid.Row="2">
-                    <GridView HorizontalAlignment="Center" VerticalAlignment="Top"
-                          Margin="0,10,0,0" ItemsSource="{x:Bind Logic.TableRivalCards}"
-                          ItemTemplate="{StaticResource Table}"
-                          HorizontalContentAlignment="Stretch"
-                          VerticalContentAlignment="Top"
-                          ScrollViewer.VerticalScrollMode="Disabled"
-                          ScrollViewer.VerticalScrollBarVisibility="Disabled"
-                          ItemClick="Logic.GridView_ItemClick"
-                          x:Name="EnemyTable"
-                          IsItemClickEnabled="True">
-                    </GridView>
-                </Viewbox>
                 
-
                 <!--MESA ALIADA-->
                 <Border DragOver="Logic.AllyTable_DragOver"
                          AllowDrop="True" Drop="Logic.AllyTable_Drop" Background="LightBlue" BorderThickness="2" Grid.Row ="4" Opacity="0.4" Margin="10,0,10,0" Grid.RowSpan="2"></Border>
@@ -197,6 +180,24 @@
                         </GridView>
                     </ContentControl>
                 </Viewbox>
+
+                <!--MESA RIVAL-->
+                <Border Background="LightBlue" BorderThickness="2" Grid.Row ="1" Opacity="0.4" Margin="10,0,10,0" Grid.RowSpan="2"></Border>
+                <Viewbox Grid.Row="2">
+                    <GridView HorizontalAlignment="Center" VerticalAlignment="Top"
+                          Margin="0,10,0,0" ItemsSource="{x:Bind Logic.TableRivalCards}"
+                          ItemTemplate="{StaticResource Table}"
+                          HorizontalContentAlignment="Stretch"
+                          VerticalContentAlignment="Top"
+                          ScrollViewer.VerticalScrollMode="Disabled"
+                          ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                          ItemClick="Logic.GridView_ItemClick"
+                          x:Name="EnemyTable"
+                          IsItemClickEnabled="True">
+                    </GridView>
+                </Viewbox>
+                
+
 
                 <Border Background="Brown" BorderThickness="2"  Grid.Row="3" Margin="10, 0, 10, 0"></Border>
                 <!--PERSONAJE ENEMIGO-->

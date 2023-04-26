@@ -65,8 +65,8 @@
                 <Viewbox Grid.Column="2">
                     
                 <StackPanel  Orientation="Horizontal" HorizontalAlignment="Right">
-                    <TextBlock Text="XXXXX" FontSize="30" VerticalAlignment="Center" Foreground="Yellow"/>
-                    <Image Source="/Assets/Images/Coin.png"  Margin="20"/>
+                    <TextBlock Text="1000" FontSize="30" VerticalAlignment="Center" Foreground="Yellow"/>
+                    <Image Source="/Assets/Images/Coin.png"  Margin="10"/>
                         <Button Width="50" Height="50"  HorizontalAlignment="Right" Margin="20" Background="Yellow" CornerRadius="100"
                                 Click="ShopingMenu_OnClick">
                         <TextBlock Text="+"  Foreground="Black" FontSize="30" VerticalAlignment="Center" Margin="5"/>

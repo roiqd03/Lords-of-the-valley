@@ -205,29 +205,7 @@ namespace Lords_of_the_valley
             page.ChangeSelectedCard(card);
             if (sender == gridViews[(int)CardPlace.Hand])
             {
-                foreach (Windows.UI.Xaml.Shapes.Rectangle r in darkZones)
-                {
-                    r.Visibility = Visibility.Visible;
-                }
-                for (int i = (int)CardPlace.Table; i < (int)CardPlace.FinalEnum; ++i)
-                {
-                    for (int j = 0; j < Cards.Count; ++j)
-                    {
-                        var gridViewItem = gridViews[i].ContainerFromIndex(j);
-                        if (gridViewItem != null)
-                        {
-                            GridViewItem g = gridViewItem as GridViewItem;
-                            g.IsTabStop = false;
-                        }
-                    }
-                }
-                foreach (Button b in buttons)
-                {
-                    b.IsTabStop = false;
-                    b.IsEnabled = false;
-                }
-                ContentControl c = gridViews[(int)CardPlace.Table].Parent as ContentControl;
-                c.IsTabStop = true;
+                darkZonesActive(true);
             }
         }
 
@@ -248,7 +226,54 @@ namespace Lords_of_the_valley
                     UpdateManaUI();
                 }
             }
+            else if(e.Key == Windows.System.VirtualKey.Escape || e.OriginalKey == Windows.System.VirtualKey.GamepadB)
+            {
+                darkZonesActive(false);
+                GridViewItem g = gridViews[(int)CardPlace.Hand].ContainerFromIndex(gridViews[(int)CardPlace.Hand].SelectedIndex) as GridViewItem;
+                g.Focus(FocusState.Keyboard);
+            }
 
+        }
+
+        private void darkZonesActive(bool active)
+        {
+            Visibility v;
+            if(active) v = Visibility.Visible;
+            else v = Visibility.Collapsed;  
+
+            foreach (Windows.UI.Xaml.Shapes.Rectangle r in darkZones)
+            {
+                r.Visibility = v;
+            }
+            for (int i = (int)CardPlace.Table; i < (int)CardPlace.FinalEnum; ++i)
+            {
+                for (int j = 0; j < Cards.Count; ++j)
+                {
+                    var gridViewItem = gridViews[i].ContainerFromIndex(j);
+                    if (gridViewItem != null)
+                    {
+                        GridViewItem g = gridViewItem as GridViewItem;
+                        g.IsTabStop = !active;
+                    }
+                }
+            }
+            foreach (Button b in buttons)
+            {
+                b.IsTabStop = !active;
+                b.IsEnabled = !active;
+            }
+            ContentControl cont = gridViews[(int)CardPlace.Table].Parent as ContentControl;
+            cont.IsTabStop = active;
+        }
+
+
+        public void myHand_KeyDown(object sender, KeyRoutedEventArgs e)
+        {
+            ContentControl cont = gridViews[(int)CardPlace.Table].Parent as ContentControl;
+            if ((e.Key == Windows.System.VirtualKey.Escape || e.OriginalKey == Windows.System.VirtualKey.GamepadB) && cont.IsTabStop)
+            {
+                darkZonesActive(false);
+            }
         }
     }
 }

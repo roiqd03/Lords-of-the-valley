@@ -153,7 +153,8 @@
                                   ItemClick="Logic.GridView_ItemClick"
                                   IsItemClickEnabled="True"
                                   CanDragItems="True"
-                                  DragItemsStarting="Logic.myHand_DragItemsStarting">
+                                  DragItemsStarting="Logic.myHand_DragItemsStarting"
+                                  KeyDown="Logic.myHand_KeyDown">
                     </GridView>
                 </Viewbox>
 

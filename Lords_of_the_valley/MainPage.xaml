@@ -161,7 +161,7 @@
                         <StackPanel>
                             <TextBlock Text="PERFÍL" TextDecorations="Underline" HorizontalAlignment="Center" Margin="5"/>
                             <TextBlock Text="NOMBRE: _DSI_10/10_WOW" Margin="5" HorizontalAlignment="Center"/>
-                            <TextBlock Text="CÖDIGO AMIGO: #10.10.10.10" Margin="5" HorizontalAlignment="Center"/>
+                            <TextBlock Text="CÓDIGO AMIGO: #10.10.10.10" Margin="5" HorizontalAlignment="Center"/>
                             <TextBlock Text="NIVEL: 10" Margin="5" HorizontalAlignment="Center"/>
                             <TextBlock Text="..." Margin="5" HorizontalAlignment="Center"/>
 
